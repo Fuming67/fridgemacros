@@ -39,12 +39,22 @@ body {
   align-items: center;
   padding: 14px 40px;
   background: transparent;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.7); /* czarna, półprzezroczysta kreska */
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(12px);
 }
+
+.top-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;                    /* jak chcesz niżej, zwiększ np. do -10px */
+  height: 1px;
+  background: rgba(0, 0, 0, 0.7);  /* czarna kreska */
+}
+
 
 
 .logo {
