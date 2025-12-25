@@ -43,7 +43,12 @@ body {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(12px);
+.top-bar nav {
+  display: flex;
+  gap: 14px;
+  margin-right: 80px;   /* im większe, tym przyciski bliżej środka z lewej strony */
 }
+
 
 .top-bar::after {
   content: "";
@@ -79,7 +84,8 @@ nav a {
 /* PRZYCISKI */
 
 .btn {
-  padding: 8px 18px;
+  padding: 12px 30px;
+  font-size: 16px;
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, #5a4bff, #63b3ff);
