@@ -1,9 +1,10 @@
+// Lista gamepassów
 const gamepasses = [
   {
     name: "UTD Donater",
     description: "Wsparcie podstawowe",
     price: 250,
-    id: 48776587,        // <-- tutaj Twoje ID
+    id: 48776587,        // <-- tutaj Twoje prawdziwe ID gamepassa
     special: false
   },
   {
@@ -25,15 +26,14 @@ const gamepasses = [
     description: "Złota, elitarna darowizna",
     price: 500,
     id: 4567890123,
-    special: true          // ta karta będzie złota
+    special: true        // ta karta będzie złota
   }
 ];
 
 // GENEROWANIE KART
-
 const cardsContainer = document.getElementById("cards");
 
-gamepasses.forEach((pass, index) => {
+gamepasses.forEach((pass) => {
   const card = document.createElement("div");
   card.className = "card" + (pass.special ? " gold" : "");
 
@@ -45,6 +45,7 @@ gamepasses.forEach((pass, index) => {
   icon.textContent = "F"; // dowolna literka / ikonka
 
   const textBox = document.createElement("div");
+
   const title = document.createElement("div");
   title.className = "card-title";
   title.textContent = pass.name;
@@ -62,7 +63,7 @@ gamepasses.forEach((pass, index) => {
   const price = document.createElement("a");
   price.className = "card-price";
   price.textContent = pass.price + " Robux";
-  price.href = `https://www.roblox.com/game-pass/${pass.id}/view`;
+  price.href = `https://www.roblox.com/game-pass/${pass.id}/view`; // poprawny format linku do gamepassa
   price.target = "_blank";
   price.rel = "noopener noreferrer";
 
@@ -74,5 +75,5 @@ gamepasses.forEach((pass, index) => {
 
 // Przewijanie po kliknięciu "Donate"
 function scrollToSupport() {
-  document.getElementById("support").scrollIntoView({ behavior: "smooth" });
-}
+  document.getElementById("support").scrollIntoView({ behavior: "smooth" }); // natywne płynne przewijanie
+}S
