@@ -35,7 +35,7 @@ body {
 
 .top-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo lewo, przyciski prawo */
   align-items: center;
   padding: 14px 40px;
   background: transparent;
@@ -43,10 +43,12 @@ body {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(12px);
+}
+
 .top-bar nav {
   display: flex;
-  gap: 14px;
-  margin-right: 130px;  /* większa wartość = cała trójka bardziej w lewo */
+  gap: 14px;          /* odstęp między FAQ / Discord / Donate */
+  margin-right: 120px; /* tym ruszamy całą trójkę w LEWO lub PRAWO */
 }
 
 
