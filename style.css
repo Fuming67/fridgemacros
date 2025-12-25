@@ -52,14 +52,14 @@ nav a {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.btn:hover {
-  filter: brightness(1.08);
+.btn.donate {
+  background: linear-gradient(135deg, #16a34a, #22c55e, #4ade80);
+  color: #052e16;
+  font-weight: 600;
 }
 
-.btn.red,
-.btn.dark,
-.btn.blue {
-  background: linear-gradient(135deg, #ff5bb5, #bc4bff);
+.btn.donate:hover {
+  filter: brightness(1.1);
 }
 
 /* Hero */
