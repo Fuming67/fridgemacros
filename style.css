@@ -50,7 +50,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -6px;                    /* jak chcesz niżej, zwiększ np. do -10px */
+  bottom: -15px;                    /* jak chcesz niżej, zwiększ np. do -10px */
   height: 1px;
   background: rgba(0, 0, 0, 0.7);  /* czarna kreska */
 }
