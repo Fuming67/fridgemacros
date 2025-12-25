@@ -1,4 +1,4 @@
-
+const gamepasses = [
   {
     name: "UTD Donater",
     description: "Wsparcie podstawowe",
