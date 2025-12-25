@@ -46,8 +46,9 @@ body {
 .top-bar nav {
   display: flex;
   gap: 14px;
-  margin-right: 80px;   /* im większe, tym przyciski bliżej środka z lewej strony */
+  margin-right: 130px;  /* większa wartość = cała trójka bardziej w lewo */
 }
+
 
 
 .top-bar::after {
