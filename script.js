@@ -92,3 +92,35 @@ modalOverlay.addEventListener("click", closeDonateModal);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeDonateModal();
 });
+const promoVideos = [
+  "https://www.youtube.com/embed/E2lpnrLXEPs",
+  "https://www.youtube.com/embed/H6qDW5rpZBw"
+];
+
+let promoIndex = 0;
+const promoIframe = document.getElementById("promo-video");
+const promoPrev = document.getElementById("video-prev");
+const promoNext = document.getElementById("video-next");
+const promoIndicator = document.getElementById("video-indicator");
+
+function updatePromoVideo() {
+  promoIframe.src = promoVideos[promoIndex];
+  promoIndicator.textContent = `${promoIndex + 1} / ${promoVideos.length}`;
+}
+
+if (promoIframe && promoPrev && promoNext && promoIndicator) {
+  promoPrev.addEventListener("click", () => {
+    promoIndex = (promoIndex - 1 + promoVideos.length) % promoVideos.length;
+    updatePromoVideo();
+  });
+
+  promoNext.addEventListener("click", () => {
+    promoIndex = (promoIndex + 1) % promoVideos.length;
+    updatePromoVideo();
+  });
+
+  setInterval(() => {
+    promoIndex = (promoIndex + 1) % promoVideos.length;
+    updatePromoVideo();
+  }, 5000);
+}
