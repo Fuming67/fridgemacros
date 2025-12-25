@@ -305,3 +305,14 @@ nav a {
 h1, h2, h3 {
   color: #ffd06b;
 }
+/* Tło dużego kwadratu z makrami i FAQ */
+.support {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 40px 20px 80px;
+  background: linear-gradient(135deg, #4b3bff, #0b1530);
+  border-radius: 24px;
+.card,
+.faq {
+  background: rgba(0, 10, 40, 0.9);
+}
