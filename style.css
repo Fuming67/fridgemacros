@@ -7,11 +7,12 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 .logo-icon {
-  width: 20px;       /* możesz później zmienić na 18/22, jak Ci się bardziej spodoba */
-  height: 20px;
-  border-radius: 4px;
-  margin-top: 2px;   /* delikatnie opuszcza ikonkę, żeby była w linii z tekstem */
+  width: 24px;      /* trochę większe */
+  height: 24px;
+  border-radius: 6px;
+  margin-top: 2px;  /* zostaw, żeby dalej była w linii z tekstem */
 }
+
 
 
 * {
