@@ -1,9 +1,9 @@
 
   {
-    name: "ALS Donator",
+    name: "UTD Donater",
     description: "Wsparcie podstawowe",
-    price: 100,
-    id: 1234567890,        // <-- tutaj Twoje ID
+    price: 250,
+    id: 48776587,        // <-- tutaj Twoje ID
     special: false
   },
   {
