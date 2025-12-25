@@ -38,13 +38,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 14px 40px;
-  background: transparent;   /* BYŁO: rgba(5, 6, 20, 0.9) */
-  border-bottom: none;       /* na wszelki wypadek usuwa kreskę */
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7); /* czarna, półprzezroczysta kreska */
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(12px);
 }
+
 
 .logo {
   display: flex;
