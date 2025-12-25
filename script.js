@@ -42,7 +42,7 @@ gamepasses.forEach((pass) => {
 
   const icon = document.createElement("div");
   icon.className = "icon-box";
-  icon.textContent = "F"; // literka / ikonka
+  icon.textContent = "F";
 
   const textBox = document.createElement("div");
 
