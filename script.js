@@ -42,7 +42,7 @@ gamepasses.forEach((pass) => {
 
   const icon = document.createElement("div");
   icon.className = "icon-box";
-  icon.textContent = "F"; // dowolna literka / ikonka
+  icon.textContent = "F"; // literka / ikonka
 
   const textBox = document.createElement("div");
 
@@ -63,7 +63,7 @@ gamepasses.forEach((pass) => {
   const price = document.createElement("a");
   price.className = "card-price";
   price.textContent = pass.price + " Robux";
-  price.href = `https://www.roblox.com/game-pass/${pass.id}/view`; // poprawny link do gamepassa [web:126][web:128]
+  price.href = `https://www.roblox.com/game-pass/${pass.id}/view`;
   price.target = "_blank";
   price.rel = "noopener noreferrer";
 
