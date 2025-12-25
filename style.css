@@ -264,3 +264,28 @@ nav a {
 .macro-group a:hover {
   background: #2b3352;
 }
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  max-width: 900px;
+  margin: 5vh auto;
+  padding: 30px 30px 40px;
+  border-radius: 24px;
+  background: #0c1018;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
