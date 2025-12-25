@@ -73,10 +73,28 @@ gamepasses.forEach((pass) => {
   cardsContainer.appendChild(card);
 });
 
-// Przewijanie po kliknięciu "Donate"
-<button class="floating-donate" onclick="openDonateModal()">Donate</button>
-<script src="script.js"></script>
-cardsContainer.appendChild(card);
+  card.appendChild(left);
+  card.appendChild(price);
+
+  cardsContainer.appendChild(card);
+});
+
+// Modal Donate
+const donateModal = document.getElementById("donate-modal");
+const modalOverlay = donateModal.querySelector(".modal-overlay");
+
+function openDonateModal() {
+  donateModal.classList.remove("hidden");
+}
+
+function closeDonateModal() {
+  donateModal.classList.add("hidden");
+}
+
+modalOverlay.addEventListener("click", closeDonateModal);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDonateModal();
 });
 
 // Modal Donate
