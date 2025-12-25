@@ -407,3 +407,14 @@ h1, h2, h3 {
   height: 260px;
   border-radius: 16px;
 }
+.video-controls {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.video-controls #video-indicator {
+  color: #c7cffc;
+  font-size: 14px;
+}
