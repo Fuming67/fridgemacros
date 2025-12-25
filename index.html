@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -10,7 +9,7 @@
   <header class="top-bar">
     <div class="logo">Fridge Macros</div>
     <nav>
-    <a href="#faq" class="btn dark">FAQ</a>
+      <a href="#faq" class="btn dark">FAQ</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
     </nav>
   </header>
@@ -25,26 +24,17 @@
       </div>
     </section>
 
-   <section id="macro" class="macros"> 
-  <h2>Macros for free</h2>
-  <p>Choose macro and click to download it.</p>
+    <section id="macro" class="macros"> 
+      <h2>Macros for free</h2>
+      <p>Choose macro and click to download it.</p>
 
-  <div class="macro-list">
-   <div class="macro-group">
-  <h3>Universal Tower Defense</h3>
- <a href="macros/UTD/UTD_1.35_Free.zip.rar" download>UTD 1.35 Free</a>
-</div>
-
-<div id="donate-modal" class="modal hidden">
-  <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <section id="support" class="support">
-      <h2>Support Development</h2>
-      <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-      <div id="cards" class="cards"></div>
+      <div class="macro-list">
+        <div class="macro-group">
+          <h3>Universal Tower Defense</h3>
+          <a href="macros/UTD/UTD_1.35_Free.zip.rar" download>UTD 1.35 Free</a>
+        </div>
+      </div>
     </section>
-  </div>
-</div>
 
     <section id="faq" class="faq">
       <h2>FAQ</h2>
@@ -52,7 +42,19 @@
     </section>
   </main>
 
- <button class="floating-donate" onclick="openDonateModal()">Donate</button>
+  <!-- MODAL DONATE POZA MAIN, JAK WCZEŚNIEJ -->
+  <div id="donate-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <section id="support" class="support">
+        <h2>Support Development</h2>
+        <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+        <div id="cards" class="cards"></div>
+      </section>
+    </div>
+  </div>
+
+  <button class="floating-donate" onclick="openDonateModal()">Donate</button>
 
   <script src="script.js"></script>
 </body>
