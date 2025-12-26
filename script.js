@@ -3,7 +3,7 @@ const gamepasses = [
   {
     name: "UTD Donater",
     description: "Wsparcie podstawowe",
-    price: xxx,
+    price: xxxxxx,
     id: 48776587,
     special: false
   },
