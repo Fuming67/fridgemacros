@@ -376,7 +376,7 @@ h1, h2, h3 {
 }
 .promo-section {
   max-width: 1100px;
-  margin: 20px 0 80px 24px;  /* góra, prawo, dół, lewo */
+  margin: 20px 0 80px 26px;  /* góra, prawo, dół, lewo */
   padding: 24px 24px 32px;
   background: #0c1018;
   border-radius: 24px;
