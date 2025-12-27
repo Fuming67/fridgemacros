@@ -2,8 +2,7 @@
 const gamepasses = [
   {
     name: "UTD Donater",
-    description: "Universal Tower Defense Premium Macro
-      RAGNA STAGE, MULTI MODE",
+    description: "Universal Tower Defense Premium Macro",
     price: 120,
     id: 48776587,
     special: false
