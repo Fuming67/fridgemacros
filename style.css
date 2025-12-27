@@ -188,6 +188,13 @@ nav a {
   color: #aab2ff;
 }
 
+.card-details {
+  font-size: 12px;
+  color: #9ea8ff;
+  margin-top: 3px;
+  opacity: 0.9;
+}
+
 .card-price {
   font-weight: 600;
   color: #ffffff;
