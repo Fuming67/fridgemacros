@@ -3,11 +3,13 @@ const gamepasses = [
   {
     name: "UTD Donater",
     description: "Universal Tower Defense Premium Macro",
+    details: "Added Ragna Stage, Added Multi mode,fixed ALL BUGS, Early updates.",
     price: 120,
     id: 48776587,
     special: false
   }
 ];
+
 
 // ===== GENEROWANIE KART DONATE =====
 const cardsContainer = document.getElementById("cards");
