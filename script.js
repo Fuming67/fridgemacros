@@ -2,12 +2,14 @@
 const gamepasses = [
   {
     name: "UTD Donater",
-    description: "Universal Tower Defense Premium Macro", // opis jaki chcesz
-    price: 120,                                          // kwota jaka chcesz
-    id: 48776587,                                        // ID gamepassa
+    description: "Universal Tower Defense Premium Macro",
+    price: 120,
+    id: 48776587,
     special: false
+  }
+];
 
-      // ===== GENEROWANIE KART DONATE =====
+// ===== GENEROWANIE KART DONATE =====
 const cardsContainer = document.getElementById("cards");
 
 if (cardsContainer) {
@@ -97,7 +99,6 @@ function updatePromoVideo() {
 }
 
 if (promoIframe && promoPrev && promoNext && promoIndicator) {
-  // przyciski
   promoPrev.addEventListener("click", () => {
     promoIndex = (promoIndex - 1 + promoVideos.length) % promoVideos.length;
     updatePromoVideo();
@@ -108,12 +109,10 @@ if (promoIframe && promoPrev && promoNext && promoIndicator) {
     updatePromoVideo();
   });
 
-  // auto‑zmiana co 5 sekund
   setInterval(() => {
     promoIndex = (promoIndex + 1) % promoVideos.length;
     updatePromoVideo();
   }, 5000);
 
-  // ustaw pierwszy film i licznik
   updatePromoVideo();
 }
