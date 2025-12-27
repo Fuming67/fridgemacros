@@ -15,8 +15,8 @@
     <nav>
       <a href="index.html#home" class="btn dark">Home</a>
       <a href="download.html" class="btn dark">Download</a>
-     <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="faq.html" class="btn dark">FAQ</a>
+      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <button class="btn donate" onclick="openDonateModal()">Donate</button>
     </nav>
   </header>
@@ -32,11 +32,10 @@
           <h3>Macro Basics</h3>
           <p>Learn the fundamentals of using Fridge Macros.</p>
           <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/ID1"
-                    title="Macro Basics"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+            <video controls preload="metadata">
+              <source src="videos/macro-basics.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </article>
 
@@ -45,11 +44,10 @@
           <h3>Discord Webhooks</h3>
           <p>Set up notifications and automation.</p>
           <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/ID2"
-                    title="Discord Webhooks"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+            <video controls preload="metadata">
+              <source src="videos/discord-webhooks.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </article>
 
@@ -58,18 +56,17 @@
           <h3>Import Configs</h3>
           <p>Use community-created configurations.</p>
           <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/ID3"
-                    title="Import Configs"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+            <video controls preload="metadata">
+              <source src="videos/import-configs.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </article>
       </div>
     </section>
   </main>
 
-  <!-- MODAL DONATE (MUSI BYĆ PRZED </body>) -->
+  <!-- MODAL DONATE -->
   <div id="donate-modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -81,10 +78,6 @@
     </div>
   </div>
 
-  <!-- JEDNO odwołanie do script.js -->
   <script src="script.js"></script>
-</body>
-</html>
-
 </body>
 </html>
