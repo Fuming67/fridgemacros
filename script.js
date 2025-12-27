@@ -2,35 +2,12 @@
 const gamepasses = [
   {
     name: "UTD Donater",
-    description: "Universal Tower Defense Premium Macro",
-    price: 120,
-    id: 1645553803,
+    description: "Universal Tower Defense Premium Macro", // opis jaki chcesz
+    price: 120,                                          // kwota jaka chcesz
+    id: 48776587,                                        // ID gamepassa
     special: false
-  },
-  {
-    name: "AC Donator",
-    description: "Dodatkowe wsparcie",
-    price: 100,
-    id: 2345678901,
-    special: false
-  },
-  {
-    name: "AV Donator",
-    description: "Większe wsparcie",
-    price: 200,
-    id: 3456789012,
-    special: false
-  },
-  {
-    name: "Elite Donation",
-    description: "Złota, elitarna darowizna",
-    price: 500,
-    id: 4567890123,
-    special: true
-  }
-];
 
-// ===== GENEROWANIE KART DONATE =====
+      // ===== GENEROWANIE KART DONATE =====
 const cardsContainer = document.getElementById("cards");
 
 if (cardsContainer) {
