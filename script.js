@@ -2,9 +2,9 @@
 const gamepasses = [
   {
     name: "UTD Donater",
-    description: "Wsparcie podstawowe",
-    price: 250,
-    id: 48776587,
+    description: "Universal Tower Defense Premium Macro",
+    price: 120,
+    id: 1645553803,
     special: false
   },
   {
