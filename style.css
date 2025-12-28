@@ -87,9 +87,9 @@ nav a {
 }
 
 .btn.donate {
-  background: linear-gradient(135deg, #16a34a, #22c55e, #4ade80);
-  color: #052e16;
-  font-weight: 600;
+  background: linear-gradient(135deg, #facc15, #f97316, #92400e);
+  color: #111827;    
+  font-weight: 700;
 }
 
 .btn.donate:hover,
