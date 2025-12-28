@@ -477,23 +477,31 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
 }
+
+/* tekst po prawej strone ekranu na gorze */
 .hero-top-text {
   position: absolute;
-  top: 90px;      /* odległość od góry, dopasuj pod swój header */
-  right: 60px;    /* odległość od prawej krawędzi */
-  max-width: 520px;
-  text-align: right;
-  color: #e5ebff;
+  top: 90px;
+  right: 50%;
+  transform: translateX(50%); /* wyśrodkowanie na szerokości */
+  max-width: 680px;
+  text-align: center;
+  color: #cfe6ff;              /* domyślnie jasnoniebieski */
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* tytuł – fioletowy, większy */
 .hero-top-text h3 {
-  margin-bottom: 6px;
-  font-size: 28px;
+  margin-bottom: 10px;
+  font-size: 30px;
   font-weight: 700;
-  color: #ffec8a;
+  letter-spacing: 0.03em;
+  color: #a855ff;             /* ładny fiolet */
 }
 
+/* reszta tekstu – jasnoniebieska */
 .hero-top-text p {
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #cfe6ff;             /* jasny niebieski */
 }
