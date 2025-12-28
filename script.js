@@ -124,3 +124,8 @@ if (promoIframe && promoPrev && promoNext && promoIndicator) {
   updatePromoVideo();
 }
 
+// Ukryj pełny URL przy kliknięciu Home
+document.querySelector('a[href="#home"]').addEventListener('click', function(e) {
+  history.replaceState(null, null, '#home');
+});
+
