@@ -478,36 +478,39 @@ h1, h2, h3 {
   }
 }
 
-/* tekst po prawej stronie ekranu na gorze - CZARNO-NIEBIESKI */
+/* tekst po prawej - POMARAŃCZOWY GRADIENT */
 .hero-top-text {
   position: absolute;
   top: 110px;
-  right: 60px;                    /* bliżej prawej krawędzi */
-  max-width: 550px;               /* +130px szerokości */
+  right: 60px;
+  max-width: 550px;
   text-align: right;
-  z-index: 20;                    /* wyżej niż promo-section */
+  z-index: 20;
   font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* tytuł – fioletowy, WIĘKSZY */
+/* tytuł – POMARAŃCZOWY GRADIENT */
 .hero-top-text h3 {
   margin-bottom: 12px;
   font-size: 34px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  background: linear-gradient(90deg, #1e1b4b 0%, #3b82f6 50%, #1e40af 100%);
+  background: linear-gradient(90deg, #f97316 0%, #f59e0b 50%, #dc2626 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent !important;
 }
 
-/* reszta tekstu – czarno-niebieski gradient, WIĘKSZY */
+/* reszta tekstu – POMARAŃCZOWY GRADIENT */
 .hero-top-text p {
   font-size: 17px;
   line-height: 1.6;
-  background: linear-gradient(90deg, #1e293b 0%, #3b82f6 70%, #1d4ed8 100%);
+  background: linear-gradient(90deg, #fb923c 0%, #f97316 70%, #ea580c 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent !important;
 }
+
 
