@@ -90,7 +90,7 @@ document.addEventListener("keydown", (e) => {
 // ===== SLIDER WIDEO YOUTUBE =====
 const promoVideos = [
   "https://www.youtube.com/embed/E2lpnrLXEPs",
-  "https://www.youtube.com/embed/H6qDW5rpZBw"
+  "https://www.youtube.com/embed/0ZwnZ-T3inY"
 ];
 
 let promoIndex = 0;
