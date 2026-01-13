@@ -5,7 +5,7 @@ const gamepasses = [
     description: "Universal Tower Defense Premium Macro",
     details: "Added Ragna Stage, Added Multi mode, fixed ALL BUGS, early updates.",
     price: 120,
-    id: 48776587,
+    id: 1645553803,
     special: false
   }
 ];
