@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fridge Macros – Download</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo">
+      <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
+      <span>Fridge Macros</span>
+    </div>
 
+    <nav>
+      <a href="index.html#home" class="btn dark">Home</a>
+      <a href="download.html" class="btn dark">Download</a>
+      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
+       <a href="faq.html" class="btn dark">FAQ</a>
+      <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="macros">
+      <h2>Macros for free</h2>
+      <p>Choose macro and click to download it.</p>
+
+      <div class="macro-list">
+        <div class="macro-group">
+          <h3>Universal Tower Defense</h3>
+          <a href="macros/UTD/UTD_1.41_Free.zip.rar" download>UTD 1.41 Free</a>
+          <p class="macro-features">
+            Functions: Every Legends Stage, Auto Challenge, Virtual Realm, Custom mode
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DONATE (TAKI SAM JAK W index.html) -->
+  <div id="donate-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <section id="support" class="support">
+        <h2>Support Development</h2>
+        <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+        <div id="cards" class="cards"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
