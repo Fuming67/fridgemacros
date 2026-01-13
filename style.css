@@ -513,6 +513,11 @@ h1, h2, h3 {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+.btn.dark { 
+  background: rgba(0,0,0,0.6); 
+  backdrop-filter: blur(10px); 
 }
-.btn.dark { background: rgba(0,0,0,0.6); }
-.btn.blue { background: linear-gradient(135deg, #1b48ff, #63b3ff); }
+.btn.blue { 
+  background: linear-gradient(135deg, #1b48ff, #63b3ff); 
+}
+
