@@ -110,4 +110,8 @@ nav { display: flex; gap: 14px; }
   .promo-section { flex-direction: column; margin: 20px; }
 }
 
+.btn.dark { background: rgba(0,0,0,0.7); }
+.btn.blue { background: linear-gradient(135deg, #1b48ff, #63b3ff); }
+.hero-top-text h3 { color: #f97316 !important; background: none !important; }
+.hero-top-text p { color: #fb923c !important; background: none !important; }
 
