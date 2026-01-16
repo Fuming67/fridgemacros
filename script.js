@@ -123,3 +123,47 @@ if (promoIframe && promoPrev && promoNext && promoIndicator) {
 
   updatePromoVideo();
 }
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // === PIERWSZE OKNO: FREE DOWNLOAD (twoje UTD makro) ===
+  document.getElementById('guardiansBtn').onclick = () => {
+    // FREE - pobiera twój plik bezpośrednio
+    const link = document.createElement('a');
+    link.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
+    link.download = 'AnimeGuardians_FREE.zip';  // Nowa nazwa dla użytkownika
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
+  // === DRUGIE OKNO: PREMIUM (gamepass/Discord) ===
+  document.getElementById('lastStandBtn').onclick = () => {
+    // PREMIUM - sprawdź Roblox Premium lub przekieruj
+    const userId = prompt('Wpisz Roblox User ID dla Premium check:');
+    if (userId) {
+      // Opcja 1: Bezpośrednio Discord (proste)
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+      
+      // Opcja 2: Check Premium (odkomentuj jeśli chcesz)
+      /*
+      fetch(`https://api.allorigins.win/raw?url=https://users.roblox.com/v1/users/${userId}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.membershipTypeId === 4 || data.membershipTypeId === 2) {
+            // Ma Premium - daj lepszy plik
+            window.location.href = 'macros/AnimeLastStand_PREMIUM.zip';  // DODAJ PLIK
+          } else {
+            // Brak Premium - gamepass
+            window.open('https://www.roblox.com/game-passes/TWOJ-GAMEPASS-ID');
+          }
+        });
+      */
+    }
+  };
+  
+  // === TRZECIE OKNO: v8.2 (Discord) ===
+  document.getElementById('royaleBtn').onclick = () => {
+    window.open('https://discord.gg/t2sGsddB', '_blank');
+  };
+});
+</script>
