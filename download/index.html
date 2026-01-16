@@ -5,97 +5,113 @@
   <title>Fridge Macros – Download</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- PEŁNY LINK DO STYLI -->
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   <style>
-    /* Nowe style dla kart download */
-    .download-cards {
+    .anime-cards-section {
       display: flex; 
       justify-content: center; 
       gap: 20px; 
-      margin: 40px auto; 
+      margin: 80px auto 60px;  /* PRZESUNIĘTE NIŻEJ */
       flex-wrap: wrap;
-      max-width: 1200px;
+      max-width: 1000px;
+      padding: 0 20px;
     }
-    .download-card {
-      background: linear-gradient(145deg, #000, #1a0033); 
-      border-radius: 20px; 
-      padding: 30px; 
-      width: 280px; 
+    .anime-card {
+      background: linear-gradient(145deg, #0a0a1f, #1a0033); 
+      border-radius: 24px; 
+      padding: 35px 25px; 
+      width: 260px; 
       text-align: center; 
-      box-shadow: 0 0 40px; 
+      box-shadow: 0 15px 50px rgba(255,0,255,0.3); 
       position: relative; 
       overflow: hidden;
-      transition: transform 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
     }
-    .download-card:hover {
-      transform: scale(1.05);
+    .anime-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 80px rgba(255,0,255,0.5);
     }
-    .download-card::before {
-      content: '';
+    .neon-glow {
       position: absolute; 
-      top: -50%; 
-      left: -50%; 
-      width: 200%; 
-      height: 200%; 
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); 
-      animation: rotate 20s linear infinite;
+      top: -30%; 
+      left: -30%; 
+      width: 160%; 
+      height: 160%; 
+      background: conic-gradient(from 0deg, transparent, #ff00ff, transparent); 
+      animation: neonRotate 15s linear infinite;
+      opacity: 0.3;
     }
-    @keyframes rotate {
+    @keyframes neonRotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    .card-premium .neon-glow { background: conic-gradient(from 0deg, transparent, #ffff00, transparent); }
+    .card-royale .neon-glow { background: conic-gradient(from 0deg, transparent, #ff4500, transparent); }
     .card-title {
-      color: #ff00ff; 
-      font-size: 24px; 
-      margin: 0 0 20px; 
-      text-shadow: 0 0 20px currentColor; 
-      font-weight: bold; 
-      position: relative; 
-      z-index: 1;
+      font-size: 22px; 
+      margin: 0 0 25px; 
+      text-shadow: 0 0 25px currentColor; 
+      font-weight: 900; 
+      letter-spacing: 2px;
+      position: relative; z-index: 2;
+      color: #ff00ff;
     }
+    .card-premium .card-title { color: #ffff00; }
+    .card-royale .card-title { color: #ff4500; }
     .card-features {
-      color: #00ff00; 
+      color: #00ff88; 
       list-style: none; 
       padding: 0; 
-      margin: 0 0 30px; 
+      margin: 0 0 35px; 
       text-align: left;
-      position: relative; 
-      z-index: 1;
+      position: relative; z-index: 2;
+      font-size: 14px;
     }
-    .card-features li {
-      margin: 5px 0;
+    .card-premium .card-features { color: #00ddff; }
+    .card-royale .card-features { color: #ff88cc; }
+    .card-features li { 
+      margin: 8px 0; 
+      padding-left: 20px; 
+      position: relative;
     }
-    .card-premium .card-title { color: #ffff00; text-shadow: 0 0 20px #ffff00; }
-    .card-premium .card-features { color: #00ffff; }
-    .card-royale .card-title { color: #ff4500; text-shadow: 0 0 20px #ff4500; }
-    .card-royale .card-features { color: #ff69b4; }
+    .card-features li::before {
+      content: '✓'; 
+      position: absolute; 
+      left: 0; 
+      color: #00ff88;
+    }
     .download-btn {
-      background: linear-gradient(45deg, #ff0000, #cc0000); 
-      color: white; 
-      border: none; 
-      padding: 15px 30px; 
-      border-radius: 12px; 
-      font-size: 20px; 
-      cursor: pointer; 
       width: 100%; 
+      padding: 18px 0; 
+      border: none; 
+      border-radius: 16px; 
+      font-size: 18px; 
       font-weight: bold; 
-      box-shadow: 0 5px 15px rgba(255,0,0,0.5);
-      position: relative; 
-      z-index: 1;
+      cursor: pointer; 
+      position: relative; z-index: 2;
       transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .download-btn:hover {
-      box-shadow: 0 10px 30px currentColor !important;
-      transform: scale(1.05);
+    .free-btn {
+      background: linear-gradient(45deg, #ff1744, #ff5722); 
+      color: white; 
+      box-shadow: 0 8px 25px rgba(255,23,68,0.6);
     }
     .premium-btn {
-      background: linear-gradient(45deg, #ffd700, #ffaa00) !important;
-      color: black !important;
+      background: linear-gradient(45deg, #ffeb3b, #ffc107); 
+      color: #000; 
+      box-shadow: 0 8px 25px rgba(255,235,59,0.6);
     }
     .royale-btn {
-      background: linear-gradient(45deg, #ff1493, #ff4500) !important;
-      color: white !important;
+      background: linear-gradient(45deg, #ff4081, #f50057); 
+      color: white; 
+      box-shadow: 0 8px 25px rgba(255,64,129,0.6);
+    }
+    .download-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px currentShadow !important;
     }
   </style>
 </head>
@@ -105,7 +121,6 @@
       <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
-
     <nav>
       <a href="https://fuming67.github.io/fridgemacros/#home" class="btn dark">Home</a>
       <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
@@ -116,49 +131,45 @@
   </header>
 
   <main>
-    <!-- ZMODYFIKOWANA SEKcja - USUNIĘTO Macros for free, DODANO KARTY -->
-    <section class="download-section">
-      <h2 style="text-align: center; color: white; margin-bottom: 20px;">Wybierz makro do pobrania</h2>
-      
-      <div class="download-cards">
-        <!-- Karta 1: Anime Guardians - DARMOWE -->
-        <div class="download-card">
-          <h3 class="card-title">ANIME GUARDIANS</h3>
-          <ul class="card-features">
-            <li>✓ On Rail</li>
-            <li>✓ Orb Weaver</li>
-            <li>✓ Saga Archer</li>
-          </ul>
-          <button id="guardiansBtn" class="download-btn">Download</button>
-        </div>
+    <!-- NOWE KARTY ANIME - NIŻEJ -->
+    <section class="anime-cards-section">
+      <div class="anime-card">
+        <div class="neon-glow"></div>
+        <h3 class="card-title">ANIME GUARDIANS</h3>
+        <ul class="card-features">
+          <li>On Rail</li>
+          <li>Orb Weaver</li>
+          <li>Saga Archer</li>
+        </ul>
+        <button id="animeGuardiansBtn" class="download-btn free-btn">Download</button>
+      </div>
 
-        <!-- Karta 2: Anime Last Stand - PREMIUM -->
-        <div class="download-card card-premium">
-          <h3 class="card-title">ANIME LAST STAND</h3>
-          <ul class="card-features">
-            <li>✓ All Units</li>
-            <li>✓ Full Portal</li>
-            <li>✓ Custom Config</li>
-          </ul>
-          <button id="laststandBtn" class="download-btn premium-btn">Premium</button>
-        </div>
+      <div class="anime-card card-premium">
+        <div class="neon-glow"></div>
+        <h3 class="card-title">ANIME LAST STAND</h3>
+        <ul class="card-features">
+          <li>All Units</li>
+          <li>Full Portal</li>
+          <li>Custom Config</li>
+        </ul>
+        <button id="animeLastStandBtn" class="download-btn premium-btn">Premium</button>
+      </div>
 
-        <!-- Karta 3: Anime Royale -->
-        <div class="download-card card-royale">
-          <h3 class="card-title">ANIME ROYALE</h3>
-          <ul class="card-features">
-            <li>✓ Auto Farm</li>
-            <li>✓ Auto Play</li>
-          </ul>
-          <button id="royaleBtn" class="download-btn royale-btn">v8.2</button>
-        </div>
+      <div class="anime-card card-royale">
+        <div class="neon-glow"></div>
+        <h3 class="card-title">ANIME ROYALE</h3>
+        <ul class="card-features">
+          <li>Auto Farm</li>
+          <li>Auto Play</li>
+        </ul>
+        <button id="animeRoyaleBtn" class="download-btn royale-btn">v8.2</button>
       </div>
     </section>
 
-    <!-- Zachowana stara lista jako fallback -->
-    <section class="macros" style="margin-top: 60px;">
-      <h2>Universal Tower Defense (legacy)</h2>
-      <p>Stare wersje - użyj kart powyżej</p>
+    <!-- ORYGINALNA SEKCJA UTD NA DOLE -->
+    <section class="macros">
+      <h2>Universal Tower Defense</h2>
+      <p>Choose macro and click to download it.</p>
       <div class="macro-list">
         <div class="macro-group">
           <h3>Universal Tower Defense</h3>
@@ -182,55 +193,24 @@
     </div>
   </div>
 
-  <!-- PEŁNY LINK DO SKRYPTU + NOWA LOGIKA -->
   <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
   <script>
-    // Logika przycisków download
-    document.addEventListener('DOMContentLoaded', function() {
-      // Darmowy download Anime Guardians
-      document.getElementById('guardiansBtn').addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.href = 'macros/AnimeGuardians_Free.zip';  // DODAJ PLIK DO FOLDERU macros/
-        link.download = 'AnimeGuardians_Free.zip';
-        link.click();
-      });
-
-      // Premium Anime Last Stand
-      document.getElementById('laststandBtn').addEventListener('click', async function() {
-        const userId = prompt('Wpisz swój Roblox User ID:');
-        if (!userId) return;
-        
-        try {
-          // Roblox Premium check via proxy (CORS bypass)
-          const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(`https://users.roblox.com/v1/users/${userId}`);
-          const response = await fetch(proxyUrl);
-          const userData = await response.json();
-          
-          if (userData && (userData.membershipTypeId === 4 || userData.membershipTypeId === 2)) {
-            // Ma Premium - download
-            const link = document.createElement('a');
-            link.href = 'macros/AnimeLastStand_Premium.zip';  // DODAJ PLIK
-            link.download = 'AnimeLastStand_Premium.zip';
-            link.click();
-          } else {
-            // Brak Premium - przekieruj do gamepassa
-            window.open('https://www.roblox.com/game-passes/YOUR-GAMEPASS-ID-HERE', '_blank');
-          }
-        } catch (error) {
-          alert('Błąd sprawdzenia Premium. Kup gamepass!');
-          window.open('https://www.roblox.com/game-passes/YOUR-GAMEPASS-ID-HERE');
-        }
-      });
-
-      // Anime Royale - bezpośredni download lub inny
-      document.getElementById('royaleBtn').addEventListener('click', function() {
-        const link = document.createElement('a');
-        link.href = 'macros/AnimeRoyale_v8.2.zip';  // DODAJ PLIK
-        link.download = 'AnimeRoyale_v8.2.zip';
-        link.click();
-      });
+    document.addEventListener('DOMContentLoaded', () => {
+      // Anime Guardians - DARMOWY
+      document.getElementById('animeGuardiansBtn').onclick = () => {
+        window.open('macros/UTD/UTD_1.41_Free.zip.rar', '_blank');  // TWOJE MAKRO
+      };
+      
+      // Anime Last Stand - PREMIUM (Discord/gamepass)
+      document.getElementById('animeLastStandBtn').onclick = () => {
+        window.open('https://discord.gg/t2sGsddB', '_blank');
+      };
+      
+      // Anime Royale - v8.2 (przyszłe)
+      document.getElementById('animeRoyaleBtn').onclick = () => {
+        window.open('https://discord.gg/t2sGsddB', '_blank');
+      };
     });
   </script>
 </body>
 </html>
-
