@@ -6,124 +6,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   <style>
-    .main-download-section {
+    /* TYLKO NOWE STYLE - BEZ NADPISYWANIA */
+    .anime-download-container {
+      margin: 60px 0;
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin: 120px auto;
-      max-width: 1000px;
-      padding: 0 20px;
+      flex-wrap: wrap;
     }
-    .main-card {
-      background: linear-gradient(145deg, #0a0a1f, #1a0033);
-      border-radius: 32px;
-      padding: 50px;
-      width: 900px;
-      height: 450px;
-      box-shadow: 0 25px 80px rgba(255,0,255,0.5);
+    .anime-card {
+      background: linear-gradient(145deg, rgba(10,10,31,0.95), rgba(26,0,51,0.95));
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px 30px;
+      width: 300px;
       position: relative;
       overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      gap: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
     }
-    .neon-bg {
+    .anime-card::before {
+      content: '';
       position: absolute;
-      top: -30%;
-      left: -30%;
-      width: 160%;
-      height: 160%;
-      background: conic-gradient(from 0deg, transparent, #ff00ff, #ffff00, transparent);
-      animation: fullRotate 20s linear infinite;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, #ff00ff, transparent);
+      animation: neon 15s linear infinite;
       opacity: 0.3;
     }
-    @keyframes fullRotate {
+    @keyframes neon {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
     .card-title {
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 36px;
-      color: #ff00ff;
-      text-shadow: 0 0 40px #ff00ff;
-      font-weight: 900;
-      letter-spacing: 4px;
-      z-index: 3;
-    }
-    .features-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-right: 40px;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      color: #00ff88;
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 40px;
-    }
-    .features-grid div {
-      padding-left: 30px;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 25px;
+      font-weight: bold;
+      text-align: center;
       position: relative;
+      z-index: 2;
+      text-shadow: 0 0 20px #ff00ff;
     }
-    .features-grid div::before {
+    .card-premium .card-title { color: #ffd700; text-shadow: 0 0 20px #ffd700; }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .feature-list li {
+      color: #00ff88;
+      margin: 10px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 15px;
+    }
+    .feature-list li::before {
       content: '✓';
       position: absolute;
       left: 0;
       color: #00ff88;
-      font-size: 22px;
       font-weight: bold;
     }
-    .buttons-row {
+    .card-premium .feature-list li { color: #87ceeb; }
+    .card-premium .feature-list li::before { color: #87ceeb; }
+    .download-buttons {
+      margin-top: 25px;
       display: flex;
-      gap: 25px;
-      justify-content: flex-end;
+      gap: 15px;
+      position: relative;
+      z-index: 2;
     }
-    .free-btn, .premium-btn {
-      padding: 25px 50px;
-      border: none;
-      border-radius: 24px;
-      font-size: 26px;
-      font-weight: 900;
-      cursor: pointer;
-      transition: all 0.4s;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    .btn-free, .btn-premium {
       flex: 1;
-      max-width: 220px;
+      padding: 15px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
     }
-    .free-btn {
-      background: linear-gradient(135deg, #ff1744, #ff5722);
+    .btn-free {
+      background: linear-gradient(45deg, #ff4757, #ff6b7a);
       color: white;
-      box-shadow: 0 15px 45px rgba(255,23,68,0.6);
     }
-    .premium-btn {
-      background: linear-gradient(135deg, #ffeb3b, #ffc107);
-      color: #1a1a1a;
-      box-shadow: 0 15px 45px rgba(255,235,59,0.6);
+    .btn-premium {
+      background: linear-gradient(45deg, #ffd700, #ffed4a);
+      color: #333;
     }
-    .free-btn:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 25px 60px rgba(255,23,68,0.8);
-    }
-    .premium-btn:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 25px 60px rgba(255,235,59,0.8);
-    }
+    .btn-free:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,71,87,0.6); }
+    .btn-premium:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,215,0,0.6); }
+    .anime-card:hover { transform: translateY(-10px); }
   </style>
 </head>
 <body>
+  <!-- ORYGINALNY HEADER BEZ ZMIAN -->
   <header class="top-bar">
     <div class="logo">
-      <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros">
+      <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
     <nav>
@@ -136,57 +123,86 @@
   </header>
 
   <main>
-    <!-- JEDNO DUŻE OKNO Z FREE | PREMIUM -->
-    <section class="main-download-section">
-      <div class="main-card">
-        <div class="neon-bg"></div>
-        <h2 class="card-title">ANIME MACROS</h2>
-        
-        <div class="features-section">
-          <div class="features-grid">
-            <div>On Rail</div>
-            <div>Orb Weaver</div>
-            <div>Saga Archer</div>
-            <div>All Units</div>
-            <div>Full Portal</div>
-            <div>Custom Config</div>
-          </div>
+    <!-- NOWE OKNA ANIME Z FREE + PREMIUM -->
+    <section class="anime-download-container">
+      <!-- FREE + PREMIUM W JEDNYM OKNIE -->
+      <div class="anime-card">
+        <h3 class="card-title">Anime Macros</h3>
+        <ul class="feature-list">
+          <li>On Rail</li>
+          <li>Orb Weaver</li>
+          <li>Saga Archer</li>
+          <li>All Units</li>
+          <li>Full Portal</li>
+        </ul>
+        <div class="download-buttons">
+          <button class="btn-free" onclick="downloadFree()">FREE</button>
+          <button class="btn-premium" onclick="goPremium()">PREMIUM</button>
         </div>
-        
-        <div class="buttons-row">
-          <!-- FREE BUTTON -->
-          <button id="freeBtn" class="free-btn">FREE</button>
-          <!-- PREMIUM BUTTON -->
-          <button id="premiumBtn" class="premium-btn">PREMIUM</button>
+      </div>
+
+      <!-- DRUGIE OKNO (opcjonalne) -->
+      <div class="anime-card card-premium">
+        <h3 class="card-title">Anime Royale</h3>
+        <ul class="feature-list">
+          <li>Auto Farm</li>
+          <li>Auto Play</li>
+          <li>v8.2 Config</li>
+        </ul>
+        <div class="download-buttons">
+          <button class="btn-free" onclick="downloadRoyale()">FREE</button>
+          <button class="btn-premium" onclick="goPremiumRoyale()">PREMIUM</button>
         </div>
       </div>
     </section>
 
-    <!-- UTD NA DOLE -->
-    <section class="macros" style="margin-top: 100px;">
-      <h2>Universal Tower Defense (Legacy)</h2>
+    <!-- ORYGINALNA SEKCJA UTD BEZ ZMIAN -->
+    <section class="macros">
+      <h2>Macros for free</h2>
+      <p>Choose macro and click to download it.</p>
       <div class="macro-list">
         <div class="macro-group">
           <h3>Universal Tower Defense</h3>
           <a href="macros/UTD/UTD_1.41_Free.zip.rar" download>UTD 1.41 Free</a>
+          <p class="macro-features">
+            Functions: Every Legends Stage, Auto Challenge, Virtual Realm, Custom mode
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <div id="donate-modal" class="modal hidden"><!-- modal content --></div>
+  <!-- ORYGINALNY MODAL -->
+  <div id="donate-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <section id="support" class="support">
+        <h2>Support Development</h2>
+        <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+        <div id="cards" class="cards"></div>
+      </section>
+    </div>
+  </div>
 
+  <!-- ORYGINALNY SCRIPT + NOWA LOGIKA -->
   <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
   <script>
-    // FREE = pobiera makro
-    document.getElementById('freeBtn').onclick = () => {
+    function downloadFree() {
       window.location.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
-    };
+    }
     
-    // PREMIUM = Discord/gamepass
-    document.getElementById('premiumBtn').onclick = () => {
+    function goPremium() {
       window.open('https://discord.gg/t2sGsddB', '_blank');
-    };
+    }
+    
+    function downloadRoyale() {
+      // Dodaj plik lub to samo
+      window.location.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
+    }
+    
+    function goPremiumRoyale() {
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+    }
   </script>
 </body>
 </html>
