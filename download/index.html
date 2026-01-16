@@ -4,136 +4,33 @@
   <meta charset="UTF-8" />
   <title>Fridge Macros – Download</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
+  <!-- WSZYSTKIE STYLE Z POPRZEDNIEGO KODU - SKRÓCONE -->
   <style>
-    .anime-cards-section {
-      display: flex; 
-      justify-content: center; 
-      gap: 25px; 
-      margin: 100px auto 80px; 
-      flex-wrap: wrap;
-      max-width: 1200px;
-      padding: 0 20px;
-    }
-    .anime-card {
-      background: linear-gradient(145deg, #0a0a1f, #1a0033); 
-      border-radius: 28px; 
-      padding: 45px 30px;  /* WIĘKSZY PADDING */
-      width: 320px;  /* WIĘKSZA SZEROKOŚĆ */
-      height: 380px;  /* STAŁA WYSOKOŚĆ */
-      text-align: center; 
-      box-shadow: 0 20px 60px rgba(255,0,255,0.4); 
-      position: relative; 
-      overflow: hidden;
-      border: 3px solid rgba(255,255,255,0.15);
-      transition: all 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .anime-card:hover {
-      transform: translateY(-15px) scale(1.03);
-      box-shadow: 0 35px 100px rgba(255,0,255,0.6);
-    }
-    .neon-glow {
-      position: absolute; 
-      top: -40%; 
-      left: -40%; 
-      width: 180%; 
-      height: 180%; 
-      background: conic-gradient(from 0deg, transparent, #ff00ff, transparent 60%); 
-      animation: neonRotate 12s linear infinite;
-      opacity: 0.4;
-    }
-    @keyframes neonRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .card-premium .neon-glow { background: conic-gradient(from 0deg, transparent, #ffff00, transparent 60%); }
-    .card-royale .neon-glow { background: conic-gradient(from 0deg, transparent, #ff4500, transparent 60%); }
-    .card-title {
-      font-size: 28px;  /* WIĘKSZY TITLE */
-      margin: 0 0 30px; 
-      text-shadow: 0 0 30px currentColor; 
-      font-weight: 900; 
-      letter-spacing: 3px;
-      position: relative; z-index: 2;
-      color: #ff00ff;
-      line-height: 1.2;
-    }
-    .card-premium .card-title { color: #ffff00; }
-    .card-royale .card-title { color: #ff4500; }
-    .card-features {
-      color: #00ff88; 
-      list-style: none; 
-      padding: 0; 
-      margin: 0 0 0; 
-      text-align: left;
-      position: relative; z-index: 2;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-    }
-    .card-premium .card-features { color: #00ddff; }
-    .card-royale .card-features { color: #ff88cc; }
-    .card-features li { 
-      margin: 12px 0;  /* WIĘKSZE ODDLEGŁOŚCI */
-      padding-left: 28px; 
-      position: relative;
-      font-size: 16px;
-      font-weight: 500;
-    }
-    .card-features li::before {
-      content: '✓'; 
-      position: absolute; 
-      left: 0; 
-      color: #00ff88;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .card-premium .card-features li::before { color: #00ddff; }
-    .card-royale .card-features li::before { color: #ff88cc; }
-    .download-btn {
-      width: 100%; 
-      padding: 22px 0;  /* DUŻY PRZYCISK */
-      border: none; 
-      border-radius: 20px; 
-      font-size: 22px;  /* DUŻY TEXT */
-      font-weight: 900; 
-      cursor: pointer; 
-      position: relative; z-index: 2;
-      transition: all 0.4s;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: auto;
-    }
-    .free-btn {
-      background: linear-gradient(135deg, #ff1744, #ff6b35, #ff5722); 
-      color: white; 
-      box-shadow: 0 12px 35px rgba(255,23,68,0.7);
-    }
-    .premium-btn {
-      background: linear-gradient(135deg, #ffeb3b, #ffd54f, #ffc107); 
-      color: #1a1a1a; 
-      box-shadow: 0 12px 35px rgba(255,235,59,0.7);
-      font-size: 24px;  /* JESZCZE WIĘKSZY */
-    }
-    .royale-btn {
-      background: linear-gradient(135deg, #ff4081, #f06292, #f50057); 
-      color: white; 
-      box-shadow: 0 12px 35px rgba(255,64,129,0.7);
-      font-size: 20px;
-    }
-    .download-btn:hover {
-      transform: scale(1.1) translateY(-3px);
-      box-shadow: 0 20px 50px currentShadow !important;
-    }
-    .card-premium:hover { box-shadow: 0 35px 100px rgba(255,255,0,0.6); }
-    .card-royale:hover { box-shadow: 0 35px 100px rgba(255,69,0,0.6); }
+    .anime-cards-section{display:flex;justify-content:center;gap:25px;margin:100px auto 80px;flex-wrap:wrap;max-width:1200px;padding:0 20px}
+    .anime-card{background:linear-gradient(145deg,#0a0a1f,#1a0033);border-radius:28px;padding:45px 30px;width:320px;height:380px;text-align:center;box-shadow:0 20px 60px rgba(255,0,255,.4);position:relative;overflow:hidden;border:3px solid rgba(255,255,255,.15);transition:all .4s ease;display:flex;flex-direction:column;justify-content:space-between}
+    .anime-card:hover{transform:translateY(-15px) scale(1.03);box-shadow:0 35px 100px rgba(255,0,255,.6)}
+    .neon-glow{position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:conic-gradient(from 0deg,transparent,#ff00ff,transparent 60%);animation:neonRotate 12s linear infinite;opacity:.4}
+    @keyframes neonRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .card-premium .neon-glow{background:conic-gradient(from 0deg,transparent,#ffff00,transparent 60%)}
+    .card-royale .neon-glow{background:conic-gradient(from 0deg,transparent,#ff4500,transparent 60%)}
+    .card-title{font-size:28px;margin:0 0 30px;text-shadow:0 0 30px currentColor;font-weight:900;letter-spacing:3px;position:relative;z-index:2;color:#ff00ff;line-height:1.2}
+    .card-premium .card-title{color:#ffff00}
+    .card-royale .card-title{color:#ff4500}
+    .card-features{color:#00ff88;list-style:none;padding:0;margin:0 0 0;text-align:left;position:relative;z-index:2;flex-grow:1;display:flex;align-items:center}
+    .card-premium .card-features{color:#00ddff}
+    .card-royale .card-features{color:#ff88cc}
+    .card-features li{margin:12px 0;padding-left:28px;position:relative;font-size:16px;font-weight:500}
+    .card-features li::before{content:'✓';position:absolute;left:0;color:#00ff88;font-size:18px;font-weight:700}
+    .download-btn{width:100%;padding:22px 0;border:none;border-radius:20px;font-size:22px;font-weight:900;cursor:pointer;position:relative;z-index:2;transition:all .4s;text-transform:uppercase;letter-spacing:2px;margin-top:auto}
+    .free-btn{background:linear-gradient(135deg,#ff1744,#ff6b35,#ff5722);color:#fff;box-shadow:0 12px 35px rgba(255,23,68,.7)}
+    .premium-btn{background:linear-gradient(135deg,#ffeb3b,#ffd54f,#ffc107);color:#1a1a1a;box-shadow:0 12px 35px rgba(255,235,59,.7);font-size:24px}
+    .royale-btn{background:linear-gradient(135deg,#ff4081,#f06292,#f50057);color:#fff;box-shadow:0 12px 35px rgba(255,64,129,.7);font-size:20px}
+    .download-btn:hover{transform:scale(1.1) translateY(-3px);box-shadow:0 20px 50px}
   </style>
 </head>
 <body>
+  <!-- HEADER BEZ ZMIAN -->
   <header class="top-bar">
     <div class="logo">
       <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
@@ -150,7 +47,7 @@
 
   <main>
     <section class="anime-cards-section">
-      <!-- ANIME GUARDIANS - Download -->
+      <!-- === FREE DOWNLOAD (LEWE OKNO) === -->
       <div class="anime-card">
         <div class="neon-glow"></div>
         <h3 class="card-title">ANIME<br>GUARDIANS</h3>
@@ -159,10 +56,10 @@
           <li>Orb Weaver</li>
           <li>Saga Archer</li>
         </ul>
-        <button id="guardiansBtn" class="download-btn free-btn">Download</button>
+        <button id="FREE_DOWNLOAD" class="download-btn free-btn">DOWNLOAD</button>
       </div>
 
-      <!-- ANIME LAST STAND - Premium -->
+      <!-- === PREMIUM (ŚRODKOWE OKNO) === -->
       <div class="anime-card card-premium">
         <div class="neon-glow"></div>
         <h3 class="card-title">ANIME<br>LAST STAND</h3>
@@ -171,10 +68,10 @@
           <li>Full Portal</li>
           <li>Custom Config</li>
         </ul>
-        <button id="lastStandBtn" class="download-btn premium-btn">Premium</button>
+        <button id="PREMIUM" class="download-btn premium-btn">PREMIUM</button>
       </div>
 
-      <!-- ANIME ROYALE - v8.2 -->
+      <!-- v8.2 (PRAWE) -->
       <div class="anime-card card-royale">
         <div class="neon-glow"></div>
         <h3 class="card-title">ANIME<br>ROYALE</h3>
@@ -182,11 +79,11 @@
           <li>Auto Farm</li>
           <li>Auto Play</li>
         </ul>
-        <button id="royaleBtn" class="download-btn royale-btn">v8.2</button>
+        <button id="ROYALE" class="download-btn royale-btn">V8.2</button>
       </div>
     </section>
 
-    <!-- UTD zostaje bez zmian -->
+    <!-- UTD BEZ ZMIAN -->
     <section class="macros">
       <h2>Universal Tower Defense</h2>
       <p>Choose macro and click to download it.</p>
@@ -194,15 +91,13 @@
         <div class="macro-group">
           <h3>Universal Tower Defense</h3>
           <a href="macros/UTD/UTD_1.41_Free.zip.rar" download>UTD 1.41 Free</a>
-          <p class="macro-features">
-            Functions: Every Legends Stage, Auto Challenge, Virtual Realm, Custom mode
-          </p>
+          <p class="macro-features">Functions: Every Legends Stage, Auto Challenge, Virtual Realm, Custom mode</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Modal i skrypty bez zmian -->
+  <!-- MODAL -->
   <div id="donate-modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -214,23 +109,23 @@
     </div>
   </div>
 
+  <!-- === LOGIKA FREE + PREMIUM === -->
   <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('guardiansBtn').onclick = () => {
-        // TWOJE DARMOWE MAKRO
-        window.location.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
-      };
-      
-      document.getElementById('lastStandBtn').onclick = () => {
-        // PREMIUM - Discord lub Roblox gamepass
-        window.open('https://discord.gg/t2sGsddB', '_blank');
-      };
-      
-      document.getElementById('royaleBtn').onclick = () => {
-        window.open('https://discord.gg/t2sGsddB', '_blank');
-      };
-    });
+    // FREE (LEWE) - POBIERA MAKRO
+    document.getElementById('FREE_DOWNLOAD').onclick = function() {
+      window.location.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
+    };
+    
+    // PREMIUM (ŚRODKOWE) - DISCORD/GAMEPASS
+    document.getElementById('PREMIUM').onclick = function() {
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+    };
+    
+    // V8.2 (PRAWE)
+    document.getElementById('ROYALE').onclick = function() {
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+    };
   </script>
 </body>
 </html>
