@@ -532,3 +532,13 @@ h1, h2, h3 {
     <br><small>Test on alt account first!</small>
   </p>
 </div>
+.tutorial-panel::-webkit-scrollbar {
+  width: 6px !important;
+}
+.tutorial-panel::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1) !important;
+}
+.tutorial-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.9) !important;
+  border-radius: 3px !important;
+}
