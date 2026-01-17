@@ -480,5 +480,18 @@ h1, h2, h3 {
   }
 }
 
+.hamburger {
+  position: fixed; top: 20px; right: 20px; z-index: 1000;
+  width: 30px; height: 30px; background: none; border: none;
+  cursor: pointer;
+}
+.hamburger span { display: block; height: 3px; width: 100%; background: white; margin: 5px 0; transition: 0.3s; }
+.sidemenu {
+  position: fixed; top: 0; right: -300px; width: 300px; height: 100vh;
+  background: linear-gradient(to bottom, #1e3c72, #2a5298); /* Niebieski gradient */
+  transition: right 0.3s ease; padding-top: 70px; z-index: 999;
+}
+.sidemenu a { display: block; padding: 20px; color: white; text-decoration: none; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidemenu.active { right: 0; } /* Pokazuje menu */
 
 
