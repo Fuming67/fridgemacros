@@ -147,3 +147,10 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+function toggleMenu() {
+  const menu = document.getElementById('sidemenu');
+  const hamburger = document.querySelector('.hamburger');
+  if (menu) menu.classList.toggle('active');
+  if (hamburger) hamburger.classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+}
