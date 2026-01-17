@@ -5,10 +5,12 @@
   <title>Fridge Macros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
-  <!-- Import czcionki (ważne dla stylu) -->
+  
   <style>
-    /* Mały fix, żeby ukryta sekcja Premium wyglądała dobrze */
-    #premium-page { display: none; padding-top: 40px; }
+    /* Modal Premium */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 9998; display: none; }
+    .modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0c1018; padding: 40px; border-radius: 24px; width: 90%; max-width: 600px; z-index: 9999; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.8); text-align: center; display: none; }
+    .modal.active .modal-overlay, .modal.active .modal-content { display: block; }
   </style>
 </head>
 <body>
@@ -16,24 +18,22 @@
   <!-- HEADER -->
   <header class="top-bar">
     <div class="logo">
-      <!-- Upewnij się, że masz plik fm-logo.png -->
       <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
 
     <nav>
-      <!-- Kliknięcie Home przywraca widok -->
-      <a href="#" class="btn dark" onclick="showHome()">Home</a>
+      <a href="#" class="btn dark" onclick="location.reload()">Home</a>
       <a href="download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="faq/" class="btn dark">FAQ</a>
       
-      <!-- PRZYCISK PREMIUM - DZIAŁAJĄCY -->
-      <a href="#" class="btn donate" onclick="showPremium()">PREMIUM</a>
+      <!-- PRZYCISK PREMIUM -->
+      <button class="btn donate" onclick="openPremiumModal()">PREMIUM</button>
     </nav>
   </header>
 
-  <!-- STRONA GŁÓWNA (Domyślnie widoczna) -->
+  <!-- STRONA GŁÓWNA -->
   <div id="home-page">
     <section class="promo-section">
       <div class="promo-left">
@@ -62,56 +62,63 @@
     </section>
   </div>
 
-  <!-- STRONA PREMIUM (Domyślnie ukryta) -->
-  <div id="premium-page" class="support">
-    <h2 style="text-align:center; color:#ffec8a; margin-bottom:20px;">💎 Premium Macros</h2>
-    <p style="text-align:center; color:#c7cffc; margin-bottom:40px;">Wybierz makro, kup gamepass i zweryfikuj się na Discordzie!</p>
-    
-    <div class="cards">
-      <!-- KARTA PREMIUM -->
-      <div class="card gold">
-        <div class="card left">
-          <div class="icon-box">💎</div>
+  <!-- MODAL PREMIUM (Popup) -->
+  <div id="premium-modal" class="modal">
+    <div class="modal-overlay" onclick="closePremiumModal()"></div>
+    <div class="modal-content">
+      <h2 style="color:#ffec8a; margin-bottom:10px;">💎 Premium Macros</h2>
+      <p style="color:#c7cffc; margin-bottom:30px;">Wybierz makro i kup gamepass.</p>
+      
+      <!-- KARTA UTD -->
+      <div class="card gold" style="background: #050c28; border: 1px solid rgba(120, 160, 255, 0.3); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; text-align: left;">
+        <div style="display:flex; align-items:center; gap:15px;">
+          <div style="font-size:30px;">💎</div>
           <div>
-            <div class="card-title">UTD Donater</div>
-            <div class="card-sub">Universal Tower Defense Premium Macro</div>
-            <div class="card-details">Ragna Stage, Multi mode, updates</div>
+            <div style="font-weight:bold; color:white;">UTD Donater</div>
+            <div style="font-size:12px; color:#aab2ff;">Universal Tower Defense Premium Macro</div>
+            <div style="font-size:11px; color:#8890ff;">Ragna Stage, Multi mode, updates</div>
           </div>
         </div>
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="card-price">Kup za 120 R$</a>
+        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="btn donate" style="padding: 8px 16px; font-size: 14px;">120 R$</a>
       </div>
+
+      <button onclick="closePremiumModal()" style="margin-top:20px; background:none; border:none; color:#888; cursor:pointer; text-decoration:underline;">Zamknij</button>
     </div>
   </div>
-<script>
-    // === SKRYPT NAWIGACJI (WBUDOWANY, ŻEBY DZIAŁAŁ NA 100%) ===
-    
-    function showPremium() {
-      // Ukryj Home
-      document.getElementById('home-page').style.display = 'none';
-      // Pokaż Premium
-      document.getElementById('premium-page').style.display = 'block';
+
+  <script>
+    // === OBSŁUGA MODALA PREMIUM ===
+    function openPremiumModal() {
+      document.getElementById('premium-modal').classList.add('active');
     }
 
-    function showHome() {
-      // Pokaż Home
-      document.getElementById('home-page').style.display = 'block';
-      // Ukryj Premium
-      document.getElementById('premium-page').style.display = 'none';
+    function closePremiumModal() {
+      document.getElementById('premium-modal').classList.remove('active');
     }
 
-    // Skrypt tutorialu
-    function toggleTutorialPanel() {
-      const panel = document.getElementById('tutorial-panel');
-      const btn = document.getElementById('tutorial-button');
-      
-      if (panel.style.display === 'none') {
-        panel.style.display = 'block';
-        btn.style.opacity = '0.5';
-      } else {
-        panel.style.display = 'none';
-        btn.style.opacity = '1';
-      }
+    // === OBSŁUGA VIDEO ===
+    const videos = [
+      "https://www.youtube.com/embed/E2lpnrLXEPs",
+      "https://www.youtube.com/embed/0ZwnZ-T3inY"
+    ];
+    let currentVideo = 0;
+    const iframe = document.getElementById('promo-video');
+    const indicator = document.getElementById('video-indicator');
+
+    document.getElementById('video-next').onclick = () => {
+      currentVideo = (currentVideo + 1) % videos.length;
+      updateVideo();
+    };
+    document.getElementById('video-prev').onclick = () => {
+      currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+      updateVideo();
+    };
+
+    function updateVideo() {
+      iframe.src = videos[currentVideo];
+      indicator.textContent = (currentVideo + 1) + " / " + videos.length;
     }
   </script>
-  </body>
+</body>
 </html>
+
