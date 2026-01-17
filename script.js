@@ -1,5 +1,4 @@
-<script>
-// ===== TWOJA LISTA GAMEPASSÓW I MODAL (bez zmian) =====
+// ===== LISTA GAMEPASSÓW =====
 const gamepasses = [
   {
     name: "UTD Donater",
@@ -11,7 +10,7 @@ const gamepasses = [
   }
 ];
 
-// ===== GENEROWANIE KART DONATE (bez zmian) =====
+// ===== GENEROWANIE KART DONATE =====
 const cardsContainer = document.getElementById("cards");
 if (cardsContainer) {
   gamepasses.forEach((pass) => {
@@ -49,7 +48,7 @@ if (cardsContainer) {
   });
 }
 
-// ===== MODAL DONATE (bez zmian) =====
+// ===== MODAL DONATE =====
 const donateModal = document.getElementById("donate-modal");
 const modalOverlay = donateModal ? donateModal.querySelector(".modal-overlay") : null;
 
@@ -65,7 +64,7 @@ if (modalOverlay) {
   modalOverlay.addEventListener("click", closeDonateModal);
 }
 
-// ===== SLIDER WIDEO (bez zmian) =====
+// ===== SLIDER WIDEO YOUTUBE =====
 const promoVideos = [
   "https://www.youtube.com/embed/E2lpnrLXEPs",
   "https://www.youtube.com/embed/0ZwnZ-T3inY"
@@ -98,7 +97,7 @@ if (promoIframe && promoPrev && promoNext && promoIndicator) {
   updatePromoVideo();
 }
 
-// ===== TWOJE BUTTONY DOWNLOAD (bez zmian) =====
+// ===== DOWNLOAD BUTTONS =====
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('guardiansBtn')?.onclick = () => {
     const link = document.createElement('a');
@@ -119,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 
-// ===== HAMBURGER MENU (NOWY, POPRAWIONY) =====
+// ===== HAMBURGER MENU - POPRAWIONE =====
 function toggleMenu() {
   const menu = document.getElementById('sidemenu');
   const hamburger = document.querySelector('.hamburger');
@@ -131,42 +130,19 @@ function toggleMenu() {
   }
 }
 
-// Zamknij menu: klik poza / ESC
+// Zamknij menu: klik poza nim
 document.addEventListener('click', (e) => {
   const menu = document.getElementById('sidemenu');
   const hamburger = document.querySelector('.hamburger');
-  if (menu?.classList.contains('active') && 
-      !menu.contains(e.target) && !hamburger?.contains(e.target)) {
+  if (menu?.classList.contains('active') && !menu.contains(e.target) && !hamburger?.contains(e.target)) {
     toggleMenu();
   }
 });
+
+// ESC zamyka menu i modal
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeDonateModal();
     toggleMenu();
   }
-});
-</script>
-function toggleMenu() {
-  const menu = document.getElementById('sidemenu');
-  const hamburger = document.querySelector('.hamburger');
-  if (menu) menu.classList.toggle('active');
-  if (hamburger) hamburger.classList.toggle('open');
-  document.body.classList.toggle('menu-open');
-}
-function toggleMenu() {
-  document.getElementById('sidemenu').classList.toggle('active');
-  document.querySelector('.hamburger').classList.toggle('open');
-}
-
-// ZAMKNIJ MENU: klik poza / ESC
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('sidemenu');
-  const hamburger = document.querySelector('.hamburger');
-  if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-    toggleMenu();
-  }
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') toggleMenu();
 });
