@@ -2,85 +2,183 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Fridge Macros</title>
+  <title>Fridge Macros – Download</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   <style>
-    /* HAMBURGER CSS - TUTAJ BEZPOŚREDNIO */
-    .hamburger{display:none;position:fixed;top:20px;right:20px;z-index:1000;width:45px;height:45px;background:rgba(90,75,255,0.95);border:none;border-radius:12px;cursor:pointer;flex-direction:column;justify-content:center;gap:4px;padding:8px;box-shadow:0 8px 25px rgba(0,0,0,0.4);}.hamburger span{height:4px;width:25px;background:#fff !important;border-radius:2px;transition:all .3s;margin:0 auto;}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(8px,8px) !important;}.hamburger.open span:nth-child(2){opacity:0 !important;}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px) !important;}.sidemenu{position:fixed !important;top:0 !important;right:-350px !important;width:350px !important;height:100vh !important;background:linear-gradient(135deg,#5a4bff,#1b48ff,#63b3ff) !important;z-index:9999 !important;padding:90px 25px 25px !important;transition:right .4s cubic-bezier(.25,.46,.45,.94) !important;box-shadow:-20px 0 50px rgba(0,0,0,.6) !important;overflow-y:auto;}.sidemenu.active{right:0 !important;}.sidemenu a,.sidemenu button{display:block !important;width:100% !important;padding:20px !important;color:#fff !important;text-decoration:none !important;font-size:18px !important;border-bottom:1px solid rgba(255,255,255,.1) !important;margin-bottom:5px !important;background:rgba(255,255,255,.05) !important;border-radius:10px !important;transition:all .2s !important;}.sidemenu a:hover,.sidemenu button:hover{transform:translateX(10px) !important;background:rgba(255,255,255,.15) !important;}.sidemenu .premium-btn{background:linear-gradient(135deg,#facc15,#f97316) !important;color:#111 !important;font-weight:700 !important;border:2px solid #fbbf24 !important;margin-top:20px !important;}.desktop-nav{display:flex !important;gap:14px;}body.menu-open{overflow:hidden;}@media(max-width:900px){.hamburger{display:flex !important;}.desktop-nav{display:none !important;}.logo{margin-left:20px !important;}}
+    /* NOWOCZESNY DESIGN - CZYSTY I WYRAŹNY */
+    .download-container {
+      display: flex;
+      justify-content: center;
+      padding: 80px 20px;
+    }
+
+    .macro-card {
+      background: rgba(16, 18, 27, 0.95); /* Ciemny, elegancki granat */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* NEONOWY PASEK NA GÓRZE */
+    .macro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #ff4757, #ffd700);
+    }
+
+    /* TYTUŁ - WYRAŹNY I CZYTELNY */
+    .macro-title {
+      font-size: 28px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(255, 71, 87, 0.5); /* Lekki glow pod kolor FREE */
+    }
+
+    /* LISTA FUNKCJI */
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 35px 0;
+    }
+
+    .features-list li {
+      color: #00ff9d; /* Wyraźny neonowy zielony */
+      font-size: 16px;
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .features-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #00ff9d;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* PRZYCISKI */
+    .buttons-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-download {
+      flex: 1;
+      padding: 18px 0;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+      border: none;
+    }
+
+    .btn-free {
+      background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+      color: white;
+      box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+    }
+
+    .btn-premium {
+      background: linear-gradient(135deg, #ffd700 0%, #ffeba3 100%);
+      color: #1a1a1a;
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="logo">
-      <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
+      <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
-
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="desktop-nav">
-      <a href="#home" class="btn dark">Home</a>
-      <a href="download/" class="btn dark">Download</a>
+    <nav>
+      <a href="https://fuming67.github.io/fridgemacros/#home" class="btn dark">Home</a>
+      <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-      <a href="faq/" class="btn dark">FAQ</a>
+      <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
       <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
     </nav>
   </header>
 
-  <nav class="sidemenu" id="sidemenu">
-    <a href="#home" onclick="toggleMenu()">🏠 Home</a>
-    <a href="download/" onclick="toggleMenu()">📥 Download</a>
-    <a href="https://discord.gg/t2sGsddB" onclick="toggleMenu()" target="_blank">💬 Discord</a>
-    <a href="faq/" onclick="toggleMenu()">❓ FAQ</a>
-    <button class="premium-btn" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</button>
-  </nav>
+  <main>
+    <section class="download-container">
+      <div class="macro-card">
+<h2 class="macro-title" style="background: linear-gradient(135deg, #b06ab3 0%, #4568dc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 25px rgba(176, 106, 179, 0.4); font-weight: 800; letter-spacing: 1px;">
+<h2 class="macro-title" style="background: linear-gradient(135deg, #ff4757 0%, #ffd700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 20px rgba(255, 71, 87, 0.3);">
+  UNIVERSAL TOWER DEFENSE
+</h2>
 
-  <section id="home" class="promo-section">
-    <div class="promo-left">
-      <h2>Videos from our creators</h2>
-      <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
-    </div>
-    <div class="promo-right">
-      <div class="video-item">
-        <iframe id="promo-video" src="https://www.youtube.com/embed/E2lpnrLXEPs"
-          title="Promo video" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+        <ul class="features-list">
+          <li>All Modes</li>
+          <li>Custom Mode</li>
+          <li>Auto Challenge Secondary</li>
+          <li>Custom Delays</li>
+          <li>Skippable Pathing</li>
+          <li>Better Placing Tech</li>
+          <li>Multi Mode</li>
+        </ul>
+
+        <div class="buttons-wrapper">
+          <!-- FREE -->
+          <button class="btn-download btn-free" onclick="downloadFreeMacro()">
+            FREE DOWNLOAD
+          </button>
+          <!-- PREMIUM -->
+          <button class="btn-download btn-premium" onclick="buyGamepass()">
+            PREMIUM GAMEPASS
+          </button>
+        </div>
       </div>
-      <div class="video-controls">
-        <button class="btn dark" id="video-prev">◀</button>
-        <span id="video-indicator">1 / 2</span>
-        <button class="btn dark" id="video-next">▶</button>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <div id="donate-modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
       <section id="support" class="support">
-        <h2>Premium Macros</h2>
+        <h2>Support Development</h2>
+        <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
         <div id="cards" class="cards"></div>
       </section>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
   <script>
-  function toggleMenu(){
-    document.getElementById('sidemenu').classList.toggle('active');
-    document.querySelector('.hamburger').classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-  }
-  document.addEventListener('click',e=>{
-    const m=document.getElementById('sidemenu'),h=document.querySelector('.hamburger');
-    if(m.classList.contains('active')&&!m.contains(e.target)&&!h.contains(e.target))toggleMenu();
-  });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu();});
+    function downloadFreeMacro() {
+      // 100% DZIAŁAJĄCA ŚCIEŻKA
+      window.location.href = '../macros/UTD/UTD_1.41_Free.zip.rar';
+    }
+
+    function buyGamepass() {
+      window.open('https://www.roblox.com/game-pass/123456789/view', '_blank');
+    }
   </script>
 </body>
 </html>
