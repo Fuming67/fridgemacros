@@ -12,11 +12,77 @@
 html,
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 0 550px 340px;  /* MIEJSCE NA TUTORIAL PO LEWEJ + DOŁU */
   min-height: 100vh;
   overflow-y: auto;
   background: linear-gradient(135deg, #5a4bff 0%, #1b48ff 45%, #63b3ff 100%);
   color: #ffffff;
+  position: relative;  /* DLA ABSOLUTE TUTORIAL */
+}
+
+/* === TUTORIAL PANEL - NA DOLE PO LEWEJ, SCROLL === */
+.tutorial-panel {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  width: 320px !important;
+  height: 420px !important;  /* STAŁA WYSOKOŚĆ = SCROLL */
+  background: linear-gradient(145deg, rgba(59,130,246,0.95), rgba(30,64,175,0.98)) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  padding: 28px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  z-index: 10000 !important;  /* NAD WSZYSTKIM */
+  
+  overflow-y: scroll !important;  /* SCROLL ZAWSZE */
+  overflow-x: hidden !important;
+}
+
+.tutorial-panel h4 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  margin: 0 0 25px !important;
+  line-height: 1.1 !important;
+  color: #ffec8a !important;
+}
+
+.tutorial-panel ol {
+  padding-left: 28px !important;
+  margin: 0 0 25px !important;
+}
+
+.tutorial-panel li {
+  margin-bottom: 12px !important;
+  font-weight: 600 !important;
+}
+
+.tutorial-panel code {
+  background: rgba(0,0,0,0.4) !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+}
+
+/* SCROLLBAR */
+.tutorial-panel::-webkit-scrollbar {
+  width: 8px !important;
+}
+.tutorial-panel::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1) !important;
+  border-radius: 4px !important;
+}
+.tutorial-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.9) !important;
+  border-radius: 4px !important;
+}
+.tutorial-panel::-webkit-scrollbar-thumb:hover {
+  background: white !important;
 }
 
 /* LOGO */
@@ -215,7 +281,7 @@ nav a {
   background: radial-gradient(circle at 30% 20%, #ffe45e, #c08702);
 }
 
-/* STARE FAQ (JEŚLI UŻYWASZ gdzieś na index) */
+/* STARE FAQ */
 .faq {
   max-width: 900px;
   margin: 0 auto 60px;
@@ -231,7 +297,7 @@ nav a {
   margin-bottom: 10px;
 }
 
-/* SEKCJA MACROS – PANEL Z MAKRAMI */
+/* SEKCJA MACROS */
 .macros {
   max-width: 900px;
   margin: 40px auto;
@@ -287,256 +353,4 @@ nav a {
 
 /* MODAL */
 .modal.hidden {
-  display: none;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-}
-
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal-content {
-  position: relative;
-  max-width: 900px;
-  margin: 5vh auto;
-  padding: 30px 30px 40px;
-  border-radius: 24px;
-  background: #0c1018;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-}
-
-/* Pływający przycisk Donate */
-.floating-donate {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  padding: 16px 26px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #ff5bb5, #bc4bff);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-.floating-donate:hover {
-  transform: translateY(-2px);
-}
-
-/* Nagłówki */
-h1, h2, h3 {
-  color: #ffec8a;
-}
-
-/* Responsywność ogólna */
-@media (max-width: 600px) {
-  .hero-stats {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .card-price {
-    align-self: flex-end;
-  }
-}
-
-.macro-features {
-  margin-top: 4px;
-  margin-bottom: 8px;
-  font-size: 12px;
-  color: #cfd4ff;
-  opacity: 0.9;
-}
-
-/* SEKCJA Z WIDEO NA STRONIE GŁÓWNEJ – ORYGINALNY BOX */
-.promo-section {
-  max-width: 1100px;
-  margin: 20px 0 80px 16px;
-  padding: 24px 24px 32px;
-  background: #0c1018;
-  border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(3, 6, 23, 0.8);
-  display: flex;
-  gap: 24px;
-}
-
-.promo-left {
-  flex: 1;
-  color: #c7cffc;
-}
-
-.promo-left h2 {
-  color: #ffec8a;
-  margin-bottom: 10px;
-}
-
-.promo-right {
-  flex: 1.4;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.promo-right .video-item iframe {
-  width: 100%;
-  height: 260px;
-  border-radius: 16px;
-}
-
-.video-controls {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.video-controls #video-indicator {
-  color: #c7cffc;
-  font-size: 14px;
-}
-
-/* FAQ PAGE – KARTY Z WIDEO/VIDEO TAG */
-.faq-section {
-  max-width: 1100px;
-  margin: 60px auto 80px;
-  padding: 40px 30px 60px;
-  border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
-  color: #f9fafb;
-  background: rgba(4, 10, 40, 0.3);
-}
-
-.faq-title {
-  text-align: center;
-  font-size: 36px;
-  color: #ff9933;
-  margin-bottom: 6px;
-}
-
-.faq-subtitle {
-  text-align: center;
-  color: #cbd5f5;
-  margin-bottom: 30px;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.faq-card {
-  background: #0b0f1c;
-  border-radius: 22px;
-  padding: 22px 20px 24px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.faq-card h3 {
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-
-.faq-card p {
-  font-size: 14px;
-  color: #cbd5f5;
-  margin-bottom: 14px;
-}
-
-/* działa i z iframe, i z <video> */
-.faq-video iframe,
-.faq-video video {
-  width: 100%;
-  height: 180px;
-  border-radius: 16px;
-  object-fit: cover;
-}
-
-/* FAQ responsywność */
-@media (max-width: 900px) {
-  .faq-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-
-  background: rgba(0,0,0,0.4); z-index: 9999; backdrop-filter: blur(5px);
-}
-.tutorial-panel {
-  position: fixed !important;
-  bottom: 20px !important;    /* Na dole po lewej */
-  left: 20px !important;
-  width: 300px !important;
-  max-height: 500px !important;  /* Max wysokość ze scrollem */
-  min-height: 350px !important;
-  background: rgba(30, 64, 175, 0.98) !important;  /* Ciemniejszy niebieski jak karty */
-  color: white !important;
-  padding: 25px !important;
-  border-radius: 24px !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  
-  font-family: system-ui, -apple-system, sans-serif !important;
-  font-size: 16px !important;
-  line-height: 1.6 !important;
-  z-index: 9999 !important;  /* Na wierzchu */
-  
-  /* SCROLL PRIORYTET */
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-}
-
-/* Tytuł */
-.tutorial-panel h4 {
-  font-size: 22px !important;
-  font-weight: 800 !important;
-  margin: 0 0 25px !important;
-  line-height: 1.1 !important;
-}
-
-/* Lista */
-.tutorial-panel ol {
-  padding-left: 30px !important;
-  margin: 0 0 25px !important;
-}
-
-.tutorial-panel li {
-  margin-bottom: 14px !important;
-  font-weight: 600 !important;
-}
-
-/* Scrollbar */
-.tutorial-panel::-webkit-scrollbar {
-  width: 10px !important;
-}
-.tutorial-panel::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.1) !important;
-  border-radius: 5px !important;
-}
-.tutorial-panel::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.9) !important;
-  border-radius: 5px !important;
-}
-.tutorial-panel::-webkit-scrollbar-thumb:hover {
-  background: white !important;
-}
+  display: none
