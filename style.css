@@ -482,24 +482,15 @@ h1, h2, h3 {
   background: rgba(0,0,0,0.4); z-index: 9999; backdrop-filter: blur(5px);
 }
 .tutorial-panel {
-  position: fixed; 
-  bottom: 10px; left: 20px; right: 20px;  /* Pełna szerokość na dole */
-  height: 380px;  /* Większa wysokość */
-  background: rgba(0, 122, 255, 0.95); color: white;
-  padding: 24px; border-radius: 24px;  /* Większy radius jak twoja karta */
-  box-shadow: 0 12px 48px rgba(0,0,0,0.5); backdrop-filter: blur(16px);
-  font-family: -apple-system, sans-serif; font-size: 15px; line-height: 1.5;
-  z-index: 999; border: 1px solid rgba(255,255,255,0.25);
-  overflow-y: auto;  /* Scroll pionowy jeśli za długi */
-  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent;
+  position: fixed; bottom: 0px; left: 20px;  /* Niżej */
+  width: 280px; height: 450px;
+  background: rgba(59, 130, 246, 0.95); color: white;
+  padding: 24px; border-radius: 20px;  /* Więcej paddingu */
+  /* reszta bez zmian */
+  font-size: 16px; line-height: 1.5;  /* Większy tekst */
+  overflow-y: auto;
 }
-.tutorial-panel h4 { margin: 0 0 16px 0; font-size: 18px; font-weight: 700; }
-.tutorial-panel ol { margin: 0 0 16px 0; padding-left: 28px; }
-.tutorial-panel li { margin-bottom: 8px; }
-.tutorial-panel code { 
-  background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 6px; 
-  font-size: 14px; font-family: monospace;
+.tutorial-panel h4 { 
+  margin: 0 0 18px; font-size: 20px; font-weight: 700;  /* Duży tytuł */
 }
-.tutorial-panel::-webkit-scrollbar { width: 6px; }
-.tutorial-panel::-webkit-scrollbar-track { background: transparent; }
-.tutorial-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 3px; }
+.tutorial-panel li { margin-bottom: 10px; font-weight: 500; }  /* Pogrubione kroki */
