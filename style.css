@@ -244,18 +244,7 @@ nav a {
 
 .card.gold .icon-box {
   background: radial-gradient(circle at 30% 20%, #ffe45e, #c08702);
-}
-
-/* STARE FAQ (JEŚLI UŻYWASZ gdzieś na index) */
-.faq {
-  max-width: 900px;
-  margin: 0 auto 60px;
-  padding: 30px 20px 40px;
-  color: #c7cffc;
-  background: rgba(4, 10, 40, 0.9);
-  border-radius: 20px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-}
+} 
 
 .faq h2 {
   color: #ffec8a;
@@ -497,48 +486,4 @@ h1, h2, h3 {
 .faq-card {
   background: #0b0f1c; border-radius: 22px; padding: 22px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.06);
-}
-
-<div class="tutorial-panel" style="
-  position:fixed !important;
-  left:20px !important;
-  bottom:20px !important;
-  width:280px !important;
-  height:420px !important;  /* WYŻSZY */
-  background:rgba(59,130,246,0.98) !important;
-  color:white !important;
-  padding:24px !important;
-  border-radius:20px !important;
-  box-shadow:0 20px 50px rgba(0,0,0,0.6) !important;
-  z-index:99999 !important;
-  overflow-y:scroll !important;  /* SCROLL ZAWSZE */
-  overflow-x:hidden !important;
-  font-size:16px !important;
-  font-family:'Poppins',sans-serif !important;
-">
-  <h4 style="font-size:20px;font-weight:700;margin-bottom:16px;color:#ffec8a;">📥 Tutorial how to download macro:</h4>
-  <ol style="margin-left:22px;margin-bottom:12px;">
-    <li style="margin-bottom:10px;">Click premium and choose which premium macro you want to have</li>
-    <li style="margin-bottom:10px;">Buy the gamepass (Robux required)</li>
-    <li style="margin-bottom:10px;">Go to our discord server (link above)</li>
-    <li style="margin-bottom:10px;">Type <code style="background:rgba(0,0,0,0.4);padding:3px 7px;border-radius:4px;">/verify</code> in bot-command</li>
-    <li style="margin-bottom:10px;">Wait for verification (1-2 min)</li>
-    <li style="margin-bottom:10px;">Go to premium channel</li>
-    <li style="margin-bottom:10px;">Download ZIP file!</li>
-    <li style="margin-bottom:10px;">Extract and run .exe</li>
-  </ol>
-  <p style="font-size:14px;margin-top:10px;opacity:0.9;">
-    ⚠️ Use verified Discord bot (RoVer/Bloxlink only).
-    <br><small>Test on alt account first!</small>
-  </p>
-</div>
-.tutorial-panel::-webkit-scrollbar {
-  width: 6px !important;
-}
-.tutorial-panel::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.1) !important;
-}
-.tutorial-panel::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.9) !important;
-  border-radius: 3px !important;
 }
