@@ -7,6 +7,16 @@
   
   <!-- PEŁNY LINK DO STYLI -->
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
+  
+  <!-- Style dla modala Premium (zabezpieczenie) -->
+  <style>
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: none; justify-content: center; align-items: center; }
+    .modal.active { display: flex; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+    .modal-content { position: relative; background: #0c1018; padding: 40px; border-radius: 20px; width: 90%; max-width: 600px; z-index: 10001; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .card.gold { background: linear-gradient(135deg, #ffd700, #ff8c00); padding: 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; color: #000; }
+    .card-price { background: #000; color: #fff; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; }
+  </style>
 </head>
 <body>
   <header class="top-bar">
@@ -22,7 +32,32 @@
       <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
-      <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
+      
+      <!-- PRZYCISK PREMIUM - DZIAŁAJĄCY (INLINE LOGIC) -->
+      <button class="btn donate" onclick="
+        var modal = document.getElementById('donate-modal');
+        var cards = document.getElementById('cards');
+        
+        // Pokaż modal
+        modal.classList.add('active');
+        modal.classList.remove('hidden');
+        
+        // Jeśli karty puste, dodaj kartę Premium
+        if(cards.innerHTML.trim() === '') {
+           cards.innerHTML = `
+             <div class='card gold'>
+               <div style='display:flex; align-items:center; gap:15px;'>
+                 <div style='font-size:30px;'>💎</div>
+                 <div>
+                   <h3 style='margin:0;'>UTD Donater</h3>
+                   <p style='margin:5px 0 0; font-size:14px;'>Universal Tower Defense Premium Macro</p>
+                 </div>
+               </div>
+               <a href='https://www.roblox.com/game-pass/1645553803' target='_blank' class='card-price'>120 R$</a>
+             </div>
+           `;
+        }
+      ">PREMIUM</button>
     </nav>
   </header>
 
@@ -76,17 +111,18 @@
           </div>
         </article>
       </div>
-    </section>.
+    </section>
   </main>
 
   <!-- MODAL DONATE -->
-  <div id="donate-modal" class="modal hidden">
+  <div id="donate-modal" class="modal hidden" onclick="if(event.target === this || event.target.className === 'modal-overlay') { this.classList.remove('active'); this.classList.add('hidden'); }">
     <div class="modal-overlay"></div>
     <div class="modal-content">
       <section id="support" class="support">
-        <h2>Support Development</h2>
-        <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+        <h2 style="color:#ffec8a; text-align:center;">💎 Premium Macros</h2>
+        <p style="color:#c7cffc; text-align:center;">Wybierz makro i kup gamepass.</p>
         <div id="cards" class="cards"></div>
+        <button onclick="document.getElementById('donate-modal').classList.remove('active'); document.getElementById('donate-modal').classList.add('hidden');" style="margin-top:20px; width:100%; padding:10px; background:#333; border:none; color:white; border-radius:10px; cursor:pointer;">Zamknij</button>
       </section>
     </div>
   </div>
@@ -96,28 +132,28 @@
 
   <!-- premium tutorial -->
   <div class="tutorial-panel">
-  <!-- Nagłówek jest teraz przyciskiem -->
-  <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-    📥 Tutorial how to download macro
-    <span id="arrow" style="font-size: 14px; transition: 0.3s;">▼</span>
-  </h4>
-  
-  <!-- Treść, która będzie się chować -->
-  <div id="tutorial-content" style="display: none; margin-top: 15px;">
-    <ol>
-      <li>Click premium and choose which premium macro you want to have</li>
-      <li>Buy the gamepass</li>
-      <li>Go to our discord and type <code>/verify</code> in bot-command</li>
-      <li>Go to premium channel and download it!</li>
-      <li>Extract ZIP file</li>
-      <li>Run .exe file</li>
-      <li>Enable with F1 key</li>
-    </ol>
-    <p style="font-size:14px;margin-top:20px;opacity:0.9;">
-      ⚠️ Use verified Discord bot
-    </p>
+    <!-- Nagłówek jest teraz przyciskiem -->
+    <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+      📥 Tutorial how to download macro
+      <span id="arrow" style="font-size: 14px; transition: 0.3s;">▼</span>
+    </h4>
+    
+    <!-- Treść, która będzie się chować -->
+    <div id="tutorial-content" style="display: none; margin-top: 15px;">
+      <ol>
+        <li>Click premium and choose which premium macro you want to have</li>
+        <li>Buy the gamepass</li>
+        <li>Go to our discord and type <code>/verify</code> in bot-command</li>
+        <li>Go to premium channel and download it!</li>
+        <li>Extract ZIP file</li>
+        <li>Run .exe file</li>
+        <li>Enable with F1 key</li>
+      </ol>
+      <p style="font-size:14px;margin-top:20px;opacity:0.9;">
+        ⚠️ Use verified Discord bot
+      </p>
+    </div>
   </div>
-</div>
 
 <script>
 function toggleTutorial() {
@@ -133,5 +169,8 @@ function toggleTutorial() {
   }
 }
 </script>
+</body>
+</html>
+
 
 
