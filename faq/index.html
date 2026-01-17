@@ -5,57 +5,45 @@
   <title>Fridge Macros – FAQ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- PEŁNY LINK DO STYLI -->
+  <!-- PEŁNY LINK DO STYLI (żeby działało w podfolderze) -->
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   
-  <!-- Style dla modala Premium (zabezpieczenie) -->
+  <!-- Style dla modala (zabezpieczenie, żeby wyglądał idealnie jak na home) -->
   <style>
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: none; justify-content: center; align-items: center; }
-    .modal.active { display: flex; }
-    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
-    .modal-content { position: relative; background: #0c1018; padding: 40px; border-radius: 20px; width: 90%; max-width: 600px; z-index: 10001; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-    .card.gold { background: linear-gradient(135deg, #ffd700, #ff8c00); padding: 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; color: #000; }
-    .card-price { background: #000; color: #fff; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; }
+    /* Style modala identyczne jak na Home */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 9998; }
+    .modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0c1018; padding: 40px; border-radius: 24px; width: 90%; max-width: 600px; z-index: 9999; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.8); text-align: center; }
+    .hidden { display: none !important; }
+    
+    /* Style karty w modalu */
+    .modal-card { background: #050c28; border: 1px solid rgba(120, 160, 255, 0.3); border-radius: 16px; padding: 15px; margin-top: 20px; display: flex; align-items: center; justify-content: space-between; text-align: left; }
+    .modal-card:hover { border-color: rgba(120, 160, 255, 0.8); }
+    .modal-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #ff5bb5, #bc4bff); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; color: white; margin-right: 15px; }
+    .modal-btn { background: #333; color: white; border: none; padding: 12px; width: 100%; margin-top: 20px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    .modal-btn:hover { background: #444; }
+    .buy-btn { background: #fff; color: #000; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 14px; }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="logo">
-      <!-- PEŁNY LINK DO LOGO -->
       <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
 
     <nav>
-      <!-- PEŁNE LINKI NAWIGACYJNE -->
       <a href="https://fuming67.github.io/fridgemacros/#home" class="btn dark">Home</a>
       <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
       
-      <!-- PRZYCISK PREMIUM - DZIAŁAJĄCY (INLINE LOGIC) -->
+      <!-- PRZYCISK PREMIUM - OTWIERA MODAL (jak na Home) -->
       <button class="btn donate" onclick="
         var modal = document.getElementById('donate-modal');
-        var cards = document.getElementById('cards');
-        
-        // Pokaż modal
-        modal.classList.add('active');
-        modal.classList.remove('hidden');
-        
-        // Jeśli karty puste, dodaj kartę Premium
-        if(cards.innerHTML.trim() === '') {
-           cards.innerHTML = `
-             <div class='card gold'>
-               <div style='display:flex; align-items:center; gap:15px;'>
-                 <div style='font-size:30px;'>💎</div>
-                 <div>
-                   <h3 style='margin:0;'>UTD Donater</h3>
-                   <p style='margin:5px 0 0; font-size:14px;'>Universal Tower Defense Premium Macro</p>
-                 </div>
-               </div>
-               <a href='https://www.roblox.com/game-pass/1645553803' target='_blank' class='card-price'>120 R$</a>
-             </div>
-           `;
+        if(modal) {
+          modal.classList.remove('hidden');
+        } else {
+          alert('Błąd: Nie znaleziono modala. Odśwież stronę.');
         }
       ">PREMIUM</button>
     </nav>
@@ -71,13 +59,7 @@
           <h3>Macro Basics</h3>
           <p>Tutorial how to use macro.</p>
           <div class="faq-video">
-            <iframe
-              src="https://www.youtube.com/embed/vWi8Ut3GibE"
-              title="Macro Basics"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/vWi8Ut3GibE" title="Macro Basics" frameborder="0" allowfullscreen></iframe>
           </div>
         </article>
 
@@ -86,13 +68,7 @@
           <h3>Discord Webhooks</h3>
           <p>Tutorial how to set up your webhook.</p>
           <div class="faq-video">
-            <iframe
-              src="https://www.youtube.com/embed/IvgKNTmnGJc"
-              title="Discord Webhooks"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/IvgKNTmnGJc" title="Discord Webhooks" frameborder="0" allowfullscreen></iframe>
           </div>
         </article>
 
@@ -101,44 +77,51 @@
           <h3>Import Configs</h3>
           <p>Tutorial how to use someone's config.</p>
           <div class="faq-video">
-            <iframe
-              src="https://www.youtube.com/embed/I1jWsyO6WEA"
-              title="Import Configs"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/I1jWsyO6WEA" title="Import Configs" frameborder="0" allowfullscreen></iframe>
           </div>
         </article>
       </div>
     </section>
   </main>
 
-  <!-- MODAL DONATE -->
-  <div id="donate-modal" class="modal hidden" onclick="if(event.target === this || event.target.className === 'modal-overlay') { this.classList.remove('active'); this.classList.add('hidden'); }">
-    <div class="modal-overlay"></div>
+  <!-- MODAL PREMIUM (UKRYTY DOMYŚLNIE) -->
+  <!-- To jest kod okienka, które wyskakuje -->
+  <div id="donate-modal" class="hidden">
+    <div class="modal-overlay" onclick="document.getElementById('donate-modal').classList.add('hidden')"></div>
     <div class="modal-content">
-      <section id="support" class="support">
-        <h2 style="color:#ffec8a; text-align:center;">💎 Premium Macros</h2>
-        <p style="color:#c7cffc; text-align:center;">Wybierz makro i kup gamepass.</p>
-        <div id="cards" class="cards"></div>
-        <button onclick="document.getElementById('donate-modal').classList.remove('active'); document.getElementById('donate-modal').classList.add('hidden');" style="margin-top:20px; width:100%; padding:10px; background:#333; border:none; color:white; border-radius:10px; cursor:pointer;">Zamknij</button>
-      </section>
+      
+      <!-- Tytuł -->
+      <h2 style="color:#ffec8a; margin-bottom:5px;">💎 Premium Macros</h2>
+      <p style="color:#c7cffc; margin-bottom:25px; font-size:14px;">Wybierz makro i kup gamepass.</p>
+      
+      <!-- Karta UTD (Ręcznie wpisana, żeby działała na 100%) -->
+      <div class="modal-card">
+        <div style="display:flex; align-items:center;">
+          <div class="modal-icon">F</div>
+          <div>
+            <div style="font-weight:bold; color:white;">UTD Donater</div>
+            <div style="font-size:12px; color:#aab2ff; margin-top:2px;">Universal Tower Defense Premium Macro</div>
+            <div style="font-size:11px; color:#8890ff;">Ragna Stage, Multi mode, updates</div>
+          </div>
+        </div>
+        <!-- Link do gamepassa -->
+        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 R$</a>
+      </div>
+
+      <!-- Przycisk Zamknij -->
+      <button class="modal-btn" onclick="document.getElementById('donate-modal').classList.add('hidden')">Zamknij</button>
     </div>
   </div>
 
-  <!-- PEŁNY LINK DO SKRYPTU -->
+  <!-- SKRYPTY -->
   <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
 
-  <!-- premium tutorial -->
+  <!-- TUTORIAL PANEL (dół lewo) -->
   <div class="tutorial-panel">
-    <!-- Nagłówek jest teraz przyciskiem -->
     <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
       📥 Tutorial how to download macro
       <span id="arrow" style="font-size: 14px; transition: 0.3s;">▼</span>
     </h4>
-    
-    <!-- Treść, która będzie się chować -->
     <div id="tutorial-content" style="display: none; margin-top: 15px;">
       <ol>
         <li>Click premium and choose which premium macro you want to have</li>
@@ -149,28 +132,22 @@
         <li>Run .exe file</li>
         <li>Enable with F1 key</li>
       </ol>
-      <p style="font-size:14px;margin-top:20px;opacity:0.9;">
-        ⚠️ Use verified Discord bot
-      </p>
+      <p style="font-size:14px;margin-top:20px;opacity:0.9;">⚠️ Use verified Discord bot</p>
     </div>
   </div>
 
-<script>
-function toggleTutorial() {
-  var content = document.getElementById("tutorial-content");
-  var arrow = document.getElementById("arrow");
-  
-  if (content.style.display === "none") {
-    content.style.display = "block";
-    arrow.style.transform = "rotate(180deg)"; // Obraca strzałkę
-  } else {
-    content.style.display = "none";
-    arrow.style.transform = "rotate(0deg)";
-  }
-}
-</script>
+  <script>
+    function toggleTutorial() {
+      var content = document.getElementById("tutorial-content");
+      var arrow = document.getElementById("arrow");
+      if (content.style.display === "none") {
+        content.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+      } else {
+        content.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+      }
+    }
+  </script>
 </body>
 </html>
-
-
-
