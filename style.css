@@ -456,9 +456,9 @@ nav a {
 /* ========================================= */
 /* USUWAMY fixed i height */
 .tutorial-panel {
-  margin-top: 60px;        /* Więcej odstępu od góry */
+  margin-top: 150px;      /* JESZCZE NIŻEJ */
   margin-left: 20px;
-  margin-bottom: 60px;     /* Więcej odstępu od dołu */
+  margin-bottom: 80px;    /* Margines od dołu strony */
   width: 320px;
   background: rgba(59, 130, 246, 0.98);
   color: white;
