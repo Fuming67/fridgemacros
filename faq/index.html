@@ -7,43 +7,42 @@
 <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
 
 <style>
-/* ABSOLUTNIE NOWE STYLE - NIEZALEŻNE OD RESZTY STRONY */
-.final-premium-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; display: none; justify-content: center; align-items: center; }
-.final-premium-modal.active { display: flex !important; }
-.final-premium-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
+/* STYLE WYMUSZONE - V2 */
+.v2-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999999; display: none; justify-content: center; align-items: center; }
+.v2-modal.show { display: flex !important; }
+.v2-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
 
-/* Główny kontener modala - ciemny granat jak na screenie */
-.final-premium-content { 
+/* Kontener */
+.v2-content { 
   position: relative; 
-  background: #0b0e14; /* Idealnie ciemny kolor tła */
+  background: #0b0e14; 
   width: 90%; 
   max-width: 650px; 
   padding: 45px; 
   border-radius: 24px; 
-  border: 1px solid rgba(255,255,255,0.08); /* Subtelna ramka */
+  border: 1px solid rgba(255,255,255,0.08); 
   box-shadow: 0 0 60px rgba(0,0,0,0.6); 
-  z-index: 1000000; 
+  z-index: 10000000; 
   text-align: center; 
 }
 
-/* Wewnętrzna karta - ta ciemniejsza w środku */
-.final-inner-card {
-  background: #06070a; /* Prawie czarne tło wewnątrz */
-  border: 1px solid rgba(60, 80, 200, 0.2); /* Lekko niebieskawa ramka */
+/* Karta */
+.v2-card {
+  background: #06070a; 
+  border: 1px solid rgba(60, 80, 200, 0.2); 
   border-radius: 18px;
   padding: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 30px;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
 }
 
-/* Ikona F */
-.final-icon-circle { 
+/* Ikona */
+.v2-icon { 
   width: 60px; 
   height: 60px; 
-  background: linear-gradient(135deg, #ff9ff3, #f368e0); /* Jasny różowy gradient */
+  background: linear-gradient(135deg, #ff9ff3, #f368e0); 
   border-radius: 18px; 
   display: flex; 
   align-items: center; 
@@ -55,9 +54,8 @@
   box-shadow: 0 0 25px rgba(243, 104, 224, 0.4);
 }
 
-/* Przycisk 120 Robux - intensywny neonowy róż */
-.final-buy-btn { 
-  background: #ff2e63; 
+/* Przycisk */
+.v2-btn { 
   background: linear-gradient(90deg, #ff4757, #ff2e63);
   padding: 12px 30px; 
   border-radius: 50px; 
@@ -65,13 +63,13 @@
   text-decoration: none; 
   font-weight: 700; 
   font-size: 16px; 
-  box-shadow: 0 0 25px rgba(255, 46, 99, 0.5); /* Mocny glow */
+  box-shadow: 0 0 25px rgba(255, 46, 99, 0.5); 
   transition: transform 0.2s;
 }
-.final-buy-btn:hover { transform: scale(1.05); }
+.v2-btn:hover { transform: scale(1.05); }
 
-/* Przycisk Zamknij */
-.final-close-btn {
+/* Zamknij */
+.v2-close {
   margin-top: 25px;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
@@ -81,9 +79,7 @@
   cursor: pointer;
   width: 100%;
   font-size: 15px;
-  transition: 0.2s;
 }
-.final-close-btn:hover { background: rgba(255,255,255,0.1); color: #ccc; }
 </style>
 </head>
 <body>
@@ -98,7 +94,8 @@
 <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
 <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
 <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
-<button class="btn donate" onclick="openFinalModal()">PREMIUM</button>
+<!-- NOWA FUNKCJA ONCLICK -->
+<button class="btn donate" onclick="openV2()">PREMIUM</button>
 </nav>
 </header>
 
@@ -106,7 +103,7 @@
 <section class="faq-section">
 <h2 class="faq-title">Frequently Asked Questions</h2>
 <div class="faq-grid">
-<!-- KARTY FAQ BEZ ZMIAN -->
+<!-- KARTY BEZ ZMIAN -->
 <article class="faq-card">
 <h3>Macro Basics</h3>
 <p>Tutorial how to use macro.</p>
@@ -126,30 +123,27 @@
 </section>
 </main>
 
-<!-- NOWY MODAL PREMIUM - UNIKALNE ID -->
-<div id="final-premium-modal" class="final-premium-modal">
-<div class="final-premium-overlay" onclick="closeFinalModal()"></div>
-<div class="final-premium-content">
+<!-- NOWY MODAL V2 -->
+<div id="modalV2" class="v2-modal">
+<div class="v2-overlay" onclick="closeV2()"></div>
+<div class="v2-content">
   
-  <!-- Tytuł beżowy -->
   <h2 style="color:#ffeaa7; font-size: 32px; margin: 0 0 10px 0; font-weight: 700; text-shadow: 0 0 15px rgba(255,234,167,0.15);">Support Development</h2>
-  <!-- Tekst szary -->
   <p style="color:#7881a1; font-size: 15px; margin: 0; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
 
-  <!-- Karta wewnętrzna -->
-  <div class="final-inner-card">
+  <div class="v2-card">
     <div style="display: flex; align-items: center;">
-      <div class="final-icon-circle">F</div>
+      <div class="v2-icon">F</div>
       <div style="text-align: left;">
         <div style="color: white; font-size: 18px; font-weight: 700; margin-bottom: 5px;">UTD Donater</div>
         <div style="color: #cdd6f7; font-size: 13px; margin-bottom: 4px;">Universal Tower Defense Premium Macro</div>
         <div style="color: #636e99; font-size: 11px; max-width: 250px; line-height: 1.4;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
       </div>
     </div>
-    <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="final-buy-btn">120 Robux</a>
+    <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="v2-btn">120 Robux</a>
   </div>
 
-  <button onclick="closeFinalModal()" class="final-close-btn">Zamknij</button>
+  <button onclick="closeV2()" class="v2-close">Zamknij</button>
 </div>
 </div>
 
@@ -175,9 +169,9 @@
 </div>
 
 <script>
-// UNIKALNE FUNKCJE MODALA
-function openFinalModal() { document.getElementById('final-premium-modal').classList.add('active'); }
-function closeFinalModal() { document.getElementById('final-premium-modal').classList.remove('active'); }
+// ZUPEŁNIE NOWE NAZWY FUNKCJI
+function openV2() { document.getElementById('modalV2').classList.add('show'); }
+function closeV2() { document.getElementById('modalV2').classList.remove('show'); }
 
 function toggleTutorial() {
   var content = document.getElementById("tutorial-content");
