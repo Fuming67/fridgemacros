@@ -588,3 +588,56 @@ body.menu-open::after {
 
   background: rgba(0,0,0,0.4); z-index: 9999; backdrop-filter: blur(5px);
 }
+.tutorial-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;            /* Jak chcesz niżej, daj np. 10px albo 0 */
+  width: 260px;
+  max-height: 420px;       /* Jeśli tekstu będzie więcej — pojawi się scroll */
+  padding: 20px 22px;
+  background: linear-gradient(145deg, rgba(59,130,246,0.97), rgba(30,64,175,0.98));
+  color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(14px);
+  font-size: 15px;
+  line-height: 1.5;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+/* Tytuł i lista */
+.tutorial-panel h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.tutorial-panel ol {
+  margin-left: 18px;
+  margin-bottom: 10px;
+}
+
+.tutorial-panel li {
+  margin-bottom: 8px;
+}
+
+.tutorial-panel code {
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Scrollbar (opcjonalnie, tylko dla ładniejszego wyglądu) */
+.tutorial-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.tutorial-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tutorial-panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.75);
+  border-radius: 3px;
+}
