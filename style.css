@@ -456,11 +456,12 @@ nav a {
 /* ========================================= */
 /* USUWAMY fixed i height */
 .tutorial-panel {
-  margin-top: 150px;      /* JESZCZE NIŻEJ */
+  margin-top: 220px;      /* JESZCZE NIŻEJ */
   margin-left: 20px;
-  margin-bottom: 80px;    /* Margines od dołu strony */
+  margin-bottom: 100px;   /* Więcej miejsca na dole */
   width: 320px;
-  background: rgba(59, 130, 246, 0.98);
+  /* reszta bez zmian */
+ background: rgba(59, 130, 246, 0.98);
   color: white;
   padding: 20px 25px; /* Mniejszy padding góra/dół */
   border-radius: 20px;
