@@ -10,7 +10,7 @@ const gamepasses = [
   }
 ];
 
-// ===== GENEROWANIE KART DONATE =====
+// ===== GENEROWANIE KART DONATE NA STRONIE GŁÓWNEJ =====
 const cardsContainer = document.getElementById("cards");
 
 if (cardsContainer) {
@@ -35,7 +35,6 @@ if (cardsContainer) {
     sub.className = "card-sub";
     sub.textContent = pass.description;
 
-    // dodatkowy tekst pod spodem
     const details = document.createElement("div");
     details.className = "card-details";
     details.textContent = pass.details || "";
@@ -77,12 +76,10 @@ function closeDonateModal() {
   }
 }
 
-// kliknięcie w tło zamyka
 if (modalOverlay) {
   modalOverlay.addEventListener("click", closeDonateModal);
 }
 
-// ESC też zamyka
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeDonateModal();
 });
@@ -123,47 +120,159 @@ if (promoIframe && promoPrev && promoNext && promoIndicator) {
 
   updatePromoVideo();
 }
-<script>
+
+// ===== NAWIGACJA PREMIUM + STRONY =====
 document.addEventListener('DOMContentLoaded', () => {
-  // === PIERWSZE OKNO: FREE DOWNLOAD (twoje UTD makro) ===
-  document.getElementById('guardiansBtn').onclick = () => {
-    // FREE - pobiera twój plik bezpośrednio
-    const link = document.createElement('a');
-    link.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
-    link.download = 'AnimeGuardians_FREE.zip';  // Nowa nazwa dla użytkownika
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  // === DRUGIE OKNO: PREMIUM (gamepass/Discord) ===
-  document.getElementById('lastStandBtn').onclick = () => {
-    // PREMIUM - sprawdź Roblox Premium lub przekieruj
-    const userId = prompt('Wpisz Roblox User ID dla Premium check:');
-    if (userId) {
-      // Opcja 1: Bezpośrednio Discord (proste)
-      window.open('https://discord.gg/t2sGsddB', '_blank');
-
-      // Opcja 2: Check Premium (odkomentuj jeśli chcesz)
-      /*
-      fetch(`https://api.allorigins.win/raw?url=https://users.roblox.com/v1/users/${userId}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.membershipTypeId === 4 || data.membershipTypeId === 2) {
-            // Ma Premium - daj lepszy plik
-            window.location.href = 'macros/AnimeLastStand_PREMIUM.zip';  // DODAJ PLIK
-          } else {
-            // Brak Premium - gamepass
-            window.open('https://www.roblox.com/game-passes/TWOJ-GAMEPASS-ID');
-          }
-        });
-      */
+  
+  // === OBSŁUGA KLIKNIĘCIA PREMIUM W MENU ===
+  const premiumLink = document.querySelector('nav a[href*="premium"], .btn.donate, a:contains("PREMIUM")');
+  
+  // Lepsze rozwiązanie: znajdź wszystkie linki i sprawdź text
+  const allNavLinks = document.querySelectorAll('nav a, .top-bar a');
+  allNavLinks.forEach(link => {
+    if (link.textContent.trim().toLowerCase() === 'premium') {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPremiumPage();
+      });
     }
-  };
+  });
 
-  // === TRZECIE OKNO: v8.2 (Discord) ===
-  document.getElementById('royaleBtn').onclick = () => {
-    window.open('https://discord.gg/t2sGsddB', '_blank');
-  };
+  // === FREE DOWNLOAD BUTTONS ===
+  const guardiansBtn = document.getElementById('guardiansBtn');
+  if (guardiansBtn) {
+    guardiansBtn.onclick = () => {
+      const link = document.createElement('a');
+      link.href = 'macros/UTD/UTD_1.41_Free.zip.rar';
+      link.download = 'UTD_FREE.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  }
+
+  // === PREMIUM BUTTON (LAST STAND) ===
+  const lastStandBtn = document.getElementById('lastStandBtn');
+  if (lastStandBtn) {
+    lastStandBtn.onclick = () => {
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+    };
+  }
+
+  // === V8.2 BUTTON ===
+  const royaleBtn = document.getElementById('royaleBtn');
+  if (royaleBtn) {
+    royaleBtn.onclick = () => {
+      window.open('https://discord.gg/t2sGsddB', '_blank');
+    };
+  }
 });
-</script>
+
+// ===== FUNKCJA POKAZUJĄCA STRONĘ PREMIUM =====
+function showPremiumPage() {
+  // Znajdź główny kontener (gdzie jest hero, support itp.)
+  const mainContainer = document.querySelector('body');
+  
+  // Ukryj wszystkie sekcje strony głównej
+  const homeSections = document.querySelectorAll('.hero, .support, .promo-section, .faq-section, .macros');
+  homeSections.forEach(section => {
+    section.style.display = 'none';
+  });
+  
+  // Sprawdź czy Premium section już istnieje
+  let premiumSection = document.getElementById('premium-page');
+  
+  if (!premiumSection) {
+    // Stwórz nową sekcję Premium
+    premiumSection = document.createElement('div');
+    premiumSection.id = 'premium-page';
+    premiumSection.innerHTML = `
+      <div class="hero">
+        <h1>💎 Premium Macros</h1>
+        <p>Wybierz makro i kup gamepass, następnie /verify na Discord!</p>
+      </div>
+      
+      <div class="support">
+        <h2>Dostępne Premium Gamepasses</h2>
+        <p>Po zakupie wejdź na nasz Discord i użyj <code>/verify</code> w kanale bot-command</p>
+        <div class="cards" id="premium-cards-list"></div>
+      </div>
+    `;
+    mainContainer.appendChild(premiumSection);
+    
+    // Generuj karty gamepassów
+    generatePremiumCards();
+  } else {
+    // Jeśli już istnieje, tylko pokaż
+    premiumSection.style.display = 'block';
+  }
+  
+  // Aktualizuj URL bez przeładowania
+  history.pushState({ page: 'premium' }, 'Premium', '#premium');
+}
+
+// ===== GENEROWANIE KART PREMIUM =====
+function generatePremiumCards() {
+  const premiumCardsContainer = document.getElementById('premium-cards-list');
+  if (!premiumCardsContainer) return;
+  
+  premiumCardsContainer.innerHTML = ''; // Wyczyść
+  
+  gamepasses.forEach((pass) => {
+    const card = document.createElement("div");
+    card.className = "card" + (pass.special ? " gold" : "");
+
+    const left = document.createElement("div");
+    left.className = "card left";
+
+    const icon = document.createElement("div");
+    icon.className = "icon-box";
+    icon.textContent = "💎";
+
+    const textBox = document.createElement("div");
+
+    const title = document.createElement("div");
+    title.className = "card-title";
+    title.textContent = pass.name;
+
+    const sub = document.createElement("div");
+    sub.className = "card-sub";
+    sub.textContent = pass.description;
+
+    const details = document.createElement("div");
+    details.className = "card-details";
+    details.textContent = pass.details || "";
+
+    textBox.appendChild(title);
+    textBox.appendChild(sub);
+    textBox.appendChild(details);
+
+    left.appendChild(icon);
+    left.appendChild(textBox);
+
+    const price = document.createElement("a");
+    price.className = "card-price";
+    price.textContent = "Kup za " + pass.price + " Robux";
+    price.href = `https://www.roblox.com/game-pass/${pass.id}`;
+    price.target = "_blank";
+    price.rel = "noopener noreferrer";
+
+    card.appendChild(left);
+    card.appendChild(price);
+
+    premiumCardsContainer.appendChild(card);
+  });
+}
+
+// ===== POWRÓT DO STRONY GŁÓWNEJ (OPCJONALNIE) =====
+window.addEventListener('popstate', (e) => {
+  if (window.location.hash === '' || window.location.hash === '#home') {
+    // Pokaż z powrotem home
+    document.querySelectorAll('.hero, .support, .promo-section').forEach(s => {
+      s.style.display = 'block';
+    });
+    const premPage = document.getElementById('premium-page');
+    if (premPage) premPage.style.display = 'none';
+  }
+});
+
