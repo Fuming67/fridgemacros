@@ -85,33 +85,40 @@
   </main>
 
   <!-- MODAL PREMIUM (UKRYTY DOMYŚLNIE) -->
-  <!-- To jest kod okienka, które wyskakuje -->
-  <div id="donate-modal" class="hidden">
-    <div class="modal-overlay" onclick="document.getElementById('donate-modal').classList.add('hidden')"></div>
-    <div class="modal-content">
+  <!-- ZASTĄP modal donate tym kodem -->
+<div id="donate-modal" class="modal hidden">
+  <div class="modal-overlay" onclick="this.parentElement.classList.add('hidden')"></div>
+  <div class="modal-content">
+    <!-- PRZYCISK ZAMKNIJ -->
+    <button onclick="document.getElementById('donate-modal').classList.add('hidden')" style="
+      position:absolute; top:10px; right:15px; background:none; border:none;
+      font-size:24px; color:#aaa; cursor:pointer; z-index:10001;
+    ">✕</button>
+    
+    <!-- TREŚĆ MODALA -->
+    <div style="text-align:center; padding-top:20px;">
+      <h2 style="color:#ffec8a; font-size:28px; margin-bottom:10px;">💎 Premium Macros</h2>
+      <p style="color:#c7cffc; font-size:16px; margin-bottom:30px;">Wybierz makro i kup gamepass.</p>
       
-      <!-- Tytuł -->
-      <h2 style="color:#ffec8a; margin-bottom:5px;">💎 Premium Macros</h2>
-      <p style="color:#c7cffc; margin-bottom:25px; font-size:14px;">Wybierz makro i kup gamepass.</p>
-      
-      <!-- Karta UTD (Ręcznie wpisana, żeby działała na 100%) -->
-      <div class="modal-card">
-        <div style="display:flex; align-items:center;">
-          <div class="modal-icon">F</div>
-          <div>
-            <div style="font-weight:bold; color:white;">UTD Donater</div>
-            <div style="font-size:12px; color:#aab2ff; margin-top:2px;">Universal Tower Defense Premium Macro</div>
-            <div style="font-size:11px; color:#8890ff;">Ragna Stage, Multi mode, updates</div>
-          </div>
-        </div>
-        <!-- Link do gamepassa -->
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 R$</a>
-      </div>
+      <!-- KARTA UTD -->
+      <div style="
+        background:#050c28; border:2px solid rgba(120,160,255,0.5); 
+        border-radius:20px; padding:25px; margin:20px 0; 
+        box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      ">
+        <div style="display:flex; align-items:center; gap:20px;">
+          <div style="
+            width:60px; height:60px; background:linear-gradient(135deg,#ff5bb5,#bc4bff);
+            border-radius:15px; display:flex; align-items:center; justify-content:center;
+            font-size:28px; font-weight:bold;
+          ">F</div>
+          
+          <div style="flex:1; text-align:left;">
+            <div style="font-size:20px; font-weight:bold; color:white; margin-bottom:5px;">UTD Donater</div>
+            <div style="font-size:14px; color:#aab2ff; margin-bottom:8px;">Universal Tower Defense Premium Macro</div>
+            <div style="font-size:12px; color:#8890ff;">Ragna Stage, Multi mode, ALL BUGS fixed</div>
+          </
 
-      <!-- Przycisk Zamknij -->
-      <button class="modal-btn" onclick="document.getElementById('donate-modal').classList.add('hidden')">Zamknij</button>
-    </div>
-  </div>
 
   <!-- SKRYPTY -->
   <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
