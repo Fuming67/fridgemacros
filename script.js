@@ -154,3 +154,19 @@ function toggleMenu() {
   if (hamburger) hamburger.classList.toggle('open');
   document.body.classList.toggle('menu-open');
 }
+function toggleMenu() {
+  document.getElementById('sidemenu').classList.toggle('active');
+  document.querySelector('.hamburger').classList.toggle('open');
+}
+
+// ZAMKNIJ MENU: klik poza / ESC
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('sidemenu');
+  const hamburger = document.querySelector('.hamburger');
+  if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+    toggleMenu();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') toggleMenu();
+});
