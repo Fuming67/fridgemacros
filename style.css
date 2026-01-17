@@ -514,3 +514,8 @@ html, body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+.premium-nav-trigger {
+  background: linear-gradient(135deg, #ff5bb5, #bc4bff) !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
