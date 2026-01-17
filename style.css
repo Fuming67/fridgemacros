@@ -480,18 +480,74 @@ h1, h2, h3 {
   }
 }
 
+/* === HAMBURGER MENU – POPRAWIONE (dodać na końcu) === */
 .hamburger {
-  position: fixed; top: 20px; right: 20px; z-index: 1000;
-  width: 30px; height: 30px; background: none; border: none;
-  cursor: pointer;
+  display: none; /* Tylko mobile */
+  position: fixed; top: 20px; right: 20px; z-index: 10001 !important;
+  width: 45px; height: 45px; background: rgba(90, 75, 255, 0.95) !important;
+  border: none; border-radius: 12px; cursor: pointer; backdrop-filter: blur(20px);
+  flex-direction: column; justify-content: center; gap: 5px; padding: 5px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
-.hamburger span { display: block; height: 3px; width: 100%; background: white; margin: 5px 0; transition: 0.3s; }
+.hamburger span {
+  height: 4px; width: 28px; background: #ffffff !important; border-radius: 3px;
+  transition: all 0.3s ease; transform-origin: center;
+  margin: 0 auto;
+}
+.hamburger.open span:nth-child(1) { 
+  transform: rotate(45deg) translate(9px, 9px) !important; 
+}
+.hamburger.open span:nth-child(2) { 
+  opacity: 0 !important; 
+}
+.hamburger.open span:nth-child(3) { 
+  transform: rotate(-45deg) translate(8px, -8px) !important; 
+}
+
 .sidemenu {
-  position: fixed; top: 0; right: -300px; width: 300px; height: 100vh;
-  background: linear-gradient(to bottom, #1e3c72, #2a5298); /* Niebieski gradient */
-  transition: right 0.3s ease; padding-top: 70px; z-index: 999;
+  position: fixed; top: 0 !important; right: -350px !important; 
+  width: 350px; height: 100vh; z-index: 10000 !important;
+  background: linear-gradient(135deg, #5a4bff, #1b48ff, #63b3ff) !important;
+  transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  padding: 90px 25px 25px !important; box-shadow: -20px 0 50px rgba(0,0,0,0.6) !important;
+  overflow-y: auto; font-family: 'Poppins', sans-serif;
 }
-.sidemenu a { display: block; padding: 20px; color: white; text-decoration: none; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.sidemenu.active { right: 0; } /* Pokazuje menu */
+.sidemenu.active { 
+  right: 0 !important; 
+  animation: slideInRight 0.4s ease-out forwards !important;
+}
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.sidemenu a {
+  display: block !important; padding: 22px 20px !important; 
+  color: #ffffff !important; text-decoration: none !important; 
+  font-size: 18px !important; font-weight: 500 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 12px; margin-bottom: 8px; transition: all 0.2s !important;
+  background: rgba(255,255,255,0.05);
+}
+.sidemenu a:hover {
+  background: rgba(255,255,255,0.15) !important; transform: translateX(10px);
+  box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+}
+.sidemenu .premium {
+  background: linear-gradient(135deg, #facc15, #f97316) !important;
+  color: #111827 !important; font-weight: 700 !important; margin-top: 20px;
+  border: 2px solid #fbbf24;
+}
 
+/* MOBILE + BODY */
+body.menu-open { overflow: hidden !important; }
+@media (max-width: 900px) {
+  .hamburger { display: flex !important; }
+  .top-bar nav { display: none !important; } /* Ukryj desktop nav */
+  .logo { margin-left: 20px !important; }
+}
 
+/* Overlay cienia przy otwartym menu */
+body.menu-open::after {
+  content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+  background: rgba(0,0,0,0.4); z-index: 9999; backdrop-filter: blur(5px);
+}
