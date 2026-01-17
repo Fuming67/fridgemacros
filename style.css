@@ -481,3 +481,15 @@ h1, h2, h3 {
 
   background: rgba(0,0,0,0.4); z-index: 9999; backdrop-filter: blur(5px);
 }
+.tutorial-panel {
+  position: fixed; bottom: 20px; left: 20px;
+  background: rgba(0, 122, 255, 0.95); color: white;
+  padding: 18px; border-radius: 16px; max-width: 300px; min-width: 280px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4); backdrop-filter: blur(12px);
+  font-family: -apple-system, sans-serif; font-size: 14px; line-height: 1.4;
+  z-index: 1000; border: 1px solid rgba(255,255,255,0.2);
+}
+.tutorial-panel h4 { margin: 0 0 12px 0; font-size: 16px; font-weight: 600; }
+.tutorial-panel ol { margin: 0 0 12px 0; padding-left: 22px; }
+.tutorial-panel li { margin-bottom: 6px; }
+.tutorial-panel code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-size: 13px; }
