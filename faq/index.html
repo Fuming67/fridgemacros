@@ -5,23 +5,6 @@
   <title>Fridge Macros – FAQ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
-  <!-- DODAJEMY STYLE MODALA ŻEBY BYŁY IDENTYCZNE JAK NA HOME -->
-  <style>
-    .hidden { display: none !important; }
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: flex; justify-content: center; align-items: center; }
-    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); }
-    .modal-content { position: relative; background: #0c1018; width: 90%; max-width: 800px; padding: 20px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.8); z-index: 10001; max-height: 90vh; overflow-y: auto; }
-    /* Styl kart wewnątrz modala - taki sam jak na Home */
-    .support h2 { color: #ffeaa7; margin-bottom: 10px; text-align: center; }
-    .support p { color: #aab2d6; text-align: center; margin-bottom: 20px; }
-    .card { background: #161b2e; border: 1px solid #2a2d3d; border-radius: 12px; padding: 15px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
-    .card.left { border: none; padding: 0; margin: 0; background: none; }
-    .icon-box { width: 50px; height: 50px; background: linear-gradient(135deg, #ff7eb3, #a044ff); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: white; margin-right: 15px; flex-shrink: 0; }
-    .card-title { color: white; font-weight: bold; font-size: 18px; }
-    .card-sub { color: #aab2ff; font-size: 14px; margin: 2px 0; }
-    .card-details { color: #7d85b5; font-size: 12px; }
-    .card-price { background: linear-gradient(90deg, #ff4d8d, #ff2e63); padding: 10px 20px; border-radius: 20px; color: white; text-decoration: none; font-weight: bold; white-space: nowrap; margin-left: 10px; }
-  </style>
 </head>
 <body>
 
@@ -35,7 +18,8 @@
     <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
     <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
     <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
-    <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
+    <!-- Przycisk Premium z wymuszonym działaniem -->
+    <button onclick="openPremiumModal(event)" class="btn" style="background: linear-gradient(90deg, #ff7eb3, #ff758c); color: white; border: none; cursor: pointer;">PREMIUM</button>
   </nav>
 </header>
 
@@ -62,24 +46,39 @@
   </section>
 </main>
 
-<!-- MODAL PREMIUM - KONTENER -->
-<div id="donate-modal" class="modal hidden">
-  <div class="modal-overlay" onclick="closeDonateModal()"></div>
-  <div class="modal-content">
-    <section id="support" class="support">
-      <h2>Support Development</h2>
-      <p>Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-      <!-- TO JEST KLUCZ: Script.js sam tutaj wstawi karty -->
-      <div id="cards" class="cards"></div>
-    </section>
-    <button onclick="closeDonateModal()" style="width:100%; padding:15px; background:transparent; border:1px solid #333; color:#777; border-radius:10px; cursor:pointer; margin-top:20px;">Zamknij</button>
+<!-- MODAL PREMIUM - TEN ŁADNY, CIEMNY -->
+<div id="premium-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999999; justify-content:center; align-items:center;">
+  
+  <!-- Tło (Overlay) -->
+  <div onclick="document.getElementById('premium-modal').style.display='none'" style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);"></div>
+
+  <!-- Okienko (Content) -->
+  <div style="position:relative; background: linear-gradient(135deg, #1e1e2f, #0f0f1a); width:90%; max-width:650px; padding:40px; border-radius:24px; border:1px solid rgba(255,255,255,0.05); box-shadow:0 0 60px rgba(80, 100, 255, 0.2); text-align:center;">
+    
+    <h2 style="color:#ffeaa7; font-size:32px; margin:0 0 10px 0; font-weight:700; text-shadow:0 0 15px rgba(255,234,167,0.3); font-family:sans-serif;">Support Development</h2>
+    <p style="color:#aab2d6; font-size:15px; margin:0; opacity:0.8; font-family:sans-serif;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+
+    <!-- Karta -->
+    <div style="background:#0b0e14; border:1px solid rgba(60,80,200,0.2); border-radius:18px; padding:20px 30px; display:flex; align-items:center; justify-content:space-between; margin-top:35px; box-shadow: inset 0 0 30px rgba(0,0,0,0.5);">
+      
+      <div style="display:flex; align-items:center;">
+        <div style="width:60px; height:60px; background:linear-gradient(135deg, #ff7eb3, #a044ff); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:800; color:white; margin-right:20px; box-shadow:0 0 25px rgba(255,126,179,0.5); font-family:sans-serif;">F</div>
+        <div style="text-align:left;">
+          <div style="color:white; font-size:18px; font-weight:700; margin-bottom:5px; font-family:sans-serif;">UTD Donater</div>
+          <div style="color:#cdd6f7; font-size:13px; margin-bottom:4px; font-family:sans-serif;">Universal Tower Defense Premium Macro</div>
+          <div style="color:#636e99; font-size:11px; max-width:250px; line-height:1.4; font-family:sans-serif;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
+        </div>
+      </div>
+
+      <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" style="background:linear-gradient(90deg, #ff4d8d, #ff2e63); padding:12px 30px; border-radius:50px; color:white; text-decoration:none; font-weight:700; font-size:16px; box-shadow:0 0 25px rgba(255,46,99,0.6); font-family:sans-serif;">120 Robux</a>
+    </div>
+
+    <button onclick="document.getElementById('premium-modal').style.display='none'" style="margin-top:25px; background:transparent; border:1px solid rgba(255,255,255,0.1); color:#666; padding:12px 0; border-radius:10px; cursor:pointer; width:100%; font-size:14px; font-family:sans-serif;">Zamknij</button>
   </div>
 </div>
 
-<!-- SKRYPT GŁÓWNY (On sam wypełni modal) -->
 <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
 
-<!-- TUTORIAL -->
 <div class="tutorial-panel">
   <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
     📥 Tutorial how to download macro
@@ -99,9 +98,10 @@
 </div>
 
 <script>
-// Proste otwieranie modala
-function openDonateModal() { document.getElementById('donate-modal').classList.remove('hidden'); }
-function closeDonateModal() { document.getElementById('donate-modal').classList.add('hidden'); }
+function openPremiumModal(e) {
+  if (e) e.preventDefault();
+  document.getElementById('premium-modal').style.display = 'flex';
+}
 
 function toggleTutorial() {
   var content = document.getElementById("tutorial-content");
