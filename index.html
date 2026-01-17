@@ -82,3 +82,36 @@
       </div>
     </div>
   </div>
+<script>
+    // === SKRYPT NAWIGACJI (WBUDOWANY, ŻEBY DZIAŁAŁ NA 100%) ===
+    
+    function showPremium() {
+      // Ukryj Home
+      document.getElementById('home-page').style.display = 'none';
+      // Pokaż Premium
+      document.getElementById('premium-page').style.display = 'block';
+    }
+
+    function showHome() {
+      // Pokaż Home
+      document.getElementById('home-page').style.display = 'block';
+      // Ukryj Premium
+      document.getElementById('premium-page').style.display = 'none';
+    }
+
+    // Skrypt tutorialu
+    function toggleTutorialPanel() {
+      const panel = document.getElementById('tutorial-panel');
+      const btn = document.getElementById('tutorial-button');
+      
+      if (panel.style.display === 'none') {
+        panel.style.display = 'block';
+        btn.style.opacity = '0.5';
+      } else {
+        panel.style.display = 'none';
+        btn.style.opacity = '1';
+      }
+    }
+  </script>
+  </body>
+</html>
