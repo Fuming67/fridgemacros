@@ -5,56 +5,80 @@
   <title>Fridge Macros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
-  <!-- ZERO base - naprawia layout -->
+  <!-- Import czcionki (ważne dla stylu) -->
+  <style>
+    /* Mały fix, żeby ukryta sekcja Premium wyglądała dobrze */
+    #premium-page { display: none; padding-top: 40px; }
+  </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="top-bar">
     <div class="logo">
+      <!-- Upewnij się, że masz plik fm-logo.png -->
       <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
 
     <nav>
-      <a href="#home" class="btn dark">Home</a>
-      <a href="download/" class="btn dark">Download</a>  <!-- Czysty URL -->
+      <!-- Kliknięcie Home przywraca widok -->
+      <a href="#" class="btn dark" onclick="showHome()">Home</a>
+      <a href="download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-      <a href="faq/" class="btn dark">FAQ</a>  <!-- Czysty URL -->
-     <a href="#" class="btn donate" onclick="showPremiumPage(); return false;">PREMIUM</a>
+      <a href="faq/" class="btn dark">FAQ</a>
+      
+      <!-- PRZYCISK PREMIUM - DZIAŁAJĄCY -->
+      <a href="#" class="btn donate" onclick="showPremium()">PREMIUM</a>
     </nav>
   </header>
 
-  <section id="home" class="promo-section">  <!-- id="home" dla scrolla -->
-    <div class="promo-left">
-      <h2>Videos from our creators</h2>
-      <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
-    </div>
-
-    <div class="promo-right">
-      <div class="video-item">
-        <iframe
-          id="promo-video"
-          src="https://www.youtube.com/embed/E2lpnrLXEPs"
-          title="Promo video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+  <!-- STRONA GŁÓWNA (Domyślnie widoczna) -->
+  <div id="home-page">
+    <section class="promo-section">
+      <div class="promo-left">
+        <h2>Videos from our creators</h2>
+        <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
       </div>
 
-      <div class="video-controls">
-        <button class="btn dark" id="video-prev">◀</button>
-        <span id="video-indicator">1 / 2</span>
-        <button class="btn dark" id="video-next">▶</button>
-      </div>
-    </div>
-  </section>
+      <div class="promo-right">
+        <div class="video-item">
+          <iframe
+            id="promo-video"
+            src="https://www.youtube.com/embed/E2lpnrLXEPs"
+            title="Promo video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
 
-  <div id="donate-modal" class="modal hidden">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <section id="support" class="support">
-        <h2>Premium Macros</h2>
-        <div id="cards" class="cards"></div>
-      </section>
+        <div class="video-controls">
+          <button class="btn dark" id="video-prev">◀</button>
+          <span id="video-indicator">1 / 2</span>
+          <button class="btn dark" id="video-next">▶</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- STRONA PREMIUM (Domyślnie ukryta) -->
+  <div id="premium-page" class="support">
+    <h2 style="text-align:center; color:#ffec8a; margin-bottom:20px;">💎 Premium Macros</h2>
+    <p style="text-align:center; color:#c7cffc; margin-bottom:40px;">Wybierz makro, kup gamepass i zweryfikuj się na Discordzie!</p>
+    
+    <div class="cards">
+      <!-- KARTA PREMIUM -->
+      <div class="card gold">
+        <div class="card left">
+          <div class="icon-box">💎</div>
+          <div>
+            <div class="card-title">UTD Donater</div>
+            <div class="card-sub">Universal Tower Defense Premium Macro</div>
+            <div class="card-details">Ragna Stage, Multi mode, updates</div>
+          </div>
+        </div>
+        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="card-price">Kup za 120 R$</a>
+      </div>
     </div>
   </div>
