@@ -4,82 +4,42 @@
   <meta charset="UTF-8" />
   <title>Fridge Macros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Twój istniejący CSS + hamburger menu */
-    /* ... wklej tutaj cały content z style.css ... */
-    
-    /* DODAJ te style dla hamburger menu */
-    .hamburger {
-      display: none; /* Ukryty na desktop */
-      flex-direction: column; gap: 4px; background: none; border: none;
-      cursor: pointer; padding: 10px; width: 40px; height: 40px;
-    }
-    .hamburger span {
-      height: 4px; width: 25px; background: white; border-radius: 2px;
-      transition: 0.3s; transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(8px,8px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
-    
-    .sidemenu {
-      position: fixed; top: 0; right: -350px; width: 350px; height: 100vh;
-      background: linear-gradient(135deg, #1e3c72, #2a5298); transition: right 0.4s ease;
-      z-index: 10000; padding: 80px 20px; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-      overflow-y: auto;
-    }
-    .sidemenu.active { right: 0; }
-    .sidemenu a {
-      display: block; padding: 20px; color: white; text-decoration: none; font-size: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.2s;
-    }
-    .sidemenu a:hover { background: rgba(255,255,255,0.15); }
-    .sidemenu .premium { 
-      background: linear-gradient(45deg, #FFD700, #FFA500); color: black; 
-      font-weight: bold; margin-top: 20px; border-radius: 10px;
-    }
-    
-    /* Responsywność - ukryj desktop nav na mobile */
-    @media (max-width: 768px) {
-      nav.desktop-nav { display: none !important; }
-      .hamburger { display: flex !important; position: absolute; top: 15px; right: 15px; z-index: 10001; }
-      body.menu-open { overflow: hidden; } /* Blokuj scroll */
-    }
-  </style>
-  <link rel="stylesheet" href="style.css" /> <!-- Jeśli masz zewnętrzny -->
+  <!-- TWOJA CZĘŚĆ -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- HEADER Z HAMBURGEREM -->
   <header class="top-bar">
     <div class="logo">
       <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
 
-    <!-- Hamburger tylko na mobile -->
+    <!-- HAMBURGER - TYLKO MOBILE -->
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
 
-  
-  <!-- Zmień nav class na: -->
-<nav class="sidemenu" id="sidemenu">
-  <a href="#home" onclick="toggleMenu()">🏠 Home</a>
-  <a href="download/" onclick="toggleMenu()">📥 Download</a>
-  <a href="https://discord.gg/t2sGsddB" onclick="toggleMenu()">💬 Discord</a>
-  <a href="faq/" onclick="toggleMenu()">❓ FAQ</a>
-  <a href="#" class="premium" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</a>
-</nav>
+    <!-- DESKTOP NAV -->
+    <nav class="desktop-nav">
+      <a href="#home" class="btn dark">Home</a>
+      <a href="download/" class="btn dark">Download</a>
+      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
+      <a href="faq/" class="btn dark">FAQ</a>
+      <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
+    </nav>
+  </header>
 
-
-  <!-- Boczne menu (wysuwane) -->
+  <!-- MENU WYSUWANE -->
   <nav class="sidemenu" id="sidemenu">
     <a href="#home" onclick="toggleMenu()">🏠 Home</a>
     <a href="download/" onclick="toggleMenu()">📥 Download</a>
     <a href="https://discord.gg/t2sGsddB" onclick="toggleMenu()" target="_blank">💬 Discord</a>
     <a href="faq/" onclick="toggleMenu()">❓ FAQ</a>
-    <button class="premium" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</button>
+    <button class="premium-btn" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</button>
   </nav>
 
+  <!-- TWOJA RESZTA STRONY - BEZ ZMIAN -->
   <section id="home" class="promo-section">
     <div class="promo-left">
       <h2>Videos from our creators</h2>
@@ -101,6 +61,7 @@
     </div>
   </section>
 
+  <!-- MODAL PREMIUM -->
   <div id="donate-modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -111,25 +72,23 @@
     </div>
   </div>
 
-  <!-- Twój script.js + hamburger JS -->
+  <!-- TWOJE SCRIPTY -->
   <script src="script.js"></script>
+  
+  <!-- HAMBURGER JS -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sidemenu');
-      const hamburger = document.querySelector('.hamburger');
-      const body = document.body;
-      menu.classList.toggle('active');
-      hamburger.classList.toggle('open');
-      body.classList.toggle('menu-open');
+  function toggleMenu() {
+    document.getElementById('sidemenu').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('open');
+  }
+  // Zamknij menu klik poza
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('sidemenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      toggleMenu();
     }
-    // Zamknij menu po kliknięciu poza nim
-    document.addEventListener('click', function(e) {
-      const menu = document.getElementById('sidemenu');
-      const hamburger = document.querySelector('.hamburger');
-      if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-        toggleMenu();
-      }
-    });
+  });
   </script>
 </body>
 </html>
