@@ -60,15 +60,16 @@
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Desktop nawigacja -->
-    <nav class="desktop-nav">
-      <a href="#home" class="btn dark">Home</a>
-      <a href="download/" class="btn dark">Download</a>
-      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-      <a href="faq/" class="btn dark">FAQ</a>
-      <button class="btn donate" onclick="openDonateModal()">PREMIUM</button>
-    </nav>
-  </header>
+  
+  <!-- Zmień nav class na: -->
+<nav class="sidemenu" id="sidemenu">
+  <a href="#home" onclick="toggleMenu()">🏠 Home</a>
+  <a href="download/" onclick="toggleMenu()">📥 Download</a>
+  <a href="https://discord.gg/t2sGsddB" onclick="toggleMenu()">💬 Discord</a>
+  <a href="faq/" onclick="toggleMenu()">❓ FAQ</a>
+  <a href="#" class="premium" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</a>
+</nav>
+
 
   <!-- Boczne menu (wysuwane) -->
   <nav class="sidemenu" id="sidemenu">
