@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <title>Fridge Macros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- TWOJA CZĘŚĆ -->
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* HAMBURGER CSS - TUTAJ BEZPOŚREDNIO */
+    .hamburger{display:none;position:fixed;top:20px;right:20px;z-index:1000;width:45px;height:45px;background:rgba(90,75,255,0.95);border:none;border-radius:12px;cursor:pointer;flex-direction:column;justify-content:center;gap:4px;padding:8px;box-shadow:0 8px 25px rgba(0,0,0,0.4);}.hamburger span{height:4px;width:25px;background:#fff !important;border-radius:2px;transition:all .3s;margin:0 auto;}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(8px,8px) !important;}.hamburger.open span:nth-child(2){opacity:0 !important;}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px) !important;}.sidemenu{position:fixed !important;top:0 !important;right:-350px !important;width:350px !important;height:100vh !important;background:linear-gradient(135deg,#5a4bff,#1b48ff,#63b3ff) !important;z-index:9999 !important;padding:90px 25px 25px !important;transition:right .4s cubic-bezier(.25,.46,.45,.94) !important;box-shadow:-20px 0 50px rgba(0,0,0,.6) !important;overflow-y:auto;}.sidemenu.active{right:0 !important;}.sidemenu a,.sidemenu button{display:block !important;width:100% !important;padding:20px !important;color:#fff !important;text-decoration:none !important;font-size:18px !important;border-bottom:1px solid rgba(255,255,255,.1) !important;margin-bottom:5px !important;background:rgba(255,255,255,.05) !important;border-radius:10px !important;transition:all .2s !important;}.sidemenu a:hover,.sidemenu button:hover{transform:translateX(10px) !important;background:rgba(255,255,255,.15) !important;}.sidemenu .premium-btn{background:linear-gradient(135deg,#facc15,#f97316) !important;color:#111 !important;font-weight:700 !important;border:2px solid #fbbf24 !important;margin-top:20px !important;}.desktop-nav{display:flex !important;gap:14px;}body.menu-open{overflow:hidden;}@media(max-width:900px){.hamburger{display:flex !important;}.desktop-nav{display:none !important;}.logo{margin-left:20px !important;}}
+  </style>
 </head>
 <body>
-  <!-- HEADER Z HAMBURGEREM -->
   <header class="top-bar">
     <div class="logo">
       <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
       <span>Fridge Macros</span>
     </div>
 
-    <!-- HAMBURGER - TYLKO MOBILE -->
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- DESKTOP NAV -->
     <nav class="desktop-nav">
       <a href="#home" class="btn dark">Home</a>
       <a href="download/" class="btn dark">Download</a>
@@ -30,7 +30,6 @@
     </nav>
   </header>
 
-  <!-- MENU WYSUWANE -->
   <nav class="sidemenu" id="sidemenu">
     <a href="#home" onclick="toggleMenu()">🏠 Home</a>
     <a href="download/" onclick="toggleMenu()">📥 Download</a>
@@ -39,7 +38,6 @@
     <button class="premium-btn" onclick="openDonateModal(); toggleMenu()">⭐ PREMIUM</button>
   </nav>
 
-  <!-- TWOJA RESZTA STRONY - BEZ ZMIAN -->
   <section id="home" class="promo-section">
     <div class="promo-left">
       <h2>Videos from our creators</h2>
@@ -61,7 +59,6 @@
     </div>
   </section>
 
-  <!-- MODAL PREMIUM -->
   <div id="donate-modal" class="modal hidden">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -72,23 +69,18 @@
     </div>
   </div>
 
-  <!-- TWOJE SCRIPTY -->
   <script src="script.js"></script>
-  
-  <!-- HAMBURGER JS -->
   <script>
-  function toggleMenu() {
+  function toggleMenu(){
     document.getElementById('sidemenu').classList.toggle('active');
     document.querySelector('.hamburger').classList.toggle('open');
+    document.body.classList.toggle('menu-open');
   }
-  // Zamknij menu klik poza
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('sidemenu');
-    const hamburger = document.querySelector('.hamburger');
-    if (menu.classList.contains('active') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-      toggleMenu();
-    }
+  document.addEventListener('click',e=>{
+    const m=document.getElementById('sidemenu'),h=document.querySelector('.hamburger');
+    if(m.classList.contains('active')&&!m.contains(e.target)&&!h.contains(e.target))toggleMenu();
   });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu();});
   </script>
 </body>
 </html>
