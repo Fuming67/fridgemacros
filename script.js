@@ -167,3 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 </script>
+function toggleMenu() {
+  const menu = document.querySelector('.sidemenu');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.toggle('active');
+  hamburger.classList.toggle('open'); // Opcjonalnie animuj kreski
+}
