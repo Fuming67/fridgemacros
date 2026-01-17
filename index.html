@@ -7,10 +7,99 @@
   <link rel="stylesheet" href="style.css" />
   
   <style>
-    /* Modal Premium */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 9998; display: none; }
-    .modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0c1018; padding: 40px; border-radius: 24px; width: 90%; max-width: 600px; z-index: 9999; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.8); text-align: center; display: none; }
-    .modal.active .modal-overlay, .modal.active .modal-content { display: block; }
+    /* === KRYTYCZNA NAPRAWA KLIKANIA === */
+    /* Ta klasa musi mieć !important, żeby na pewno chowała overlay */
+    .hidden {
+      display: none !important;
+      pointer-events: none !important;
+    }
+
+    /* === STYL MODALA (Support Development) === */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      display: flex; /* Centrowanie */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      position: relative;
+      background: #0c1018; /* Ciemne tło jak na screenie */
+      width: 90%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10001;
+    }
+
+    /* Karta w modalu */
+    .premium-card-container {
+      background: #050c28;
+      border: 1px solid rgba(60, 80, 180, 0.5);
+      border-radius: 20px;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ff5bb5, #bc4bff);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      margin-right: 20px;
+    }
+
+    .buy-btn {
+      background: linear-gradient(90deg, #ff7eb3, #ff758c);
+      padding: 10px 25px;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+    }
+
+    /* === STYL TUTORIAL PANELU (DÓŁ LEWO) === */
+    .tutorial-panel {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 300px;
+      background: rgba(59, 130, 246, 0.95);
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      z-index: 9000;
+      /* Domyślnie pokazujemy nagłówek, treść ukryta JS-em */
+    }
   </style>
 </head>
 <body>
@@ -23,80 +112,118 @@
     </div>
 
     <nav>
+      <!-- Kliknięcie Home odświeża/wraca -->
       <a href="#" class="btn dark" onclick="location.reload()">Home</a>
       <a href="download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="faq/" class="btn dark">FAQ</a>
       
       <!-- PRZYCISK PREMIUM -->
-      <button class="btn donate" onclick="openPremiumModal()">PREMIUM</button>
+      <button class="btn donate" onclick="openModal()">PREMIUM</button>
     </nav>
   </header>
 
-  <!-- STRONA GŁÓWNA -->
-  <div id="home-page">
-    <section class="promo-section">
-      <div class="promo-left">
-        <h2>Videos from our creators</h2>
-        <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
+  <!-- TREŚĆ GŁÓWNA (WIDEO) -->
+  <section class="promo-section">
+    <div class="promo-left">
+      <h2>Videos from our creators</h2>
+      <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
+    </div>
+
+    <div class="promo-right">
+      <div class="video-item">
+        <iframe
+          id="promo-video"
+          src="https://www.youtube.com/embed/E2lpnrLXEPs"
+          title="Promo video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
 
-      <div class="promo-right">
-        <div class="video-item">
-          <iframe
-            id="promo-video"
-            src="https://www.youtube.com/embed/E2lpnrLXEPs"
-            title="Promo video"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <div class="video-controls">
-          <button class="btn dark" id="video-prev">◀</button>
-          <span id="video-indicator">1 / 2</span>
-          <button class="btn dark" id="video-next">▶</button>
-        </div>
+      <div class="video-controls">
+        <button class="btn dark" id="video-prev">◀</button>
+        <span id="video-indicator">1 / 2</span>
+        <button class="btn dark" id="video-next">▶</button>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <!-- MODAL PREMIUM (Popup) -->
-  <div id="premium-modal" class="modal">
-    <div class="modal-overlay" onclick="closePremiumModal()"></div>
+
+  <!-- MODAL PREMIUM (UKRYTY PRZEZ KLASĘ .hidden) -->
+  <div id="donate-modal" class="modal hidden">
+    <!-- Overlay zamyka modal po kliknięciu -->
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    
     <div class="modal-content">
-      <h2 style="color:#ffec8a; margin-bottom:10px;">💎 Premium Macros</h2>
-      <p style="color:#c7cffc; margin-bottom:30px;">Wybierz makro i kup gamepass.</p>
-      
-      <!-- KARTA UTD -->
-      <div class="card gold" style="background: #050c28; border: 1px solid rgba(120, 160, 255, 0.3); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; text-align: left;">
-        <div style="display:flex; align-items:center; gap:15px;">
-          <div style="font-size:30px;">💎</div>
+      <!-- Tytuł -->
+      <h2 style="color:#ffec8a; font-size: 32px; margin-bottom: 5px;">Support Development</h2>
+      <p style="color:#c7cffc; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+
+      <!-- KARTA UTD (jak na Twoim zdjęciu) -->
+      <div class="premium-card-container">
+        <div style="display: flex; align-items: center;">
+          <div class="icon-circle">F</div>
           <div>
-            <div style="font-weight:bold; color:white;">UTD Donater</div>
-            <div style="font-size:12px; color:#aab2ff;">Universal Tower Defense Premium Macro</div>
-            <div style="font-size:11px; color:#8890ff;">Ragna Stage, Multi mode, updates</div>
+            <h3 style="margin: 0; color: white; font-size: 18px;">UTD Donater</h3>
+            <p style="margin: 5px 0 0; color: #aab2ff; font-size: 14px;">Universal Tower Defense Premium Macro</p>
+            <p style="margin: 2px 0 0; color: #8890ff; font-size: 12px; opacity: 0.7;">Added Ragna Stage, Added Multi mode, fixed ALL BUGS, early updates.</p>
           </div>
         </div>
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="btn donate" style="padding: 8px 16px; font-size: 14px;">120 R$</a>
+        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
       </div>
-
-      <button onclick="closePremiumModal()" style="margin-top:20px; background:none; border:none; color:#888; cursor:pointer; text-decoration:underline;">Zamknij</button>
     </div>
   </div>
 
+
+  <!-- TUTORIAL PANEL (DÓŁ LEWO) -->
+  <div class="tutorial-panel">
+    <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin: 0;">
+      📥 Tutorial how to download macro
+      <span id="arrow" style="font-size: 12px;">▼</span>
+    </h4>
+    
+    <div id="tutorial-content" style="display: none; margin-top: 15px;">
+      <ol style="padding-left: 20px; margin-bottom: 10px;">
+        <li>Click premium and choose which premium macro you want to have</li>
+        <li>Buy the gamepass</li>
+        <li>Go to our discord and type <code>/verify</code> in bot-command</li>
+        <li>Go to premium channel and download it!</li>
+      </ol>
+      <p style="font-size:12px; opacity:0.8; margin: 0;">⚠️ Verified bot only</p>
+    </div>
+  </div>
+
+
+  <!-- SKRYPTY -->
   <script>
-    // === OBSŁUGA MODALA PREMIUM ===
-    function openPremiumModal() {
-      document.getElementById('premium-modal').classList.add('active');
+    // === 1. MODAL (NAPRAWA KLIKANIA) ===
+    function openModal() {
+      const modal = document.getElementById('donate-modal');
+      modal.classList.remove('hidden'); // Usuwa display:none i pointer-events:none
     }
 
-    function closePremiumModal() {
-      document.getElementById('premium-modal').classList.remove('active');
+    function closeModal() {
+      const modal = document.getElementById('donate-modal');
+      modal.classList.add('hidden'); // Przywraca blokadę i ukrywa
     }
 
-    // === OBSŁUGA VIDEO ===
+    // === 2. TUTORIAL PANEL ===
+    function toggleTutorial() {
+      const content = document.getElementById("tutorial-content");
+      const arrow = document.getElementById("arrow");
+      
+      if (content.style.display === "none") {
+        content.style.display = "block";
+        arrow.textContent = "▲";
+      } else {
+        content.style.display = "none";
+        arrow.textContent = "▼";
+      }
+    }
+
+    // === 3. VIDEO SLIDER ===
     const videos = [
       "https://www.youtube.com/embed/E2lpnrLXEPs",
       "https://www.youtube.com/embed/0ZwnZ-T3inY"
@@ -104,15 +231,19 @@
     let currentVideo = 0;
     const iframe = document.getElementById('promo-video');
     const indicator = document.getElementById('video-indicator');
+    const prevBtn = document.getElementById('video-prev');
+    const nextBtn = document.getElementById('video-next');
 
-    document.getElementById('video-next').onclick = () => {
-      currentVideo = (currentVideo + 1) % videos.length;
-      updateVideo();
-    };
-    document.getElementById('video-prev').onclick = () => {
-      currentVideo = (currentVideo - 1 + videos.length) % videos.length;
-      updateVideo();
-    };
+    if(prevBtn && nextBtn) {
+      prevBtn.onclick = () => {
+        currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+        updateVideo();
+      };
+      nextBtn.onclick = () => {
+        currentVideo = (currentVideo + 1) % videos.length;
+        updateVideo();
+      };
+    }
 
     function updateVideo() {
       iframe.src = videos[currentVideo];
@@ -121,4 +252,3 @@
   </script>
 </body>
 </html>
-
