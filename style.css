@@ -8,7 +8,6 @@
   font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* TŁO STRONY */
 /* TŁO STRONY – JEDEN GRADIENT DLA WSZYSTKICH PODSTRON */
 html,
 body {
@@ -34,13 +33,11 @@ body {
   gap: 10px;
   font-weight: 700;
   font-size: 20px;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #ffb6ff;
   margin-left: 80px;
 }
 
 /* HEADER / TOP BAR */
-/* Górny pasek */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -49,7 +46,7 @@ body {
   background: transparent;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100; /* Wysoki index dla menu */
   backdrop-filter: blur(12px);
 }
 
@@ -69,12 +66,6 @@ body {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.top-bar nav.desktop-nav {
-  display: flex;
-  gap: 14px;
-  margin-right: 120px;
-}
-
 nav a {
   margin-left: 10px;
   text-decoration: none;
@@ -82,7 +73,6 @@ nav a {
   font-size: 14px;
 }
 
-/* BUTTONS */
 /* PRZYCISKI */
 .btn {
   padding: 12px 30px;
@@ -107,8 +97,6 @@ nav a {
 }
 
 /* HERO */
-.hero { text-align: center; padding: 80px 20px 40px; }
-/* Hero */
 .hero {
   text-align: center;
   padding: 80px 20px 40px;
@@ -122,10 +110,7 @@ nav a {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
-.hero-stats { display: flex; justify-content: center; gap: 60px; margin-top: 30px; }
-.hero-stats span { font-size: 26px; color: #ffec8a; }
 
-/* SEKCJA SUPPORT */
 .hero-stats {
   display: flex;
   justify-content: center;
@@ -138,7 +123,7 @@ nav a {
   color: #ffec8a;
 }
 
-/* SEKCJA SUPPORT – DUŻY PANEL */
+/* SEKCJA SUPPORT */
 .support {
   max-width: 900px;
   margin: 0 auto 80px;
@@ -147,11 +132,7 @@ nav a {
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(3, 6, 23, 0.8);
 }
-.support h2 { font-size: 30px; color: #ffec8a; margin-bottom: 6px; }
-.support p { color: #c7cffc; margin-bottom: 22px; }
 
-/* KARTY */
-.cards { display: flex; flex-direction: column; gap: 16px; }
 .support h2 {
   font-size: 30px;
   color: #ffec8a;
@@ -163,7 +144,7 @@ nav a {
   margin-bottom: 22px;
 }
 
-/* Karty w środku */
+/* KARTY */
 .cards {
   display: flex;
   flex-direction: column;
@@ -171,9 +152,6 @@ nav a {
 }
 
 .card {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 26px; border-radius: 20px; background: rgba(5, 12, 40, 0.95);
-  border: 1px solid rgba(120, 160, 255, 0.7); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -189,16 +167,12 @@ nav a {
   align-items: center;
   gap: 16px;
 }
-.card.left { display: flex; align-items: center; gap: 16px; }
 
 .icon-box {
-  width: 52px; height: 52px; border-radius: 18px;
   width: 52px;
   height: 52px;
   border-radius: 18px;
   background: radial-gradient(circle at 30% 20%, #ff5bb5, #6b00ff);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,9 +188,6 @@ nav a {
   font-size: 13px;
   color: #aab2ff;
 }
-.card-title { font-weight: 600; }
-.card-sub { font-size: 13px; color: #aab2ff; }
-.card-details { font-size: 12px; color: #9ea8ff; margin-top: 3px; opacity: 0.9; }
 
 .card-details {
   font-size: 12px;
@@ -226,18 +197,15 @@ nav a {
 }
 
 .card-price {
-  font-weight: 600; color: #ffffff;
   font-weight: 600;
   color: #ffffff;
   background: linear-gradient(135deg, #ff5bb5, #bc4bff);
-  padding: 6px 14px; border-radius: 999px;
   padding: 6px 14px;
   border-radius: 999px;
 }
 
-/* Złota karta */
+/* ZŁOTA KARTA */
 .card.gold {
-  background: radial-gradient(circle at 15% 15%, #ffec85, #2d2105 70%); border-color: #ffdd55;
   background: radial-gradient(circle at 15% 15%, #ffec85, #2d2105 70%);
   border-color: #ffdd55;
 }
@@ -246,7 +214,7 @@ nav a {
   background: radial-gradient(circle at 30% 20%, #ffe45e, #c08702);
 }
 
-/* STARE FAQ (JEŚLI UŻYWASZ gdzieś na index) */
+/* STARE FAQ */
 .faq {
   max-width: 900px;
   margin: 0 auto 60px;
@@ -261,17 +229,13 @@ nav a {
   color: #ffec8a;
   margin-bottom: 10px;
 }
-.card.gold .icon-box { background: radial-gradient(circle at 30% 20%, #ffe45e, #c08702); }
 
 /* SEKCJA MACROS */
-/* SEKCJA MACROS – PANEL Z MAKRAMI */
 .macros {
-  max-width: 900px; margin: 40px auto; padding: 24px 20px 40px;
   max-width: 900px;
   margin: 40px auto;
   padding: 24px 20px 40px;
   background: linear-gradient(135deg, #4b3bff, #0b1530);
-  border-radius: 24px; box-shadow: 0 24px 60px rgba(3, 6, 23, 0.8);
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(3, 6, 23, 0.8);
 }
@@ -293,7 +257,6 @@ nav a {
 }
 
 .macro-group {
-  background: rgba(4, 10, 40, 0.9); border-radius: 16px; padding: 14px 18px;
   background: rgba(4, 10, 40, 0.9);
   border-radius: 16px;
   padding: 14px 18px;
@@ -306,8 +269,6 @@ nav a {
 }
 
 .macro-group a {
-  display: inline-block; margin-right: 10px; margin-bottom: 6px; padding: 6px 12px;
-  border-radius: 999px; background: #1f2438; color: #fff; font-size: 13px; text-decoration: none;
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 6px;
@@ -322,82 +283,6 @@ nav a {
 .macro-group a:hover {
   background: #2b3352;
 }
-.macro-group a:hover { background: #2b3352; }
-
-/* MODAL */
-.modal.hidden { display: none; }
-.modal { position: fixed; inset: 0; z-index: 10000; }
-.modal-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); }
-.modal.hidden {
-  display: none;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-}
-
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal-content {
-  position: relative; max-width: 900px; margin: 5vh auto; padding: 30px;
-  border-radius: 24px; background: #0c1018; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-  position: relative;
-  max-width: 900px;
-  margin: 5vh auto;
-  padding: 30px 30px 40px;
-  border-radius: 24px;
-  background: #0c1018;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-}
-
-/* SEKCJA WIDEO */
-/* Pływający przycisk Donate */
-.floating-donate {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  padding: 16px 26px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #ff5bb5, #bc4bff);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-.floating-donate:hover {
-  transform: translateY(-2px);
-}
-
-/* Nagłówki */
-h1, h2, h3 {
-  color: #ffec8a;
-}
-
-/* Responsywność ogólna */
-@media (max-width: 600px) {
-  .hero-stats {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .card-price {
-    align-self: flex-end;
-  }
-}
 
 .macro-features {
   margin-top: 4px;
@@ -407,11 +292,35 @@ h1, h2, h3 {
   opacity: 0.9;
 }
 
-/* SEKCJA Z WIDEO NA STRONIE GŁÓWNEJ – ORYGINALNY BOX */
+/* MODAL */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  max-width: 900px;
+  margin: 5vh auto;
+  padding: 30px;
+  border-radius: 24px;
+  background: #0c1018;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* PROMO SEKCJA (WIDEO NA GŁÓWNEJ) */
 .promo-section {
-  max-width: 1100px; margin: 20px 0 80px 16px; padding: 24px;
-  background: #0c1018; border-radius: 24px; box-shadow: 0 24px 60px rgba(3, 6, 23, 0.8);
-  display: flex; gap: 24px;
   max-width: 1100px;
   margin: 20px 0 80px 16px;
   padding: 24px 24px 32px;
@@ -451,20 +360,14 @@ h1, h2, h3 {
   align-items: center;
   gap: 10px;
 }
-.promo-right { flex: 1.4; display: flex; flex-direction: column; gap: 16px; }
-.promo-right iframe { width: 100%; height: 260px; border-radius: 16px; }
-.video-controls { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
 
-/* FAQ */
 .video-controls #video-indicator {
   color: #c7cffc;
   font-size: 14px;
 }
 
-/* FAQ PAGE – KARTY Z WIDEO/VIDEO TAG */
+/* FAQ PAGE - SEKCJA FAQ */
 .faq-section {
-  max-width: 1100px; margin: 60px auto 80px; padding: 40px 30px;
-  border-radius: 24px; background: rgba(4, 10, 40, 0.3);
   max-width: 1100px;
   margin: 60px auto 80px;
   padding: 40px 30px 60px;
@@ -480,7 +383,6 @@ h1, h2, h3 {
   color: #ff9933;
   margin-bottom: 6px;
 }
-.faq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 .faq-subtitle {
   text-align: center;
@@ -495,7 +397,118 @@ h1, h2, h3 {
 }
 
 .faq-card {
-  background: #0b0f1c; border-radius: 22px; padding: 22px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.06);
+  background: #0b0f1c;
+  border-radius: 22px;
+  padding: 22px 20px 24px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.faq-card h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.faq-card p {
+  font-size: 14px;
+  color: #cbd5f5;
+  margin-bottom: 14px;
+}
+
+.faq-video iframe,
+.faq-video video {
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .card-price {
+    align-self: flex-end;
+  }
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .promo-section {
+    flex-direction: column;
+  }
+}
+
+/* ========================================= */
+/* TUTORIAL PANEL - NOWY DODATEK */
+/* ========================================= */
+.tutorial-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 280px;
+  height: 400px;
+  background: rgba(59, 130, 246, 0.98);
+  color: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  overflow-y: auto;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+}
+
+.tutorial-panel h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffec8a;
+}
+
+.tutorial-panel ol {
+  margin-left: 20px;
+  padding-left: 0;
+  margin-bottom: 12px;
+}
+
+.tutorial-panel li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.tutorial-panel code {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Scrollbar dla tutorial panel */
+.tutorial-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tutorial-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tutorial-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
 }
 
