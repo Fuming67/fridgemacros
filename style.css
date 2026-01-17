@@ -454,61 +454,47 @@ nav a {
 /* ========================================= */
 /* TUTORIAL PANEL - NOWY DODATEK */
 /* ========================================= */
+/* USUWAMY fixed i height */
 .tutorial-panel {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  width: 280px;
-  height: 400px;
+  margin-top: 40px;       /* Odstęp od reszty strony */
+  margin-left: 20px;      /* Odstęp od lewej */
+  margin-bottom: 40px;    /* Odstęp od dołu strony */
+  width: 300px;           /* Szerokość panelu */
   background: rgba(59, 130, 246, 0.98);
   color: white;
-  padding: 24px;
-  border-radius: 20px;
+  padding: 30px;
+  border-radius: 24px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-  overflow-y: auto;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(15px);
+  
+  /* Brak scrolla wewnątrz - panel rozciągnie się tyle ile trzeba */
+  height: auto; 
+  overflow: visible; 
 }
 
 .tutorial-panel h4 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: #ffec8a;
 }
 
 .tutorial-panel ol {
   margin-left: 20px;
   padding-left: 0;
-  margin-bottom: 12px;
 }
 
 .tutorial-panel li {
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .tutorial-panel code {
   background: rgba(0, 0, 0, 0.4);
   padding: 4px 8px;
   border-radius: 6px;
-  font-size: 15px;
 }
 
-/* Scrollbar dla tutorial panel */
-.tutorial-panel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.tutorial-panel::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.tutorial-panel::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 3px;
-}
 
