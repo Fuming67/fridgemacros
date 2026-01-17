@@ -275,4 +275,31 @@ window.addEventListener('popstate', (e) => {
     if (premPage) premPage.style.display = 'none';
   }
 });
+// === FIX DLA DYNAMICZNIE TWORZONYCH PRZYCISKÓW ===
+function attachPremiumListeners() {
+  // Znajdź WSZYSTKIE linki Premium na stronie (nawet dynamicznie stworzone)
+  const allPremiumLinks = document.querySelectorAll('a[href*="premium"], a[href="#premium"], nav a, .top-bar a');
+  
+  allPremiumLinks.forEach(link => {
+    // Sprawdź czy tekst zawiera "Premium" (case insensitive)
+    if (link.textContent.toLowerCase().includes('premium') || 
+        link.textContent.toLowerCase().includes('prem')) {
+      
+      // Usuń stare event listenery
+      link.onclick = null;
+      
+      // Dodaj nowy
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPremiumPage();
+      });
+    }
+  });
+}
+
+// === URUCHOM DLA DYNAMICZNYCH ZMIAN ===
+setInterval(attachPremiumListeners, 500); // Co pół sekundy sprawdza nowe przyciski
+
+// + Uruchom od razu
+attachPremiumListeners();
 
