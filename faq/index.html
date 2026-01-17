@@ -1,128 +1,146 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fridge Macros – FAQ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
-  
-  <style>
-    /* STYL MODALA PREMIUM (Identyczny jak na Home) */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 9998; display: none; }
-    .modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0c1018; padding: 40px; border-radius: 24px; width: 90%; max-width: 600px; z-index: 9999; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.8); text-align: center; display: none; }
-    .modal.active .modal-overlay, .modal.active .modal-content { display: block; }
-    
-    /* Karta Premium w modalu */
-    .premium-card-container { background: #050c28; border: 1px solid rgba(60, 80, 180, 0.5); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-top: 20px; text-align: left; }
-    .icon-circle { width: 50px; height: 50px; background: linear-gradient(135deg, #ff5bb5, #bc4bff); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; margin-right: 15px; }
-    .buy-btn { background: linear-gradient(90deg, #ff7eb3, #ff758c); padding: 8px 20px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; }
-  </style>
+<meta charset="UTF-8" />
+<title>Fridge Macros – FAQ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PEŁNY LINK DO STYLI -->
+<link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
+
+<!-- TYLKO STYLE MODALA (bez psucia FAQ) -->
+<style>
+  /* MODAL PREMIUM - TYLKO TO -->
+  .premium-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: none; justify-content: center; align-items: center; }
+  .premium-modal.active { display: flex !important; }
+  .premium-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+  .premium-content { position: relative; background: #0c1018; width: 90%; max-width: 600px; padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.8); z-index: 10001; text-align: center; }
+  .premium-card-container { background: #050c28; border: 1px solid rgba(60,80,180,0.5); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-top: 20px; text-align: left; }
+  .icon-circle { width: 50px; height: 50px; background: linear-gradient(135deg, #ff5bb5, #bc4bff); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; margin-right: 15px; }
+  .buy-btn { background: linear-gradient(90deg, #ff7eb3, #ff758c); padding: 8px 20px; border-radius: 50px; color: white; text-decoration: none; font-weight: bold; }
+</style>
 </head>
 <body>
-  <header class="top-bar">
-    <div class="logo">
-      <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
-      <span>Fridge Macros</span>
-    </div>
+<header class="top-bar">
+<div class="logo">
+<img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
+<span>Fridge Macros</span>
+</div>
 
-    <nav>
-      <a href="https://fuming67.github.io/fridgemacros/#home" class="btn dark">Home</a>
-      <a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
-      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-      <a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
-      
-      <!-- PRZYCISK PREMIUM - OTWIERA MODAL -->
-      <button class="btn donate" onclick="document.getElementById('premium-modal').classList.add('active')">PREMIUM</button>
-    </nav>
-  </header>
+<nav>
+<a href="https://fuming67.github.io/fridgemacros/#home" class="btn dark">Home</a>
+<a href="https://fuming67.github.io/fridgemacros/download/" class="btn dark">Download</a>
+<a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
+<a href="https://fuming67.github.io/fridgemacros/faq/" class="btn dark">FAQ</a>
 
-  <main>
-    <section class="faq-section">
-      <h2 class="faq-title">Frequently Asked Questions</h2>
-      <div class="faq-grid">
-        <article class="faq-card">
-          <h3>Macro Basics</h3>
-          <p>Tutorial how to use macro.</p>
-          <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/vWi8Ut3GibE" title="Macro Basics" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </article>
-        <article class="faq-card">
-          <h3>Discord Webhooks</h3>
-          <p>Tutorial how to set up your webhook.</p>
-          <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/IvgKNTmnGJc" title="Discord Webhooks" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </article>
-        <article class="faq-card">
-          <h3>Import Configs</h3>
-          <p>Tutorial how to use someone's config.</p>
-          <div class="faq-video">
-            <iframe src="https://www.youtube.com/embed/I1jWsyO6WEA" title="Import Configs" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+<!-- PRZYCISK PREMIUM - PROSTY INLINE ONCLICK -->
+<button class="btn donate" onclick="openPremiumModal()">PREMIUM</button>
+</nav>
+</header>
 
-  <!-- MODAL PREMIUM (Taki sam jak na Home) -->
-  <div id="premium-modal" class="modal">
-    <div class="modal-overlay" onclick="document.getElementById('premium-modal').classList.remove('active')"></div>
-    <div class="modal-content">
-      <h2 style="color:#ffec8a; margin-bottom:10px;">💎 Premium Macros</h2>
-      <p style="color:#c7cffc; margin-bottom:30px;">Wybierz makro i kup gamepass.</p>
-      
-      <!-- Karta UTD -->
-      <div class="premium-card-container">
-        <div style="display:flex; align-items:center;">
-          <div class="icon-circle">F</div>
-          <div>
-            <div style="font-weight:bold; color:white;">UTD Donater</div>
-            <div style="font-size:12px; color:#aab2ff;">Universal Tower Defense Premium Macro</div>
-            <div style="font-size:11px; color:#8890ff;">Ragna Stage, Multi mode, updates</div>
-          </div>
-        </div>
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 R$</a>
-      </div>
-      <button onclick="document.getElementById('premium-modal').classList.remove('active')" style="margin-top:20px; background:none; border:none; color:#888; cursor:pointer; text-decoration:underline;">Zamknij</button>
-    </div>
-  </div>
+<main>
+<section class="faq-section">
+<h2 class="faq-title">Frequently Asked Questions</h2>
 
-  <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
+<div class="faq-grid">
+<article class="faq-card">
+<h3>Macro Basics</h3>
+<p>Tutorial how to use macro.</p>
+<div class="faq-video">
+<iframe src="https://www.youtube.com/embed/vWi8Ut3GibE" title="Macro Basics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</article>
 
-  <!-- TUTORIAL PANEL -->
-  <div class="tutorial-panel">
-    <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
-      📥 Tutorial how to download macro
-      <span id="arrow" style="font-size: 14px; transition: 0.3s;">▼</span>
-    </h4>
-    <div id="tutorial-content" style="display: none; margin-top: 15px;">
-      <ol>
-        <li>Click premium and choose which premium macro you want to have</li>
-        <li>Buy the gamepass</li>
-        <li>Go to our discord and type <code>/verify</code> in bot-command</li>
-        <li>Go to premium channel and download it!</li>
-        <li>Extract ZIP file</li>
-        <li>Run .exe file</li>
-        <li>Enable with F1 key</li>
-      </ol>
-      <p style="font-size:14px;margin-top:20px;opacity:0.9;">⚠️ Use verified Discord bot</p>
-    </div>
-  </div>
+<article class="faq-card">
+<h3>Discord Webhooks</h3>
+<p>Tutorial how to set up your webhook.</p>
+<div class="faq-video">
+<iframe src="https://www.youtube.com/embed/IvgKNTmnGJc" title="Discord Webhooks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</article>
 
-  <script>
-  function toggleTutorial() {
-    var content = document.getElementById("tutorial-content");
-    var arrow = document.getElementById("arrow");
-    if (content.style.display === "none") {
-      content.style.display = "block";
-      arrow.style.transform = "rotate(180deg)";
-    } else {
-      content.style.display = "none";
-      arrow.style.transform = "rotate(0deg)";
-    }
+<article class="faq-card">
+<h3>Import Configs</h3>
+<p>Tutorial how to use someone's config.</p>
+<div class="faq-video">
+<iframe src="https://www.youtube.com/embed/I1jWsyO6WEA" title="Import Configs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</article>
+</div>
+</section>
+</main>
+
+<!-- MODAL PREMIUM (Taki sam jak na Home) -->
+<div id="premium-modal" class="premium-modal">
+<div class="premium-overlay" onclick="closePremiumModal()"></div>
+<div class="premium-content">
+<h2 style="color:#ffec8a; margin-bottom:10px;">Support Development</h2>
+<p style="color:#c7cffc; margin-bottom:30px;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+
+<div class="premium-card-container">
+<div style="display:flex; align-items:center;">
+<div class="icon-circle">F</div>
+<div>
+<div style="font-weight:bold; color:white; margin-bottom:3px;">UTD Donater</div>
+<div style="font-size:12px; color:#aab2ff; margin-bottom:2px;">Universal Tower Defense Premium Macro</div>
+<div style="font-size:11px; color:#8890ff;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
+</div>
+</div>
+<a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
+</div>
+
+<button onclick="closePremiumModal()" style="margin-top:20px; background:none; border:1px solid #444; color:#ccc; padding:10px 20px; border-radius:8px; cursor:pointer;">Zamknij</button>
+</div>
+</div>
+
+<!-- PEŁNY LINK DO SKRYPTU (jak miałeś) -->
+<script src="https://fuming67.github.io/fridgemacros/script.js"></script>
+
+<!-- TUTORIAL PANEL (jak miałeś) -->
+<div class="tutorial-panel">
+<h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+📥 Tutorial how to download macro
+<span id="arrow" style="font-size: 14px; transition: 0.3s;">▼</span>
+</h4>
+<div id="tutorial-content" style="display: none; margin-top: 15px;">
+<ol>
+<li>Click premium and choose which premium macro you want to have</li>
+<li>Buy the gamepass</li>
+<li>Go to our discord and type <code>/verify</code> in bot-command</li>
+<li>Go to premium channel and download it!</li>
+<li>Extract ZIP file</li>
+<li>Run .exe file</li>
+<li>Enable with F1 key</li>
+</ol>
+<p style="font-size:14px;margin-top:20px;opacity:0.9;">
+⚠️ Use verified Discord bot
+</p>
+</div>
+</div>
+
+<!-- SKRYPTY MODALA + TUTORIAL (proste, działają zawsze) -->
+<script>
+function openPremiumModal() {
+  document.getElementById('premium-modal').classList.add('active');
+}
+
+function closePremiumModal() {
+  document.getElementById('premium-modal').classList.remove('active');
+}
+
+// TUTORIAL (jak miałeś)
+function toggleTutorial() {
+  var content = document.getElementById("tutorial-content");
+  var arrow = document.getElementById("arrow");
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  } else {
+    content.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
   }
-  </script>
+}
+</script>
+
 </body>
 </html>
