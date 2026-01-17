@@ -480,17 +480,6 @@ h1, h2, h3 {
   }
 }
 
-/* tekst po prawej - POMARAŃCZOWY GRADIENT */
-.hero-top-text {
-  position: absolute;
-  top: 110px;
-  right: 60px;
-  max-width: 550px;
-  text-align: right;
-  z-index: 20;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
 /* tytuł – POMARAŃCZOWY GRADIENT */
 .hero-top-text h3 {
   margin-bottom: 12px;
