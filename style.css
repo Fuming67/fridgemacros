@@ -502,3 +502,15 @@ nav a {
   padding: 3px 6px;
   border-radius: 6px;
 }
+
+/* odpowiada za scrolla */
+/* Ukrywa scrollbar dla Chrome, Safari i Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ukrywa scrollbar dla IE, Edge i Firefox */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
