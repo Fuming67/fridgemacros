@@ -7,82 +7,80 @@
 <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
 
 <style>
-/* STYLE MODALA - IDENTYCZNE JAK NA ZDJĘCIU */
+/* STYLE MODALA - POPRAWIONE NA 1:1 JAK NA SCREENIE */
 .premium-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: none; justify-content: center; align-items: center; }
 .premium-modal.active { display: flex !important; }
-.premium-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+.premium-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
 
-/* Główny kontener modala */
+/* Główny kontener - ciemny granat/czarny */
 .premium-content { 
   position: relative; 
-  background: #0f111a; /* Bardzo ciemny granat */
+  background: #0d1017; /* Bardzo ciemne tło */
   width: 90%; 
-  max-width: 650px; 
-  padding: 50px; 
-  border-radius: 30px; 
-  border: 1px solid rgba(255,255,255,0.08); 
-  box-shadow: 0 0 60px rgba(0,0,0,0.5); 
+  max-width: 600px; 
+  padding: 40px; 
+  border-radius: 20px; 
+  border: 1px solid #1f2235; /* Delikatna ramka */
+  box-shadow: 0 0 50px rgba(0,0,0,0.8); 
   z-index: 10001; 
   text-align: center; 
 }
 
-/* Wewnętrzna karta (ta z przyciskiem) */
+/* Wewnętrzna karta */
 .inner-card {
-  background: #080a14;
-  border: 1px solid rgba(60, 80, 200, 0.3);
-  border-radius: 20px;
-  padding: 25px 35px;
+  background: #080a10; /* Prawie czarne */
+  border: 1px solid #1e2235;
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 35px;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+  margin-top: 30px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.4);
 }
 
-/* Ikona F */
+/* Ikona F - gradient różowo-fioletowy */
 .icon-circle { 
-  width: 60px; 
-  height: 60px; 
-  background: linear-gradient(135deg, #ff7eb3, #a044ff); 
-  border-radius: 18px; 
+  width: 55px; 
+  height: 55px; 
+  background: linear-gradient(135deg, #ff85c0, #b37feb); 
+  border-radius: 16px; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  font-size: 26px; 
-  font-weight: 800; 
+  font-size: 24px; 
+  font-weight: 700; 
   color: white; 
-  margin-right: 20px; 
-  box-shadow: 0 0 20px rgba(255, 126, 179, 0.4);
+  margin-right: 15px; 
+  box-shadow: 0 0 20px rgba(255, 133, 192, 0.3);
 }
 
-/* Przycisk 120 Robux */
+/* Przycisk 120 Robux - intensywny róż */
 .buy-btn { 
-  background: linear-gradient(90deg, #ff4d8d, #ff2e63); 
-  padding: 12px 30px; 
+  background: linear-gradient(90deg, #ff4d88, #ff2e63); 
+  padding: 10px 25px; 
   border-radius: 50px; 
   color: white; 
   text-decoration: none; 
   font-weight: 700; 
-  font-size: 16px; 
-  box-shadow: 0 0 25px rgba(255, 46, 99, 0.5); /* Mocny różowy glow */
-  transition: transform 0.2s;
+  font-size: 15px; 
+  box-shadow: 0 0 20px rgba(255, 46, 99, 0.4);
 }
-.buy-btn:hover { transform: scale(1.05); }
 
 /* Przycisk Zamknij */
 .close-btn {
-  margin-top: 30px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #888;
-  padding: 14px 0;
-  border-radius: 12px;
+  margin-top: 25px;
+  background: #151823;
+  border: 1px solid #2a2d3d;
+  color: #777;
+  padding: 12px 0;
+  border-radius: 10px;
   cursor: pointer;
   width: 100%;
   font-size: 14px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
-.close-btn:hover { background: rgba(255,255,255,0.08); color: white; }
+.close-btn:hover { background: #1a1d29; color: #aaa; }
 </style>
 </head>
 <body>
@@ -105,7 +103,7 @@
 <section class="faq-section">
 <h2 class="faq-title">Frequently Asked Questions</h2>
 <div class="faq-grid">
-<!-- Twoje karty FAQ zostają bez zmian -->
+<!-- Karty FAQ bez zmian -->
 <article class="faq-card">
 <h3>Macro Basics</h3>
 <p>Tutorial how to use macro.</p>
@@ -125,23 +123,23 @@
 </section>
 </main>
 
-<!-- MODAL PREMIUM - IDENTYCZNY JAK NA ZDJĘCIU -->
+<!-- MODAL PREMIUM -->
 <div id="premium-modal" class="premium-modal">
 <div class="premium-overlay" onclick="closePremiumModal()"></div>
 <div class="premium-content">
+  <!-- Tytuł żółty -->
+  <h2 style="color:#ffeaa7; font-size: 28px; margin: 0 0 8px 0; font-weight: 700; text-shadow: 0 0 20px rgba(255,234,167,0.2);">Support Development</h2>
+  <!-- Tekst szary -->
+  <p style="color:#7881a1; font-size: 14px; margin: 0;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
 
-  <!-- Tytuł -->
-  <h2 style="color:#ffec8a; font-size: 36px; margin: 0 0 10px 0; text-shadow: 0 0 15px rgba(255,236,138,0.3);">Support Development</h2>
-  <p style="color:#aab2d6; font-size: 16px; margin: 0; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-
-  <!-- Karta -->
+  <!-- Karta wewnętrzna -->
   <div class="inner-card">
     <div style="display: flex; align-items: center;">
       <div class="icon-circle">F</div>
       <div style="text-align: left;">
-        <div style="color: white; font-size: 20px; font-weight: 700; margin-bottom: 5px;">UTD Donater</div>
-        <div style="color: #cdd6f7; font-size: 14px; margin-bottom: 5px;">Universal Tower Defense Premium Macro</div>
-        <div style="color: #7d85b5; font-size: 12px; max-width: 250px; line-height: 1.4;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
+        <div style="color: white; font-size: 16px; font-weight: 700; margin-bottom: 4px;">UTD Donater</div>
+        <div style="color: #cdd6f7; font-size: 12px; margin-bottom: 4px;">Universal Tower Defense Premium Macro</div>
+        <div style="color: #636e99; font-size: 10px; max-width: 220px; line-height: 1.4;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
       </div>
     </div>
     <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
