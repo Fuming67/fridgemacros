@@ -2,100 +2,238 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Fridge Macros – Home</title>
+  <title>Fridge Macros</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
+  
   <style>
-    /* NOWY MODAL PREMIUM (Tylko to dodajemy do stylów) */
-    @keyframes modalFadeIn { from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-    @keyframes btnPulse { 0% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0.7); } 70% { box-shadow: 0 0 20px 10px rgba(255, 46, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0); } }
-    
-    .ult-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; }
-    .ult-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
-    .ult-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 600px; background: #0c1018; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 30px; padding: 40px; text-align: center; box-shadow: 0 0 80px rgba(80, 50, 200, 0.15); animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .ult-title { font-size: 32px; font-weight: 800; margin-bottom: 10px; color: #ffeaa7; text-shadow: 0 0 15px rgba(255,234,167,0.15); }
-    .ult-card { background: #06070a; border: 1px solid rgba(60, 80, 200, 0.2); border-radius: 20px; padding: 25px; margin-top: 30px; display: flex; align-items: center; justify-content: space-between; }
-    .ult-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #ff7eb3, #a044ff); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: white; margin-right: 20px; box-shadow: 0 0 25px rgba(255,126,179,0.5); }
-    .ult-btn { background: linear-gradient(90deg, #ff4757, #ff2e63); padding: 12px 30px; border-radius: 50px; color: white; text-decoration: none; font-weight: 700; box-shadow: 0 0 20px rgba(255, 46, 99, 0.5); animation: btnPulse 2s infinite; transition: 0.3s; }
-    .ult-btn:hover { transform: scale(1.05); }
+    /* === KRYTYCZNA NAPRAWA KLIKANIA === */
+    .hidden {
+      display: none !important;
+    }
+
+    /* === STYL MODALA PREMIUM === */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85); /* Ciemniejsze tło */
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      position: relative;
+      background: #0c1018; /* Ciemne tło jak na screenie */
+      width: 90%;
+      max-width: 650px;
+      padding: 45px;
+      border-radius: 24px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10001;
+      text-align: center;
+    }
+
+    /* Karta w modalu */
+    .premium-card-container {
+      background: #06070a;
+      border: 1px solid rgba(60, 80, 200, 0.2);
+      border-radius: 18px;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 35px;
+    }
+
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #ff7eb3, #a044ff);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      margin-right: 20px;
+      box-shadow: 0 0 25px rgba(255,126,179,0.5);
+    }
+
+    .buy-btn {
+      background: linear-gradient(90deg, #ff4d8d, #ff2e63);
+      padding: 12px 30px;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 0 25px rgba(255, 46, 99, 0.5);
+    }
+
+    /* Styl sekcji wideo (żeby przyciski były widoczne) */
+    .video-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .video-controls button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-<header class="top-bar">
-  <div class="logo">
-    <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
-    <span>Fridge Macros</span>
-  </div>
-  <nav>
-    <a href="#home" class="btn dark">Home</a>
-    <a href="download/" class="btn dark">Download</a>
-    <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-    <a href="faq/" class="btn dark">FAQ</a>
-    <button onclick="openUltimate()" class="btn" style="background: linear-gradient(90deg, #ff4757, #ff2e63); border:none; color:white; cursor:pointer;">PREMIUM</button>
-  </nav>
-</header>
-
-<main>
-  <!-- SEKCJA HERO (PRZYWRÓCONA) -->
-  <div id="home" class="hero">
-    <h1>Best Macros for <span class="highlight">Universal Tower Defense</span></h1>
-    <p>Optimize your gameplay, farm gems, and climb the leaderboard with the best automation tools.</p>
-    <div class="buttons">
-      <a href="download/" class="btn gradient">Download Now</a>
-      <button onclick="openUltimate()" class="btn dark">Get Premium</button>
+  <!-- HEADER -->
+  <header class="top-bar">
+    <div class="logo">
+      <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
+      <span>Fridge Macros</span>
     </div>
-  </div>
 
-  <!-- SEKCJA WIDEO (PRZYWRÓCONA) -->
-  <section class="promo-section">
-    <div class="video-container">
-      <div class="video-wrapper">
-        <iframe id="promo-video" src="https://www.youtube.com/embed/E2lpnrLXEPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="video-controls">
-        <button id="video-prev" class="control-btn">❮</button>
-        <span id="video-indicator">1 / 2</span>
-        <button id="video-next" class="control-btn">❯</button>
-      </div>
+    <nav>
+      <a href="#" class="btn dark" onclick="location.reload()">Home</a>
+      <a href="download/" class="btn dark">Download</a>
+      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
+      <a href="faq/" class="btn dark">FAQ</a>
+      <!-- PRZYCISK PREMIUM - OTWIERA NASZ MODAL -->
+      <button class="btn donate" onclick="openModal()" style="background: linear-gradient(90deg, #ff7eb3, #ff758c); border:none;">PREMIUM</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION (PRZYWRÓCONA Z TWOJEGO STAREGO KODU) -->
+    <div class="hero">
+        <h1>Best Macros for <span class="highlight">Universal Tower Defense</span></h1>
+        <p>Optimize your gameplay, farm gems, and climb the leaderboard with the best automation tools.</p>
+        <div class="buttons">
+            <a href="download/" class="btn gradient">Download Now</a>
+            <button onclick="openModal()" class="btn dark">Get Premium</button>
+        </div>
     </div>
-  </section>
 
-  <!-- SEKCJA SUPPORT (ZOSTAWIAMY JAKO ZAPAS) -->
-  <section id="support" class="support">
-    <h2>Available Macros</h2>
-    <p>Check out our free and premium options.</p>
-    <div id="cards" class="cards"></div>
-  </section>
-</main>
+    <!-- TREŚĆ GŁÓWNA (WIDEO - NAPRAWIONE) -->
+    <section class="promo-section">
+      <div class="promo-left">
+        <h2>Videos from our creators</h2>
+        <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
+      </div>
 
-<!-- NOWY MODAL PREMIUM -->
-<div id="ultimateModal" class="ult-modal">
-  <div class="ult-overlay" onclick="closeUltimate()"></div>
-  <div class="ult-box">
-    <h2 class="ult-title">Support Development</h2>
-    <p style="color: #7881a1; margin-bottom: 20px;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-    
-    <div class="ult-card">
-      <div style="display: flex; align-items: center;">
-        <div class="ult-icon">F</div>
-        <div style="text-align: left;">
-          <div style="color: white; font-weight: 700; font-size: 18px; margin-bottom: 5px;">UTD Donater</div>
-          <div style="color: #cdd6f7; font-size: 13px;">Universal Tower Defense Premium Macro</div>
+      <div class="promo-right">
+        <div class="video-item">
+          <iframe
+            id="promo-video"
+            src="https://www.youtube.com/embed/E2lpnrLXEPs"
+            title="Promo video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-controls">
+          <button id="video-prev">◀</button>
+          <span id="video-indicator">1 / 2</span>
+          <button id="video-next">▶</button>
         </div>
       </div>
-      <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="ult-btn">120 Robux</a>
+    </section>
+
+    <!-- SEKCJA SUPPORT (TEŻ WAŻNA) -->
+    <section id="support" class="support">
+        <h2>Available Macros</h2>
+        <p>Check out our free and premium options.</p>
+        <!-- Tu Twój script.js wrzuca karty, ale Premium Modal jest wyżej i ważniejszy -->
+        <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <!-- MODAL PREMIUM (UKRYTY PRZEZ KLASĘ .hidden) -->
+  <div id="donate-modal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    
+    <div class="modal-content">
+      <h2 style="color:#ffeaa7; font-size: 32px; margin: 0 0 10px 0;">Support Development</h2>
+      <p style="color:#7881a1; font-size: 15px; margin: 0; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
+
+      <div class="premium-card-container">
+        <div style="display: flex; align-items: center;">
+          <div class="icon-circle">F</div>
+          <div style="text-align: left;">
+            <div style="color: white; font-weight: 700; font-size: 18px; margin-bottom: 5px;">UTD Donater</div>
+            <div style="color: #cdd6f7; font-size: 13px; margin-bottom: 4px;">Universal Tower Defense Premium Macro</div>
+            <div style="color: #636e99; font-size: 11px; max-width: 250px; line-height: 1.4;">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
+          </div>
+        </div>
+        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
+      </div>
+      
+      <button onclick="closeModal()" style="margin-top: 25px; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #777; padding: 10px 20px; border-radius: 10px; cursor: pointer;">Zamknij</button>
     </div>
-
-    <button onclick="closeUltimate()" style="margin-top: 30px; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #777; padding: 10px 20px; border-radius: 10px; cursor: pointer;">Zamknij</button>
   </div>
-</div>
 
-<script src="script.js"></script>
-<script>
-  function openUltimate() { document.getElementById('ultimateModal').style.display = 'block'; }
-  function closeUltimate() { document.getElementById('ultimateModal').style.display = 'none'; }
-</script>
+  <!-- STARY SKRYPT (ZOSTAWIAMY GO DO GENEROWANIA KART W SEKCJI SUPPORT) -->
+  <script src="script.js"></script>
 
+  <!-- NOWE SKRYPTY (NAPRAWA VIDEO I MODALA) -->
+  <script>
+    // 1. MODAL
+    function openModal() {
+      document.getElementById('donate-modal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('donate-modal').classList.add('hidden');
+    }
+
+    // 2. VIDEO SLIDER
+    const videos = [
+      "https://www.youtube.com/embed/E2lpnrLXEPs",
+      "https://www.youtube.com/embed/0ZwnZ-T3inY"
+    ];
+    let currentVideo = 0;
+    const iframe = document.getElementById('promo-video');
+    const indicator = document.getElementById('video-indicator');
+    const prevBtn = document.getElementById('video-prev');
+    const nextBtn = document.getElementById('video-next');
+
+    if(prevBtn && nextBtn) {
+      prevBtn.onclick = () => {
+        currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+        updateVideo();
+      };
+      nextBtn.onclick = () => {
+        currentVideo = (currentVideo + 1) % videos.length;
+        updateVideo();
+      };
+    }
+
+    function updateVideo() {
+      iframe.src = videos[currentVideo];
+      indicator.textContent = (currentVideo + 1) + " / " + videos.length;
+    }
+  </script>
 </body>
 </html>
+
