@@ -9,8 +9,10 @@
   <style>
     /* FIXY */
     .hidden { display: none !important; }
-    body { padding-top: 80px; } /* Żeby header nie zasłaniał treści */
     
+    /* ZMNIEJSZAMY ODSTĘP - Tylko tyle, ile ma pasek menu */
+    body { padding-top: 70px; } 
+
     /* MODAL */
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: flex; justify-content: center; align-items: center; }
     .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); }
@@ -43,8 +45,8 @@
   </header>
 
   <main>
-    <!-- VIDEO SECTION -->
-    <section class="promo-section" style="margin-top: 40px;">
+    <!-- VIDEO SECTION - USUNĄŁEM MARGIN-TOP -->
+    <section class="promo-section">
       <div class="promo-left">
         <h2>Videos from our creators</h2>
         <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
