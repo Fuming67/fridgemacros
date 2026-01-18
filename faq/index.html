@@ -4,89 +4,8 @@
 <meta charset="UTF-8" />
 <title>Fridge Macros – FAQ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  <style>
-  /* === KRYTYCZNA NAPRAWA KLIKANIA === */
-    /* Ta klasa musi mieć !important, żeby na pewno chowała overlay */
-    .hidden {
-      display: none !important;
-      pointer-events: none !important;
-    }
 
-    /* === STYL MODALA (Support Development) === */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10000;
-      display: flex; /* Centrowanie */
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-content {
-      position: relative;
-      background: #0c1018; /* Ciemne tło jak na screenie */
-      width: 90%;
-      max-width: 800px;
-      padding: 40px;
-      border-radius: 30px;
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      z-index: 10001;
-    }
-
-    /* Karta w modalu */
-    .premium-card-container {
-      background: #050c28;
-      border: 1px solid rgba(60, 80, 180, 0.5);
-      border-radius: 20px;
-      padding: 20px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 30px;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    .icon-circle {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #ff5bb5, #bc4bff);
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      margin-right: 20px;
-    }
-
-    .buy-btn {
-      background: linear-gradient(90deg, #ff7eb3, #ff758c);
-      padding: 10px 25px;
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
-    }
-    </style>
-
-    <!-- PEŁNY LINK DO STYLI -->
+<!-- PEŁNY LINK DO STYLI -->
 <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
 </head>
 <body>
@@ -160,45 +79,7 @@ allowfullscreen>
 </section>.
 </main>
 
-  <!-- MODAL PREMIUM (UKRYTY PRZEZ KLASĘ .hidden) -->
-  <div id="donate-modal" class="modal hidden">
-    <!-- Overlay zamyka modal po kliknięciu -->
-    <div class="modal-overlay" onclick="closeModal()"></div>
-    
-    <div class="modal-content">
-      <!-- Tytuł -->
-      <h2 style="color:#ffec8a; font-size: 32px; margin-bottom: 5px;">Support Development</h2>
-      <p style="color:#c7cffc; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-
-      <!-- KARTA UTD (jak na Twoim zdjęciu) -->
-      <div class="premium-card-container">
-        <div style="display: flex; align-items: center;">
-          <div class="icon-circle">F</div>
-          <div>
-            <h3 style="margin: 0; color: white; font-size: 18px;">UTD Donater</h3>
-            <p style="margin: 5px 0 0; color: #aab2ff; font-size: 14px;">Universal Tower Defense Premium Macro</p>
-            <p style="margin: 2px 0 0; color: #8890ff; font-size: 12px; opacity: 0.7;">Added Ragna Stage, Added Multi mode, fixed ALL BUGS, early updates.</p>
-          </div>
-        </div>
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SKRYPTY -->
-  <script>
-    // === 1. MODAL (NAPRAWA KLIKANIA) ===
-    function openModal() {
-      const modal = document.getElementById('donate-modal');
-      modal.classList.remove('hidden'); // Usuwa display:none i pointer-events:none
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('donate-modal');
-      modal.classList.add('hidden'); // Przywraca blokadę i ukrywa
-    }
-  
-  <!-- PEŁNY LINK DO SKRYPTU -->
+<!-- PEŁNY LINK DO SKRYPTU -->
 <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
 
 <!-- premium tutorial -->
@@ -242,5 +123,6 @@ arrow.style.transform = "rotate(0deg)";
 </script>
 </body>
 </html>
+
 
 
