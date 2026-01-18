@@ -9,9 +9,20 @@
   <style>
     /* FIXY */
     .hidden { display: none !important; }
-    
-    /* ZMNIEJSZAMY ODSTĘP - Tylko tyle, ile ma pasek menu */
     body { padding-top: 70px; } 
+
+    /* === STYL ZŁOTEGO PRZYCISKU (NA ŚRODKU) === */
+    .btn.gold {
+      background: linear-gradient(90deg, #ff9f0a, #ff5e00); /* Złoto-pomarańczowy */
+      color: white;
+      border: none;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(255, 94, 0, 0.4);
+    }
+    .btn.gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 94, 0, 0.6);
+    }
 
     /* MODAL */
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; display: flex; justify-content: center; align-items: center; }
@@ -40,12 +51,23 @@
       <a href="download/" class="btn dark">Download</a>
       <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
       <a href="faq/" class="btn dark">FAQ</a>
-      <button class="btn donate" onclick="openModal()" style="background: linear-gradient(90deg, #ff7eb3, #ff758c); border:none;">PREMIUM</button>
+      <button class="btn donate" onclick="openModal()">PREMIUM</button>
     </nav>
   </header>
 
   <main>
-    <!-- VIDEO SECTION - USUNĄŁEM MARGIN-TOP -->
+    <!-- HERO SECTION (PRZYWRÓCONA Z POMARAŃCZOWYM GUZIKIEM) -->
+    <div class="hero">
+        <h1>Best Macros for <span class="highlight">Universal Tower Defense</span></h1>
+        <p>Optimize your gameplay, farm gems, and climb the leaderboard with the best automation tools.</p>
+        <div class="buttons">
+            <a href="download/" class="btn gradient">Download Now</a>
+            <!-- TUTAJ JEST TEN ZŁOTY PRZYCISK -->
+            <button onclick="openModal()" class="btn gold">Get Premium</button>
+        </div>
+    </div>
+
+    <!-- VIDEO SECTION -->
     <section class="promo-section">
       <div class="promo-left">
         <h2>Videos from our creators</h2>
