@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   
   <style>
-    /* === POPRAWKI DLA LEPSZEGO WYGLĄDU === */
+    /* === POPRAWKI DLA LEPSZEGO WYGLĄDU (ZACHOWANE) === */
     body {
       margin: 0;
       padding: 0;
@@ -16,153 +16,173 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* STYLE MODALA (ULEPSZONY PREMIUM - SPÓJNY Z HOME) */
-    @keyframes modalFadeIn { from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-    @keyframes btnPulse { 0% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0.7); } 70% { box-shadow: 0 0 20px 10px rgba(255, 46, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0); } }
-    @keyframes iconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    /* === PREMIUM MODAL - DOKŁADNIE JAK NA NOWYM SCREENIE [file:3] === */
+    @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     
-    .ult-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; }
-    .ult-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); }
-    .ult-box { 
+    .ult-modal { 
+      display: none; 
       position: fixed; 
-      top: 50%; left: 50%; 
+      top: 0; left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 999999; 
+      backdrop-filter: blur(5px);
+    }
+    
+    .ult-overlay { 
+      position: absolute; 
+      top: 0; left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0, 0, 0, 0.75); 
+    }
+    
+    .ult-box { 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
       transform: translate(-50%, -50%); 
-      width: 90%; 
-      max-width: 650px; 
-      background: linear-gradient(145deg, #0c1018, #050c28); 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
+      width: 92%; 
+      max-width: 780px; 
+      height: 85%; 
+      background: #0c1018; 
+      border: 1px solid rgba(255, 255, 255, 0.06); 
       border-radius: 32px; 
       padding: 48px; 
-      text-align: center; 
-      box-shadow: 0 0 100px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(255,255,255,0.03); 
-      animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.25); 
+      animation: modalFadeIn 0.35s ease-out; 
+      overflow: hidden;
     }
     
     .ult-title { 
-      font-size: 36px; 
+      color: #ffec8a !important; 
+      font-size: 34px !important; 
       font-weight: 800; 
-      margin-bottom: 12px; 
-      background: linear-gradient(90deg, #ffec8a, #aab2ff); 
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; 
+      margin-bottom: 8px !important; 
+      text-align: center; 
     }
     
-    .ult-subtitle {
-      color: #c7cffc; 
-      font-size: 16px; 
-      opacity: 0.85; 
-      margin-bottom: 28px; 
+    .ult-subtitle { 
+      color: #c7cffc !important; 
+      opacity: 0.82 !important; 
+      font-size: 16px !important; 
+      text-align: center; 
+      margin-bottom: 32px !important; 
     }
     
-    .ult-card { 
-      background: linear-gradient(145deg, #050c28, #0a1428); 
-      border: 1.5px solid rgba(60, 80, 180, 0.6); 
-      border-radius: 24px; 
-      padding: 28px 32px; 
-      margin-top: 32px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.6), 0 12px 48px rgba(0,0,0,0.4);
+    /* KARTA UTD - DOKŁADNIE JAK NA SCREENIE */
+    .premium-card-container {
+      background: #050c28;
+      border: 1px solid rgba(60, 80, 180, 0.5);
+      border-radius: 24px;
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      box-shadow: inset 0 0 24px rgba(0,0,0,0.6);
+      position: relative;
+      overflow: hidden;
     }
     
-    .ult-card:hover { 
-      transform: translateY(-4px); 
-      border-color: rgba(255, 117, 140, 0.5); 
-      box-shadow: inset 0 0 24px rgba(0,0,0,0.6), 0 24px 64px rgba(59, 130, 246, 0.3); 
+    .premium-card-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,91,181,0.08), rgba(188,75,255,0.08));
+      z-index: 0;
     }
     
-    .ult-icon { 
+    .premium-card-container > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .icon-circle { 
       width: 68px; 
       height: 68px; 
-      background: linear-gradient(135deg, #ff5bb5, #bc4bff, #ff5bb5); 
-      background-size: 200% 200%; 
+      background: linear-gradient(135deg, #ff5bb5, #bc4bff); 
       border-radius: 20px; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
       font-size: 28px; 
-      font-weight: bold; 
+      font-weight: 800; 
       color: white; 
-      animation: iconPulse 2s infinite;
-      box-shadow: 0 10px 30px rgba(188, 75, 255, 0.5);
-      margin-right: 24px;
+      margin-right: 28px;
+      box-shadow: 0 8px 28px rgba(188,75,255,0.4);
     }
     
-    .ult-info {
-      text-align: left;
-      flex: 1;
+    .card-title {
+      margin: 0;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
     }
     
-    .ult-name { 
-      color: white; 
-      font-weight: 700; 
-      font-size: 22px; 
-      margin-bottom: 6px; 
-    }
-    
-    .ult-desc { 
-      color: #aab2ff; 
-      font-size: 15px; 
-      margin-bottom: 4px; 
-    }
-    
-    .ult-features { 
-      color: #8890ff; 
-      font-size: 13px; 
-      opacity: 0.85; 
-    }
-    
-    .ult-btn { 
-      background: linear-gradient(90deg, #ff7eb3, #ff758c); 
-      padding: 14px 32px; 
-      border-radius: 50px; 
-      color: white; 
-      text-decoration: none; 
-      font-weight: 700; 
-      box-shadow: 0 10px 30px rgba(255, 117, 140, 0.5); 
-      animation: btnPulse 2s infinite; 
-      transition: all 0.3s ease; 
+    .card-desc {
+      margin: 8px 0 0 0;
+      color: #aab2ff;
       font-size: 15px;
     }
     
-    .ult-btn:hover { 
-      transform: translateY(-3px) scale(1.02); 
-      box-shadow: 0 20px 45px rgba(255, 117, 140, 0.7); 
+    .card-features {
+      margin: 6px 0 0 0;
+      color: #8890ff;
+      font-size: 13px;
+      opacity: 0.75;
     }
     
+    .buy-btn { 
+      background: linear-gradient(90deg, #ff7eb3, #ff758c); 
+      padding: 14px 32px; 
+      border-radius: 50px; 
+      color: white !important; 
+      text-decoration: none; 
+      font-weight: 700; 
+      font-size: 15px;
+      box-shadow: 0 8px 25px rgba(255,117,140,0.45);
+      transition: all 0.3s ease;
+    }
+    
+    .buy-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(255,117,140,0.6);
+    }
+    
+    /* ZAMKNIJ - DOKŁADNIE JAK NA SCREENIE */
     .ult-close { 
-      margin-top: 36px; 
-      padding: 14px 48px; 
-      background: rgba(255, 255, 255, 0.04); 
-      border: 1.5px solid rgba(255, 255, 255, 0.12); 
-      border-radius: 20px; 
-      color: #8a94c1; 
-      font-size: 15px; 
-      font-weight: 500; 
-      cursor: pointer; 
-      transition: all 0.3s ease; 
-      width: fit-content; 
-      margin-left: auto; 
-      margin-right: auto;
+      display: block;
+      margin: 36px auto 0;
+      padding: 14px 48px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1.2px solid rgba(255, 255, 255, 0.11);
+      border-radius: 18px;
+      color: #7a82ac !important;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: fit-content;
     }
     
     .ult-close:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      border-color: rgba(255, 255, 255, 0.4);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.11);
+      color: white !important;
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
     }
 
-    /* HEADER POPRAWKI */
+    /* HEADER I TUTORIAL - ZACHOWANE ULEPSZENIA */
     .top-bar {
       backdrop-filter: blur(25px);
       background: rgba(12, 16, 24, 0.97);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* TUTORIAL PANEL - ULEPSZONY */
     .tutorial-panel {
       position: fixed;
       left: 28px;
@@ -178,7 +198,6 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* FAQ POPRAWKI */
     .faq-title {
       background: linear-gradient(135deg, #ffec8a, #ff9a56);
       -webkit-background-clip: text;
@@ -206,7 +225,7 @@
 </header>
 
 <main>
-  <!-- SEKcja FAQ Z VIDOS - BEZ ŻADNYCH ZMIAN -->
+  <!-- FAQ VIDEOS - BEZ ŻADNYCH ZMIAN -->
   <section class="faq-section">
     <h2 class="faq-title">Frequently Asked Questions</h2>
     <div class="faq-grid">
@@ -229,33 +248,34 @@
   </section>
 </main>
 
-<!-- ULEPSZONY MODAL PREMIUM -->
+<!-- MODAL PREMIUM - DOKŁADNIE JAK NA NOWYM SCREENIE [file:3] -->
 <div id="ultimateModal" class="ult-modal">
   <div class="ult-overlay" onclick="closeUltimate()"></div>
   <div class="ult-box">
     <h2 class="ult-title">Support Development</h2>
     <p class="ult-subtitle">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-    
-    <div class="ult-card">
+
+    <!-- KARTA UTD JAK NA SCREENIE -->
+    <div class="premium-card-container">
       <div style="display: flex; align-items: center;">
-        <div class="ult-icon">F</div>
-        <div class="ult-info">
-          <div class="ult-name">UTD Donater</div>
-          <div class="ult-desc">Universal Tower Defense Premium Macro</div>
-          <div class="ult-features">Added Ragna Stage, Multi mode, fixed ALL BUGS, early updates.</div>
+        <div class="icon-circle">F</div>
+        <div>
+          <h3 class="card-title">UTD Donater</h3>
+          <p class="card-desc">Universal Tower Defense Premium Macro</p>
+          <p class="card-features">Added Ragna Stage, Added Multi mode, fixed ALL BUGS, early updates.</p>
         </div>
       </div>
-      <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="ult-btn">120 Robux</a>
+      <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
     </div>
-    
+
     <button class="ult-close" onclick="closeUltimate()">Zamknij</button>
   </div>
 </div>
 
-<!-- SCRIPT Z EXTERNAL - BEZ ZMIAN -->
+<!-- EXTERNAL SCRIPT - BEZ ZMIAN -->
 <script src="https://fuming67.github.io/fridgemacros/script.js"></script>
 
-<!-- TUTORIAL PANEL - BEZ USUWANIA, TYLKO ULEPSZONY STYL -->
+<!-- TUTORIAL PANEL - BEZ USUWANIA -->
 <div class="tutorial-panel">
   <h4 onclick="toggleTutorial()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; margin: 0 0 16px 0;">
     📥 Tutorial how to download macro
@@ -274,10 +294,9 @@
   </div>
 </div>
 
-<!-- SKRYPTY - BEZ USUWANIA, DODANE ULEPSZENIA -->
 <script>
   function openUltimate() { 
-    document.getElementById('ultimateModal').style.display = 'block'; 
+    document.getElementById('ultimateModal').style.display = 'flex'; 
     document.body.style.overflow = 'hidden';
   }
   
@@ -292,15 +311,12 @@
     if (content.style.display === "none") {
       content.style.display = "block";
       arrow.innerHTML = "▲";
-      arrow.style.transform = "rotate(180deg)";
     } else {
       content.style.display = "none";
       arrow.innerHTML = "▼";
-      arrow.style.transform = "rotate(0deg)";
     }
   }
 
-  // Animacja na load
   window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.8s ease';
