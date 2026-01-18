@@ -2,233 +2,112 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Fridge Macros</title>
+  <title>Fridge Macros – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fuming67.github.io/fridgemacros/style.css" />
   
   <style>
-    /* === KRYTYCZNA NAPRAWA KLIKANIA === */
-    /* Ta klasa musi mieć !important, żeby na pewno chowała overlay */
-    .hidden {
-      display: none !important;
-      pointer-events: none !important;
-    }
-
-    /* === STYL MODALA (Support Development) === */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10000;
-      display: flex; /* Centrowanie */
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-content {
-      position: relative;
-      background: #0c1018; /* Ciemne tło jak na screenie */
-      width: 90%;
-      max-width: 800px;
-      padding: 40px;
+    /* === SUPER NOWOCZESNE STYLE MODALA === */
+    @keyframes modalFadeIn { from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    @keyframes btnPulse { 0% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0.7); } 70% { box-shadow: 0 0 20px 10px rgba(255, 46, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 46, 99, 0); } }
+    
+    .ult-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999999; }
+    .ult-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
+    .ult-box {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 90%; max-width: 600px;
+      background: linear-gradient(145deg, #10121b, #05060a);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 30px;
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 80px rgba(80, 50, 200, 0.15);
+      animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .ult-title {
+      font-size: 32px; font-weight: 800; margin-bottom: 10px;
+      background: linear-gradient(90deg, #fff, #aab2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .ult-card {
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      z-index: 10001;
-    }
-
-    /* Karta w modalu */
-    .premium-card-container {
-      background: #050c28;
-      border: 1px solid rgba(60, 80, 180, 0.5);
       border-radius: 20px;
-      padding: 20px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 30px;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    .icon-circle {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #ff5bb5, #bc4bff);
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      margin-right: 20px;
-    }
-
-    .buy-btn {
-      background: linear-gradient(90deg, #ff7eb3, #ff758c);
-      padding: 10px 25px;
-      border-radius: 50px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
-    }
-
-    /* === STYL TUTORIAL PANELU (DÓŁ LEWO) === */
-    .tutorial-panel {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      width: 300px;
-      background: rgba(59, 130, 246, 0.95);
-      color: white;
       padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      z-index: 9000;
-      /* Domyślnie pokazujemy nagłówek, treść ukryta JS-em */
+      margin-top: 30px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: 0.3s;
     }
+    .ult-card:hover { border-color: rgba(255, 71, 87, 0.3); background: rgba(255, 71, 87, 0.05); }
+    .ult-icon {
+      width: 55px; height: 55px;
+      background: linear-gradient(135deg, #ff6b81, #ff4757);
+      border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: bold; color: white;
+      box-shadow: 0 0 25px rgba(255, 71, 87, 0.4);
+    }
+    .ult-btn {
+      background: linear-gradient(90deg, #ff4757, #ff2e63);
+      padding: 12px 30px; border-radius: 50px; color: white; text-decoration: none; font-weight: 700;
+      box-shadow: 0 0 20px rgba(255, 46, 99, 0.4);
+      animation: btnPulse 2s infinite; transition: 0.3s;
+    }
+    .ult-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 46, 99, 0.6); }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="top-bar">
-    <div class="logo">
-      <img src="fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
-      <span>Fridge Macros</span>
-    </div>
+<header class="top-bar">
+  <div class="logo">
+    <img src="https://fuming67.github.io/fridgemacros/fm-logo.png" alt="Fridge Macros logo" class="logo-icon">
+    <span>Fridge Macros</span>
+  </div>
+  <nav>
+    <a href="#home" class="btn dark">Home</a>
+    <a href="download/" class="btn dark">Download</a>
+    <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
+    <a href="faq/" class="btn dark">FAQ</a>
+    <button onclick="openUltimate()" class="btn" style="background: linear-gradient(90deg, #ff4757, #ff2e63); border:none; color:white; cursor:pointer;">PREMIUM</button>
+  </nav>
+</header>
 
-    <nav>
-      <!-- Kliknięcie Home odświeża/wraca -->
-      <a href="#" class="btn dark" onclick="location.reload()">Home</a>
-      <a href="download/" class="btn dark">Download</a>
-      <a href="https://discord.gg/t2sGsddB" class="btn blue" target="_blank">Discord</a>
-      <a href="faq/" class="btn dark">FAQ</a>
-      
-      <!-- PRZYCISK PREMIUM -->
-      <button class="btn donate" onclick="openModal()">PREMIUM</button>
-    </nav>
-  </header>
-
-  <!-- TREŚĆ GŁÓWNA (WIDEO) -->
-  <section class="promo-section">
-    <div class="promo-left">
-      <h2>Videos from our creators</h2>
-      <p>Watch tutorials and showcases made by creators using Fridge Macros.</p>
-    </div>
-
-    <div class="promo-right">
-      <div class="video-item">
-        <iframe
-          id="promo-video"
-          src="https://www.youtube.com/embed/E2lpnrLXEPs"
-          title="Promo video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="video-controls">
-        <button class="btn dark" id="video-prev">◀</button>
-        <span id="video-indicator">1 / 2</span>
-        <button class="btn dark" id="video-next">▶</button>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- MODAL PREMIUM (UKRYTY PRZEZ KLASĘ .hidden) -->
-  <div id="donate-modal" class="modal hidden">
-    <!-- Overlay zamyka modal po kliknięciu -->
-    <div class="modal-overlay" onclick="closeModal()"></div>
-    
-    <div class="modal-content">
-      <!-- Tytuł -->
-      <h2 style="color:#ffec8a; font-size: 32px; margin-bottom: 5px;">Support Development</h2>
-      <p style="color:#c7cffc; opacity: 0.8;">Twoje wsparcie pomaga tworzyć lepsze makra.</p>
-
-      <!-- KARTA UTD (jak na Twoim zdjęciu) -->
-      <div class="premium-card-container">
-        <div style="display: flex; align-items: center;">
-          <div class="icon-circle">F</div>
-          <div>
-            <h3 style="margin: 0; color: white; font-size: 18px;">UTD Donater</h3>
-            <p style="margin: 5px 0 0; color: #aab2ff; font-size: 14px;">Universal Tower Defense Premium Macro</p>
-            <p style="margin: 2px 0 0; color: #8890ff; font-size: 12px; opacity: 0.7;">Added Ragna Stage, Added Multi mode, fixed ALL BUGS, early updates.</p>
-          </div>
-        </div>
-        <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="buy-btn">120 Robux</a>
-      </div>
+<main>
+  <div class="hero">
+    <h1>Best Macros for <span style="color: #ff4757;">UTD</span></h1>
+    <p>Optimize your gameplay with the best automation tools.</p>
+    <div class="buttons">
+      <a href="download/" class="btn gradient">Download Now</a>
+      <button onclick="openUltimate()" class="btn dark">Get Premium</button>
     </div>
   </div>
+</main>
 
-  <!-- SKRYPTY -->
-  <script>
-    // === 1. MODAL (NAPRAWA KLIKANIA) ===
-    function openModal() {
-      const modal = document.getElementById('donate-modal');
-      modal.classList.remove('hidden'); // Usuwa display:none i pointer-events:none
-    }
+<!-- SUPER MODAL -->
+<div id="ultimateModal" class="ult-modal">
+  <div class="ult-overlay" onclick="closeUltimate()"></div>
+  <div class="ult-box">
+    <h2 class="ult-title">Support Development</h2>
+    <p style="color: #8890b5; margin-bottom: 20px;">Odblokuj pełny potencjał i wesprzyj twórców.</p>
+    
+    <div class="ult-card">
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <div class="ult-icon">F</div>
+        <div style="text-align: left;">
+          <div style="color: white; font-weight: 700; font-size: 18px;">UTD Donater</div>
+          <div style="color: #6c759e; font-size: 13px;">Ragna Stage, Multi-Mode, Fixes</div>
+        </div>
+      </div>
+      <a href="https://www.roblox.com/game-pass/1645553803" target="_blank" class="ult-btn">120 R$</a>
+    </div>
 
-    function closeModal() {
-      const modal = document.getElementById('donate-modal');
-      modal.classList.add('hidden'); // Przywraca blokadę i ukrywa
-    }
+    <button onclick="closeUltimate()" style="margin-top: 30px; background: transparent; border: none; color: #555; cursor: pointer;">Zamknij</button>
+  </div>
+</div>
 
-    // === 2. TUTORIAL PANEL ===
-    function toggleTutorial() {
-      const content = document.getElementById("tutorial-content");
-      const arrow = document.getElementById("arrow");
-      
-      if (content.style.display === "none") {
-        content.style.display = "block";
-        arrow.textContent = "▲";
-      } else {
-        content.style.display = "none";
-        arrow.textContent = "▼";
-      }
-    }
+<script src="https://fuming67.github.io/fridgemacros/script.js"></script>
+<script>
+  function openUltimate() { document.getElementById('ultimateModal').style.display = 'block'; }
+  function closeUltimate() { document.getElementById('ultimateModal').style.display = 'none'; }
+</script>
 
-    // === 3. VIDEO SLIDER ===
-    const videos = [
-      "https://www.youtube.com/embed/E2lpnrLXEPs",
-      "https://www.youtube.com/embed/0ZwnZ-T3inY"
-    ];
-    let currentVideo = 0;
-    const iframe = document.getElementById('promo-video');
-    const indicator = document.getElementById('video-indicator');
-    const prevBtn = document.getElementById('video-prev');
-    const nextBtn = document.getElementById('video-next');
-
-    if(prevBtn && nextBtn) {
-      prevBtn.onclick = () => {
-        currentVideo = (currentVideo - 1 + videos.length) % videos.length;
-        updateVideo();
-      };
-      nextBtn.onclick = () => {
-        currentVideo = (currentVideo + 1) % videos.length;
-        updateVideo();
-      };
-    }
-
-    function updateVideo() {
-      iframe.src = videos[currentVideo];
-      indicator.textContent = (currentVideo + 1) + " / " + videos.length;
-    }
-  </script>
 </body>
 </html>
